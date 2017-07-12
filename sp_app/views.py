@@ -29,14 +29,24 @@ declare
 """
 
 from django.shortcuts import render
+from django.http import HttpResponse
 import requests
 import json
+
+def display(request, docid):
+    my_url = "http://basex.ecrituresnumeriques.ca:8984/sph/tim/view/" + docid.__str__()
+    r = requests.get(my_url)
+    all_content = r.content
+    print(all_content)
+    return HttpResponse(all_content)
 
 def list_titles(request, action):
     my_url = "http://basex.ecrituresnumeriques.ca:8984/sph/tim/" + action
     r = requests.get(my_url)
-    print(r.content.decode("utf-8"))
+
     if r.status_code == 200:
         data = json.loads(r.content)
+
+    print(data)
 
     return render(request, 'list.html', { 'objects_list': data, 'source_url': my_url})
