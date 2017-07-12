@@ -60,10 +60,9 @@ SP1245 | Building Global Community | Gérard Wormser | Facebook, éditorialisati
 SP1246 | Picsou: quelques remarques sur la cupdité | Joëlle Zask | libéralisme, capitalisme, cupidité, passion, argent, théorie économique, Picsou
 SP1249 | Il ne suffit que de regarder | William Delisle | Images, regard, éthique, objet-regard, Georges Didi-Huberman, psychanalyse, philosophie, Jacques Lacan, Sigmund Freud, Auschwitz, photographie
 SP1250 | La Grande Transformation | Gérard Wormser | France, élection présidentielle, Front national, Macron, désaffiliation
-SP1259 | Engagement radical, extrême ou violent | Caroline Guibet Lafaye | Engagement, radicalisation, alternation, illusion rétrospective,
-extrême gauche, Action Directe
+SP1254 | Engagement radical, extrême ou violent | Caroline Guibet Lafaye | Engagement, radicalisation, alternation, illusion rétrospective, extrême gauche, Action Directe
 
 ### Conversation
 
-Titre : Ni gauche, ni droite
-Mots-clés : mondialisation, globalisation, capitalisme, radicalisation, extrême gauche, mouvement conservateur
+* Titre : Ni gauche, ni droite
+* Mots-clés : mondialisation, globalisation, capitalisme, radicalisation, extrême gauche, mouvement conservateur
