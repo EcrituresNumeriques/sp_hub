@@ -33,20 +33,24 @@ from django.http import HttpResponse
 import requests
 import json
 
-def display(request, docid):
-    my_url = "http://basex.ecrituresnumeriques.ca:8984/sph/tim/view/" + docid.__str__()
-    r = requests.get(my_url)
-    all_content = r.content
-    print(all_content)
-    return HttpResponse(all_content)
+BASEX_API_URL = "http://basex.ecrituresnumeriques.ca:8984"
+BASEX_API_PATH = "/sph/tim"
 
-def list_titles(request, action):
-    my_url = "http://basex.ecrituresnumeriques.ca:8984/sph/tim/" + action
+def display(request, docid):
+    my_url = BASEX_API_URL + BASEX_API_PATH + "/articles/view/" + docid.__str__()
+    r = requests.get(my_url)
+
+    if r.status_code == 200:
+        data = r.content
+
+    return render(request, 'articles/display.html', { 'article': data })
+
+
+def list_articles(request):
+    my_url = BASEX_API_URL + BASEX_API_PATH + "/articles/list"
     r = requests.get(my_url)
 
     if r.status_code == 200:
         data = json.loads(r.content)
 
-    print(data)
-
-    return render(request, 'list.html', { 'objects_list': data, 'source_url': my_url})
+    return render(request, 'articles/list.html', { 'articles': data, 'source_url': my_url})
