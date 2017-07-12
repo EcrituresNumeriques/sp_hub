@@ -1,0 +1,6 @@
+<ul>
+    {% for item in objects_list %}
+    <li>{{ item.name }}</li>
+    {% endfor %}
+</ul>
+<h4>Coming from <a href="{{ source_url }}">{{ source_url }}</a></h4>
