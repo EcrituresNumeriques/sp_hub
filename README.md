@@ -1,9 +1,10 @@
 # SP Hub
 
 Pour démarrer l'application:
+* prérequis: Python 3
 * installer pip: easy_install pip
 * installer virtualenv: easy_install virtualenv virtualenvwrapper
-* créer un virtualenv, par exemple: virtual ~/.virtualenvs/django
+* créer un virtualenv qui utilise python3, par exemple: virtualenv -p python3 ~/.virtualenvs/django
 * se mettre dans ce virtualenv: source ~/.virtualenvs/django/bin/activate
 * le prompt shell doit afficher (django) au début
 * installer les dépendances: pip install django django-bootstrap3 requests httplib2 urllib3
