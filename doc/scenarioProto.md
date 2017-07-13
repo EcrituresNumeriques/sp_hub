@@ -35,7 +35,9 @@ Chaque conversation est caractérisée par :
 
 L'agrégation se fait sur la base des mots-clés selon un algorithme à concevoir.
 
-## Gestion utilisateur
+## Aspects à anticiper
+
+### Gestion utilisateur
 
 Hors-POC mais à anticiper :
 
@@ -48,6 +50,10 @@ Il est prévu que la plateforme (hub) fasse une gestion fine des utilisateurs, e
 Il sera nécessaire de maintenir pour chaque utilisateur une liste de ses annotations (et autres activités à définir)
 
 Pour la preuve de concept, le backoffice éditeur n'est pas à développer.
+
+### Multilinguisme
+
+La diversité de la communauté Sens Public implique nécessairement une plateforme multilingue.
 
 ## Ressources pour la POC
 
