@@ -42,19 +42,18 @@ declare
     </_>
     }</json>
   }
-  
+
 declare
-  %rest:path("/sph/tim/keywords/list")
-  %rest:GET
-  %output:method("json")
-  function page:getArticlesByKeywords($keyw as xs:string) {
-    let $nodes := db:open("sph")
-      return <json type='array'>{ 
-      for $node in $nodes
-         let $allkeyw := fn:tokenize(fn:data($node//meta[@name="keywords"][1]/@content), ", |; ")
-         for $keyw in fn:distinct-values($allkeyw)
-                
-            return <_ type='object'><keyword>{$keyw}</keyword></_>
-      }</json>
-  }
- 
+    %rest:path("/sph/tim/keywords/list")
+    %rest:GET
+    %output:method("json")
+    function page:getAllKeywords() {
+      let $nodes := db:open("sph")
+        return <json type='array'>{
+        for $node in $nodes
+           let $allkeyw := fn:tokenize(fn:data($node//meta[@name="keywords"][1]/@content), ", |;
+           for $keyw in fn:distinct-values($allkeyw)
+
+              return <_ type='object'><keyword>{$keyw}</keyword></_>
+        }</json>
+    };
