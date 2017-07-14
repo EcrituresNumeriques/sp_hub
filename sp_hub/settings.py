@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'sp_app.apps.SpAppConfig',
+    'rest_framework',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
