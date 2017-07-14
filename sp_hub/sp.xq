@@ -27,3 +27,21 @@ declare
     return $document
 
   };
+
+declare
+  %rest:path("/sph/tim/keywords/{$keyw}")
+  %rest:GET
+  %output:method("json")
+  function page:getArticlesByKeywords($keyw as xs:string) {
+    let $nodes := db:open("sph")
+    return <json type='array'>{
+    for $node in $nodes[//meta[@name="keywords" and fn:contains(@content, $keyw)]]
+      return <_ type='object'>
+        <id>{fn:substring-after(fn:document-uri($node), 'sph/')}</id>
+        <name>{fn:data($node/html/head/meta[@name="DC.title"]/@content)}</name>
+    </_>
+    }</json>
+  }
+  
+  
+ 
