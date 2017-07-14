@@ -51,7 +51,7 @@ declare
       let $nodes := db:open("sph")
         return <json type='array'>{
         for $node in $nodes
-           let $allkeyw := fn:tokenize(fn:data($node//meta[@name="keywords"][1]/@content), ", |;
+           let $allkeyw := fn:tokenize(fn:data($node//meta[@name="keywords"][1]/@content), ", |; ")
            for $keyw in fn:distinct-values($allkeyw)
 
               return <_ type='object'><keyword>{$keyw}</keyword></_>
