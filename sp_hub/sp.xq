@@ -43,5 +43,16 @@ declare
     }</json>
   }
   
-  
+declare
+  %rest:path("/sph/tim/keywords/list")
+  %rest:GET
+  %output:method("json")
+  function page:getArticlesByKeywords($keyw as xs:string) {
+    let $nodes := db:open("sph")
+    <json type='array'>{
+          for $node in $nodes
+            for $keyw in fn:tokenize(fn:data($node//meta[@name="keywords"][1]/@content), ", ") 
+            return <keyword>{$keyw}</keyword>
+        }</json>
+  }
  
