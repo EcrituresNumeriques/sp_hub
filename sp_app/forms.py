@@ -9,4 +9,4 @@ class ConversationForm(ModelForm):
 class ArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = [ 'title' ]
+        fields = [ 'title', 'document', ]

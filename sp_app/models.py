@@ -15,4 +15,5 @@ class Conversation(SpObject):
 
 
 class Article(SpObject):
-    pass
+    document = models.FileField(upload_to='tmp/', null=True, blank=True)
+    basex_docid = models.IntegerField(null=True, blank=True)

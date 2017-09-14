@@ -13,11 +13,9 @@ HYPOTHESIS_API_URL = "https://hypothes.is/api"
 
 def new_article(request):
     if request.method == "POST":
-        form = ArticleForm(request.POST)
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
-            article = form.save(commit=False)
-            article.creator = request.user
-            article.save()
+            article = form.save()
             return redirect('sp_app:display', docid=article.pk)
     else:
         form = ArticleForm()
