@@ -1,0 +1,64 @@
+{
+    "rows":
+    [
+        {
+            "updated": "2017-09-17T16:21:55.042577+00:00",
+            "group": "__world__",
+            "target": [
+                {   "source": "http://localhost:8080/articles/display/44/",
+                    "selector": [
+                        {   "conformsTo": "https://tools.ietf.org/html/rfc3236",
+                            "type": "FragmentSelector",
+                            "value": "container"
+                        },
+                        {
+                            "endContainer": "/div[1]/p[1]",
+                            "startContainer": "/div[1]/p[1]",
+                            "type": "RangeSelector",
+                            "startOffset": 0,
+                            "endOffset": 1314
+                        },
+                        {
+                            "type": "TextPositionSelector",
+                            "end": 1535,
+                            "start": 221
+                        },
+                        {
+                            "exact": "Une \u00e9lection est l\u2019occasion de r\u00e9viser le pacte social. Celle de 2017 vient en France apr\u00e8s une d\u00e9cennie de faible croissance \u00e9conomique qui n\u2019a permis de r\u00e9duire ni le ch\u00f4mage ni la dette publique. L\u2019\u00e9conomie allemande a b\u00e9n\u00e9fici\u00e9 d\u2019une parit\u00e9 mon\u00e9taire favorable \u00e0 ses exportations mondiales, les gouvernements fran\u00e7ais ont profit\u00e9 de l\u2019euro pour financer la dette \u00e0 moindre co\u00fbt et maintenir les emplois publics. Cependant, la r\u00e9duction de la mobilit\u00e9 sociale qui va de pair avec le vieillissement relatif de la population, la concentration territoriale des difficult\u00e9s sociales et la pression financi\u00e8re que les \u00ab\u00a0d\u00e9penses contraintes\u00a0\u00bb font peser sur la majorit\u00e9 des foyers renforcent le d\u00e9senchantement du monde th\u00e9matis\u00e9 voici un si\u00e8cle par Max Weber\n    1\n  . Une pauvret\u00e9 durable pour beaucoup et un monde social marqu\u00e9 pour la plupart par l\u2019emprise des donn\u00e9es que nous consommons et \u00e9mettons par tous les canaux d\u2019information, et qui augmentent en permanence l\u2019inqui\u00e9tude de l\u2019avenir. Tout nous incite \u00e0 tenir les biens immat\u00e9riels qui sont au c\u0153ur du social pour des instances pratiquement automatis\u00e9es et garanties, et \u00e0 limiter notre information \u00e0 ce qui vient confirmer nos croyances. Dans une d\u00e9mocratie tenue pour un service, le vote exprime une r\u00e9clamation priv\u00e9e autant qu\u2019un engagement civique.",
+                            "prefix": "iginal file: tmp/SP2250.html\n\n\n\n",
+                            "type": "TextQuoteSelector",
+                            "suffix": "\nLe vote dit un attachement \u00e0 de"
+                        }
+                    ]
+                }
+            ],
+            "links": {
+                "json": "https://hypothes.is/api/annotations/UheBnpvEEeeXXOumqgxVYg",
+                "html": "https://hypothes.is/a/UheBnpvEEeeXXOumqgxVYg",
+                "incontext": "https://hyp.is/UheBnpvEEeeXXOumqgxVYg/localhost:8080/articles/display/44/"
+            },
+            "tags": [
+                "test-tag"
+            ],
+            "text": "Premi\u00e8re annotation, yallah.",
+            "created": "2017-09-17T16:21:55.042577+00:00",
+            "uri": "http://localhost:8080/articles/display/44/",
+            "flagged": false,
+            "user": "acct:timoguic@hypothes.is",
+            "hidden": false,
+            "document": {
+                "title": [
+                    "Sens Public"
+                ]
+            },
+            "id": "UheBnpvEEeeXXOumqgxVYg",
+            "permissions": {
+                "read": ["group:__world__"],
+                "admin": ["acct:timoguic@hypothes.is"],
+                "update": ["acct:timoguic@hypothes.is"],
+                "delete": ["acct:timoguic@hypothes.is"]
+            }
+        }
+    ],
+    "total": 1
+}

@@ -1,24 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<dl id="article_metadata">
+<dl id="article_metadata" class="well">
     <dd>sp_hub ID: {{ article.pk }}</dd>
     <dd>BaseX docid: {{ article.basex_docid }}</dd>
     <dd>Author: {{ article.creator }}</dd>
     <dd>Original file: {{ article.document.name }}</dd>
 </dl>
 
-<div id="article_annotations">
-    <h3>Annotations hypothes.is</h3>
-    <ul>
-        {% for value in annotations %}
-            <li><a href="{{ value.links.html }}">{{ value.text }}</a> ({{ value.user }})</li>
-        {% endfor %}
-    </ul>
+<h3>
+    <a data-toggle="collapse" data-target="#annotations" href="#annotations">Annotations hypothes.is</a>
+</h3>
+
+<div id="annotations" class="list-group panel-collapse collapse">
+    {% for value in annotations %}
+    <a href="{{ value.links.html }}" class="list-group-item">
+        <h4 class="list-group-item-heading">{{ value.text }}</h4>
+        <p class="list-group-item-text">{{ value.user }}</p>
+        {% if tags %}
+            {% for tag in value.tags %}
+                <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        {% endif %}
+    </a>
+    {% endfor %}
 </div>
 
-{% autoescape off %}
-{{ basex_document }}
-{% endautoescape %}
+<h3>
+    <a data-toggle="collapse" data-target="#article_content" href="#article_content">BaseX document</a>
+</h3>
 
+<div id="article_content" class="collapse">
+    {% autoescape off %}
+    {{ basex_document }}
+    {% endautoescape %}
+</div>
 {% endblock %}

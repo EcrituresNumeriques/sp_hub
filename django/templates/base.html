@@ -10,6 +10,7 @@
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="Tim">
 
+  <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
   {% bootstrap_css %}
   {% bootstrap_javascript %}
   <link rel="stylesheet" href="{% static "css/styles.css" %}">
@@ -20,11 +21,16 @@
   <![endif]-->
 </head>
 
-<body><div id="container">
+<body>
+<div id="container">
     <div id="navigation" class="row">
         {% include "navigation.html" %}
     </div>
-    {% block content %}
-    {% endblock %}
-</div></body>
+    {% bootstrap_messages %}
+    <div id="content" class="row">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+</body>
 </html>

@@ -7,39 +7,3 @@ body {
     max-width: 1050px;
     margin: 0 auto;
 }
-
-#navigation {
-    background: black;
-    color: white;
-    padding: 1rem 0;
-    margin: 0;
-}
-
-#navigation h1 {
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    margin: 0;
-    text-align: right;
-}
-
-#navigation a, #navigation a:link, #navigation a:visited  {
-    color: #ccc;
-}
-
-dl#article_metadata {
-    padding: 15px;
-    background: #ccffcc;
-}
-
-#article_annotations {
-    padding: 10px;
-    background: #ccccff;
-    margin-bottom: 20px;
-}
-
-#article_annotations h3 {
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    margin: 0;
-    margin-bottom: 0.3rem;
-}
