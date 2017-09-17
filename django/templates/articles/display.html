@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{{ django_article.pk }} -- {{ django_article.document.name }}
-<div style="width: 65%; float: left">
+<dl id="article_metadata">
+    <dd>sp_hub ID: {{ article.pk }}</dd>
+    <dd>BaseX docid: {{ article.basex_docid }}</dd>
+    <dd>Author: {{ article.creator }}</dd>
+    <dd>Original file: {{ article.document.name }}</dd>
+</dl>
+
 {% autoescape off %}
-{{ article }}
+{{ basex_document }}
 {% endautoescape %}
-</div>
-<div style="width: 30%; float: right; margin-left: 3%; border-left: 2px solid grey">
-    <h3>Annotations hypothes.is</h3>
-    <ul>
-    {% for value in annotations %}
-        <li><a href="{{ value.links.html }}">By {{ value.user }}:<br/>{{ value.text }}</li>
-    {% endfor %}
-</div>
+<h3>Annotations hypothes.is</h3>
+<ul>
+{% for value in annotations %}
+    <li><a href="{{ value.links.html }}">By {{ value.user }}:<br/>{{ value.text }}</li>
+{% endfor %}
 {% endblock %}

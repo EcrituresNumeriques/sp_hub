@@ -1,4 +1,5 @@
 {% load bootstrap3 %}
+{% load static %}
 <!doctype html>
 
 <html lang="en">
@@ -11,7 +12,7 @@
 
   {% bootstrap_css %}
   {% bootstrap_javascript %}
-  <link rel="stylesheet" href="/css/styles.css?v=1.0">
+  <link rel="stylesheet" href="{% static "css/styles.css" %}">
   <script src="https://hypothes.is/embed.js" async></script>
 
   <!--[if lt IE 9]>
@@ -19,11 +20,11 @@
   <![endif]-->
 </head>
 
-<body>
-    <div id="navigation">
+<body><div id="container">
+    <div id="navigation" class="row">
         {% include "navigation.html" %}
     </div>
     {% block content %}
     {% endblock %}
-</body>
+</div></body>
 </html>

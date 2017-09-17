@@ -39,8 +39,8 @@ def display(request, docid):
         annotations = json.loads(r_hypothesis.content)
 
     return render(request, 'articles/display.html', {
-        'django_article': article,
-        'article': data,
+        'article': article,
+        'basex_document': data,
         'annotations': annotations['rows'],
     })
 
