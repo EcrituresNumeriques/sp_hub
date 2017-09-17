@@ -26,8 +26,7 @@ class Article(SpObject):
         return self.title + ' (' + str(self.pk) + '.html)'
 
 class Conversation(SpObject):
-    title = models.CharField(max_length=200, null=False, blank=False)
-    articles = models.ManyToManyField(Article)
+    articles = models.ManyToManyField(Article, blank=True)
 
     def __str__(self):
         return self.title + ' ' + str([ article.pk for article in self.articles.all() ])

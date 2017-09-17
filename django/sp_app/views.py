@@ -51,10 +51,17 @@ def display_article(request, docid):
         'annotations': annotations['rows'],
     })
 
+
+class ArticleList(ListView):
+    model = Article
+    context_object_name = 'articles'
+    template_name = 'articles/list_page.html'
+
+
 class ConversationList(ListView):
     model = Conversation
     context_object_name = 'conversations'
-    template_name = 'conversations/list.html'
+    template_name = 'conversations/list_page.html'
 
 
 class ConversationDisplay(DetailView):
@@ -62,22 +69,18 @@ class ConversationDisplay(DetailView):
     context_object_name = 'conversation'
     template_name = 'conversations/display.html'
 
-
-class ConversationFormView(CreateView):
-    form_class = ConversationForm
+# Class based view, form
+class ConversationNew(CreateView):
+    model = Conversation
+    fields = [ 'title', 'articles' ]
     template_name = 'conversations/edit.html'
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return render(request, self.template_name, { 'form': form} )
-
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            conversation = form.save()
-            return redirect('sp_app:display_conversation', pk=conversation.pk)
+    def form_valid(self, form):
+        if self.request.user.has_perm('sp_app.add_article'):
+            form.instance.creator = self.request.user
+            return super(ConversationNew, self).form_valid(form)
         else:
-            return render(request, self.template_name, { 'form': form })
+            return render(self.request, self.template_name, { 'form': form })
 
 def list_articles_basex(request):
     my_url = Constants.BASEX_API_URL + "/articles/list"

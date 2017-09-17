@@ -13,15 +13,19 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'sp_app:new_article' %}">Nouvel article</a></li>
-                <li><a href="{% url 'sp_app:new_conversation' %}">Nouvelle conversation</a></li>
+                <li><a href="{% url 'sp_app:list_articles' %}">Articles</a></li>
+                <li><a href="{% url 'sp_app:list_conversations' %}">Conversations</a></li>
             </ul>
-            {% if user.is_authenticated %}
-                <ul class="nav navbar-nav navbar-right" style="padding-right: 40px;">
+            <ul class="nav navbar-nav navbar-right" style="padding-right: 40px;">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'sp_app:new_article' %}"><i class="fa fa-plus-square" aria-hidden="true"></i> Article</a></li>
+                    <li><a href="{% url 'sp_app:new_conversation' %}"><i class="fa fa-plus-square" aria-hidden="true"></i> Conversation</a></li>
+                    <li><a href="{% url 'logout' %}"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a></li>
                     <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
-                </ul>
-            {% endif %}
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
 </nav>
