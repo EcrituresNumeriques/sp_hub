@@ -20,7 +20,10 @@
 </head>
 
 <body>
-  {% block content %}
-  {% endblock %}
+    <div id="navigation">
+        {% include "navigation.html" %}
+    </div>
+    {% block content %}
+    {% endblock %}
 </body>
 </html>

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h2>Liste d'articles dans la base du hub:</h2>
 <ul>
     {% for item in articles %}
-    <li><a href="{% url 'sp_app:display' item.id %}">{{ item.name }}</a></li>
+    <li><a href="{% url 'sp_app:display' item.pk %}">{{ item.title }}</a></li>
     {% endfor %}
 </ul>
-<h4>Coming from <a href="{{ source_url }}">{{ source_url }}</a></h4>
 {% endblock %}

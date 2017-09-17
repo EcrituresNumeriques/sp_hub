@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{{ django_article.pk }} -- {{ django_article.basex_docid }}
+{{ django_article.pk }} -- {{ django_article.document.name }}
 <div style="width: 65%; float: left">
 {% autoescape off %}
 {{ article }}

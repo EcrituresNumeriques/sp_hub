@@ -19,9 +19,12 @@ def new_article(request):
         return render(request, 'articles/edit.html', { 'form': form })
 
 def display(request, docid):
+    article = Article.objects.get(pk=docid)
+
+    basex_id = str(article.pk) + '.html'
     data = ''
-    # TODO: cleanup
-    my_url = Constants.BASEX_URL + '/sph/tim' +  "/articles/view/" + str(docid) + '.html'
+
+    my_url = Constants.BASEX_URL + '/sph/tim' +  "/articles/view/" + basex_id
     print('Calling ' + my_url)
     r_basex = requests.get(my_url)
 
@@ -36,17 +39,22 @@ def display(request, docid):
         annotations = json.loads(r_hypothesis.content)
 
     return render(request, 'articles/display.html', {
-        'django_article': Article.objects.get(pk=docid),
+        'django_article': article,
         'article': data,
         'annotations': annotations['rows'],
     })
 
 
 def list_articles(request):
+    articles = Article.objects.all()
+
+    return render(request, 'articles/list.html', { 'articles': articles, })
+
+def list_articles_basex(request):
     my_url = Constants.BASEX_API_URL + "/articles/list"
     r = requests.get(my_url)
 
     if r.status_code == 200:
         data = json.loads(r.content)
 
-    return render(request, 'articles/list.html', { 'articles': data, 'source_url': my_url})
+    return render(request, 'articles/list_basex.html', { 'articles': data, 'source_url': my_url})
