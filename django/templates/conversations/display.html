@@ -2,6 +2,7 @@
 
 {% block content %}
 <h2>{{ conversation.title }}</h2>
+<h4><a href="{% url 'sp_app:edit_conversation' pk=conversation.pk %}">Edit</a></h4>
 <dl id="article_metadata" class="well">
     <dd>sp_hub ID: {{ conversation.pk }}</dd>
     <dd>Author: {{ conversation.creator }}</dd>
@@ -11,7 +12,7 @@
     <h3>Articles</h3>
     <ul>
         {% for article in conversation.articles.all %}
-        <li><a href="{% url 'sp_app:display_article' docid=article.id %}">{{ article.title }}</a></li>
+        <li><a href="{% url 'sp_app:display_article' pk=article.id %}">{{ article.title }}</a></li>
         {% endfor %}
     </ul>
 {% endif %}

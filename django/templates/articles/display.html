@@ -1,6 +1,8 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
+<h2>{{ article.title }}</h2>
+<h4><a href="{% url 'sp_app:edit_article' pk=article.id %}">Edit</a></h4>
 <script src="https://hypothes.is/embed.js" async></script>
 <dl id="article_metadata" class="well">
     <dd>sp_hub ID: {{ article.pk }}</dd>
@@ -13,6 +15,7 @@
     <a data-toggle="collapse" data-target="#annotations" href="#annotations">Annotations hypothes.is</a>
 </h3>
 
+{% if annotations %}
 <div id="annotations" class="list-group panel-collapse collapse">
     {% for value in annotations %}
     <a href="{{ value.links.html }}" class="list-group-item">
@@ -26,6 +29,7 @@
     </a>
     {% endfor %}
 </div>
+{% endif %}
 
 <h3>
     <a data-toggle="collapse" data-target="#article_content" href="#article_content">BaseX document</a>
