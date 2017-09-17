@@ -7,22 +7,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">sp_hub</a>
+            <a class="navbar-brand" href="{% url 'home' %}">
+                sp_hub
+            </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Accueil</a></li>
-                <li><a href="/articles/new">Nouvel article</a></li>
+                <li><a href="{% url 'sp_app:new_article' %}">Nouvel article</a></li>
+                <li><a href="{% url 'sp_app:new_conversation' %}">Nouvelle conversation</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right" style="padding-right: 40px;">
-                {% if user.is_authenticated %}
-                    <li><a href="/admin">Admin</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                {% endif %}
-                <li>
-                    <a href="http://basex.ecrituresnumeriques.ca:8984/rest">BaseX REST</a>
-                </li>
-            </ul>
+            {% if user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right" style="padding-right: 40px;">
+                    <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            {% endif %}
         </div>
     </div>
 </nav>

@@ -4,7 +4,7 @@ from .models import Article, Conversation
 class ConversationForm(ModelForm):
     class Meta:
         model = Conversation
-        fields = [ 'title' ]
+        fields = [ 'title', 'articles', ]
 
 class ArticleForm(ModelForm):
     class Meta:

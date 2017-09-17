@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>{{ conversation.title }}</h2>
+<dl id="article_metadata" class="well">
+    <dd>sp_hub ID: {{ conversation.pk }}</dd>
+    <dd>Author: {{ conversation.creator }}</dd>
+</dl>
+
+{% if conversation.articles.all %}
+    <h3>Articles</h3>
+    <ul>
+        {% for article in conversation.articles.all %}
+        <li><a href="{% url 'sp_app:display_article' docid=article.id %}">{{ article.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock %}

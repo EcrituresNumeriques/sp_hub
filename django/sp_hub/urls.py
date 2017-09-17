@@ -17,16 +17,16 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from sp_app import views as sp_app_views
-from .views import logout_view
+from .views import logout_view, home_view
 
 urlpatterns = [
-    url(r'^$', sp_app_views.list_articles),
-    url(r'^articles/', include('sp_app.urls')),
+    url(r'^$', home_view, name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', auth_views.login,
         { 'template_name': 'core/login.html' },
         name='login'
     ),
-    url(r'^logout/$', logout_view, name='logout')
+    url(r'^logout/$', logout_view, name='logout'),
+    url(r'^', include('sp_app.urls')),
 
 ]

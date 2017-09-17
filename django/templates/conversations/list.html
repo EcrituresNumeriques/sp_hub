@@ -1,0 +1,6 @@
+<h2>Liste de conversations:</h2>
+<ul>
+    {% for item in conversations %}
+    <li><a href="{% url 'sp_app:display_conversation' item.pk %}">{{ item.title }}</a></li>
+    {% endfor %}
+</ul>

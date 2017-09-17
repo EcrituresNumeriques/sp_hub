@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from .models import Article
-from .forms import ArticleForm
+from django.views import View
+from django.views.generic import ListView, DetailView, CreateView
+
+from .models import Article, Conversation
+from .forms import ArticleForm, ConversationForm
 from .sp_constants import Constants
 
 import requests
@@ -23,7 +25,7 @@ def new_article(request):
             form = ArticleForm()
             return render(request, 'articles/edit.html', { 'form': form })
 
-def display(request, docid):
+def display_article(request, docid):
     article = Article.objects.get(pk=docid)
 
     basex_id = str(article.pk) + '.html'
@@ -49,11 +51,33 @@ def display(request, docid):
         'annotations': annotations['rows'],
     })
 
+class ConversationList(ListView):
+    model = Conversation
+    context_object_name = 'conversations'
+    template_name = 'conversations/list.html'
 
-def list_articles(request):
-    articles = Article.objects.all()
 
-    return render(request, 'articles/list.html', { 'articles': articles, })
+class ConversationDisplay(DetailView):
+    model = Conversation
+    context_object_name = 'conversation'
+    template_name = 'conversations/display.html'
+
+
+class ConversationFormView(CreateView):
+    form_class = ConversationForm
+    template_name = 'conversations/edit.html'
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, { 'form': form} )
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            conversation = form.save()
+            return redirect('sp_app:display_conversation', pk=conversation.pk)
+        else:
+            return render(request, self.template_name, { 'form': form })
 
 def list_articles_basex(request):
     my_url = Constants.BASEX_API_URL + "/articles/list"

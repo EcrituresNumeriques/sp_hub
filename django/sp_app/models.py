@@ -10,15 +10,12 @@ from django.contrib.auth.models import User
 from .sp_constants import Constants
 
 class SpObject(models.Model):
-    title = models.CharField(max_length=200, null=True, blank=False)
+    title = models.CharField(max_length=200, null=False, blank=False)
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, null=True, blank=False)
     published_date = models.DateTimeField('published date', auto_now_add=True, blank=True)
 
     class Meta:
         abstract = True
-
-class Conversation(SpObject):
-    pass
 
 class Article(SpObject):
     # document will be stored on sp_hub too, just in case...
@@ -27,6 +24,14 @@ class Article(SpObject):
 
     def __str__(self):
         return self.title + ' (' + str(self.pk) + '.html)'
+
+class Conversation(SpObject):
+    title = models.CharField(max_length=200, null=False, blank=False)
+    articles = models.ManyToManyField(Article)
+
+    def __str__(self):
+        return self.title + ' ' + str([ article.pk for article in self.articles.all() ])
+
 
 # this method is called after an object is saved
 @receiver(post_save, sender=Article)
