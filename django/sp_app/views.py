@@ -20,6 +20,7 @@ def new_article(request):
 
 def display(request, docid):
     data = ''
+    # TODO: cleanup
     my_url = Constants.BASEX_URL + '/sph/tim' +  "/articles/view/" + str(docid) + '.html'
     print('Calling ' + my_url)
     r_basex = requests.get(my_url)
