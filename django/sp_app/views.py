@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from .models import Article
 from .forms import ArticleForm
 from .sp_constants import Constants
@@ -8,15 +10,18 @@ from .sp_constants import Constants
 import requests
 import json
 
+@login_required(login_url='/login')
 def new_article(request):
     if request.method == "POST":
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
-            article = form.save()
-            return redirect('sp_app:display', docid=article.pk)
+            if request.user.has_perm('sp_app.change_article'):
+                article = form.save()
+                return redirect('sp_app:display', docid=article.pk)
     else:
-        form = ArticleForm()
-        return render(request, 'articles/edit.html', { 'form': form })
+        if request.user.has_perm('sp_app.add_article'):
+            form = ArticleForm()
+            return render(request, 'articles/edit.html', { 'form': form })
 
 def display(request, docid):
     article = Article.objects.get(pk=docid)
