@@ -8,12 +8,17 @@
     <dd>Original file: {{ article.document.name }}</dd>
 </dl>
 
+<div id="article_annotations">
+    <h3>Annotations hypothes.is</h3>
+    <ul>
+        {% for value in annotations %}
+            <li><a href="{{ value.links.html }}">{{ value.text }}</a> ({{ value.user }})</li>
+        {% endfor %}
+    </ul>
+</div>
+
 {% autoescape off %}
 {{ basex_document }}
 {% endautoescape %}
-<h3>Annotations hypothes.is</h3>
-<ul>
-{% for value in annotations %}
-    <li><a href="{{ value.links.html }}">By {{ value.user }}:<br/>{{ value.text }}</li>
-{% endfor %}
+
 {% endblock %}
