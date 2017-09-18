@@ -27,6 +27,11 @@ def new_article(request):
             if request.user.has_perm('sp_app.change_article'):
                 article = form.save()
                 return redirect('sp_app:display', pk=article.pk)
+            else:
+                return HttpResponseForbidden()
+        else:
+            return render(request, 'articles/edit.html', { 'form': form })
+
     else:
         if request.user.has_perm('sp_app.add_article'):
             form = ArticleForm()
@@ -39,6 +44,12 @@ class ArticleEdit(UpdateView):
 
     def get_success_url(self):
         return reverse('sp_app:display_article', kwargs={'pk': self.object.pk})
+
+    def form_valid(self, form):
+        if self.request.user.has_perm('sp_app.change_article'):
+            return super(ArticleEdit, self).form_valid(form)
+        else:
+            return HttpResponseForbidden()
 
 
 def display_article(request, pk):
@@ -87,6 +98,12 @@ class ConversationEdit(UpdateView):
 
     def get_success_url(self):
         return reverse('sp_app:display_conversation', kwargs={'pk': self.object.pk})
+
+    def form_valid(self, form):
+        if self.request.user.has_perm('sp_app.edit_conversation'):
+            return super(ConversationEdit, self).form_valid(form)
+        else:
+            return HttpResponseForbidden()
 
 # Class based view, form
 class ConversationNew(CreateView):

@@ -1,4 +1,4 @@
-<h2>Liste d'articles dans la base du hub:</h2>
+<h2>Liste d'articles</h2>
 <ul>
     {% for item in articles %}
     <li><a href="{% url 'sp_app:display_article' item.pk %}">{{ item.title }}</a></li>
