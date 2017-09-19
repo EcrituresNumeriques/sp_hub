@@ -31,11 +31,11 @@ class EditorTagEdit(UpdateView):
     def form_valid(self, form):
         return super(EditorTagEdit, self).form_valid(form)
 
-# Class based view, form
+
 class EditorTagNew(CreateView):
     model = EditorTag
-    fields = [ 'description', 'articles' ]
-    template_name = 'tags/user_new.html'
+    fields = [ 'description' ]
+    template_name = 'tags/edit.html'
 
     def get_success_url(self):
         return reverse_lazy('sp_app:display_user_tag', kwargs={'pk': self.object.pk})
@@ -70,8 +70,8 @@ class UserTagEdit(UpdateView):
 # Class based view, form
 class UserTagNew(CreateView):
     model = UserTag
-    fields = [ 'description', 'articles' ]
-    template_name = 'tags/user_new.html'
+    fields = [ 'description' ]
+    template_name = 'tags/edit.html'
 
     def get_success_url(self):
         return reverse_lazy('sp_app:display_user_tag', kwargs={'pk': self.object.pk})
