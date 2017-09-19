@@ -7,29 +7,24 @@ from django.dispatch import receiver
 from django.conf import settings
 from django.contrib.auth.models import User
 
-from .sp_constants import Constants
+from taggit.managers import TaggableManager
 
-class SpObject(models.Model):
-    title = models.CharField(max_length=200, null=False, blank=False)
-    creator = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, null=True, blank=False)
-    published_date = models.DateTimeField('published date', auto_now_add=True, blank=True)
+from .sp_object import SpObject
+from .tags import EditorTaggedArticle, UserTaggedArticle
 
-    class Meta:
-        abstract = True
+from sp_app.sp_constants import Constants
 
 class Article(SpObject):
     # document will be stored on sp_hub too, just in case...
     document = models.FileField(upload_to='tmp/', null=True, blank=True)
     basex_docid = models.CharField(max_length=200, null=True, blank=True)
+    editor_tags = TaggableManager(through=EditorTaggedArticle)
+    user_tags = TaggableManager(through=UserTaggedArticle)
+
 
     def __str__(self):
         return self.title + ' (' + str(self.pk) + '.html)'
 
-class Conversation(SpObject):
-    articles = models.ManyToManyField(Article, blank=True)
-
-    def __str__(self):
-        return self.title + ' ' + str([ article.pk for article in self.articles.all() ])
 
 
 # this method is called after an object is saved

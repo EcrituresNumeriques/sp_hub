@@ -5,9 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
-from .models import Article, Conversation
-from .forms import ArticleForm, ConversationForm
-from .sp_constants import Constants
+from sp_app.models import Article
+from sp_app.forms import ArticleForm
+from sp_app.sp_constants import Constants
 
 import requests
 import json
@@ -77,49 +77,6 @@ def display_article(request, pk):
         'basex_document': data,
         'annotations': annotations['rows'],
     })
-
-
-class ConversationList(ListView):
-    model = Conversation
-    context_object_name = 'conversations'
-    template_name = 'conversations/list_page.html'
-
-
-class ConversationDisplay(DetailView):
-    model = Conversation
-    context_object_name = 'conversation'
-    template_name = 'conversations/display.html'
-
-
-class ConversationEdit(UpdateView):
-    model = Conversation
-    fields = [ 'title', 'articles' ]
-    template_name = 'conversations/edit.html'
-
-    def get_success_url(self):
-        return reverse('sp_app:display_conversation', kwargs={'pk': self.object.pk})
-
-    def form_valid(self, form):
-        if self.request.user.has_perm('sp_app.edit_conversation'):
-            return super(ConversationEdit, self).form_valid(form)
-        else:
-            return HttpResponseForbidden()
-
-# Class based view, form
-class ConversationNew(CreateView):
-    model = Conversation
-    fields = [ 'title', 'articles' ]
-    template_name = 'conversations/edit.html'
-
-    def get_success_url(self):
-        return reverse_lazy('sp_app:display_conversation', kwargs={'pk': self.object.pk})
-
-    def form_valid(self, form):
-        if self.request.user.has_perm('sp_app.add_conversation'):
-            form.instance.creator = self.request.user
-            return super(ConversationNew, self).form_valid(form)
-        else:
-            return HttpResponseForbidden()
 
 
 def list_articles_basex(request):

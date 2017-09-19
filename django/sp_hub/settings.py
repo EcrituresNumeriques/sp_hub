@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'sp_app.apps.SpAppConfig',
     'rest_framework',
     'bootstrap3',
+    'taggit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -4,7 +4,7 @@ from sp_app import views, models
 
 def logout_view(request):
     logout(request)
-    return redirect('sp_app:list_articles')
+    return redirect('home')
 
 def home_view(request):
     articles = models.Article.objects.all()
