@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Article, Conversation, EditorTag, UserTag
+from .models import Article, Conversation, EditorTag
 
 class ConversationForm(ModelForm):
     class Meta:
@@ -14,9 +14,4 @@ class ArticleForm(ModelForm):
 class EditorTagForm(ModelForm):
     class Meta:
         model = EditorTag
-        fields = [ 'description', ]
-
-class UserTagForm(ModelForm):
-    class Meta:
-        model = UserTag
         fields = [ 'description', ]

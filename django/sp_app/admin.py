@@ -1,21 +1,13 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+import tagulous.admin
 
-from .models import Article, Conversation, EditorTag, UserTag
+from .models import Article, Conversation, EditorTag
 
 class EditorTagAdmin(admin.ModelAdmin):
-    fieldsets = (
-        ( None, { 'fields': ('editor_tags', ) }),
-    )
+    list_display = [ 'name', 'description' ]
 
-class UserTagAdmin(admin.ModelAdmin):
-    fieldsets = (
-        ( None, { 'fields': ('user_tags', ) }),
-    )
-
-# register our models in the admin site
 admin.site.register(Conversation)
 admin.site.register(Article)
-admin.site.register(EditorTag, EditorTagAdmin)
-admin.site.register(UserTag, UserTagAdmin)
+tagulous.admin.register(EditorTag, EditorTagAdmin)

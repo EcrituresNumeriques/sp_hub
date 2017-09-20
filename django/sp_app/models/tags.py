@@ -1,28 +1,19 @@
 from django.db import models
-from taggit.models import TagBase, TaggedItemBase
+from tagulous.models import TagModel, TagTreeModel
+from enumfields import Enum, EnumField
 
 
-class EditorTag(TagBase):
+class EditorTagsCategories(Enum):
+    AUTHOR = 'Auteur'
+    THEME = 'Thématique'
+
+
+class EditorTag(TagModel):
     description = models.CharField(max_length=200, null=True, blank=True)
+    link_rameau = models.URLField(null=True, blank=True)
+    categorie = EnumField(EditorTagsCategories, max_length=1)
 
-    class Meta:
-        verbose_name = "Tag éditeur"
-        verbose_name_plural = "Tags éditeur"
-
-
-class EditorTaggedArticle(TaggedItemBase):
-    content_object = models.ForeignKey('Article')
-    tag = models.ForeignKey(EditorTag, related_name="%(app_label)s_%(class)s_items")
-
-
-class UserTag(TagBase):
-    description = models.CharField(max_length=200, null=True, blank=True)
-
-    class Meta:
-        verbose_name = "Tag user"
-        verbose_name_plural = "Tags user"
-
-
-class UserTaggedArticle(TaggedItemBase):
-    content_object = models.ForeignKey('Article')
-    tag = models.ForeignKey(UserTag, related_name="%(app_label)s_%(class)s_items")
+    class TagMeta:
+        initial = "author/jamesbond, themes/histoire"
+        force_lowercase = True
+        space_delimiter = False

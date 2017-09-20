@@ -19,6 +19,21 @@ class ArticleList(ListView):
     template_name = 'articles/list_page.html'
 
 
+class ArticleNew(CreateView):
+    model = Article
+    fields = [ 'title', 'document', 'editor_tags' ]
+    template_name = 'articles/edit.html'
+
+    def get_success_url(self):
+        return reverse_lazy('sp_app:display_article', kwargs={'pk': self.object.pk})
+
+    def form_valid(self, form):
+        if self.request.user.has_perm('sp_app.add_article'):
+            form.instance.creator = self.request.user
+            return super(ArticleNew, self).form_valid(form)
+        else:
+            return HttpResponseForbidden()
+"""
 @login_required(login_url='/login')
 def new_article(request):
     if request.method == "POST":
@@ -36,10 +51,11 @@ def new_article(request):
         if request.user.has_perm('sp_app.add_article'):
             form = ArticleForm()
             return render(request, 'articles/edit.html', { 'form': form })
+"""
 
 class ArticleEdit(UpdateView):
     model = Article
-    fields = [ 'title', 'document' ]
+    fields = [ 'title', 'document', 'editor_tags' ]
     template_name = 'articles/edit.html'
 
     def get_success_url(self):

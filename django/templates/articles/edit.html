@@ -1,6 +1,17 @@
 {% extends 'core/base.html' %}
 {% load bootstrap3 %}
 
+{% block css %}
+<link href="/static/tagulous/lib/select2-3/select2.css" type="text/css" media="all" rel="stylesheet">
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="/static/tagulous/lib/jquery.js"></script>
+<script type="text/javascript" src="/static/tagulous/lib/select2-3/select2.min.js"></script>
+<script type="text/javascript" src="/static/tagulous/tagulous.js"></script>
+<script type="text/javascript" src="/static/tagulous/adaptor/select2-3.js"></script>
+{% endblock %}
+
 {% block content %}
     <h1>Edit article</h1>
     <form method="POST" class="post-form" enctype="multipart/form-data">

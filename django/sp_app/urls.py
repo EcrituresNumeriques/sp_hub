@@ -5,7 +5,7 @@ app_name = 'sp_app'
 
 article_patterns = [
     url(r'^$', views.ArticleList.as_view(), name='list_articles'),
-    url(r'^new$', views.new_article, name='new_article'),
+    url(r'^new/$', views.ArticleNew.as_view(), name='new_article'),
     url(r'^(?P<pk>.+)/$', views.display_article, name='display_article'),
     url(r'^(?P<pk>.+)/edit$', views.ArticleEdit.as_view(), name='edit_article'),
 
@@ -25,16 +25,8 @@ editor_tag_patterns = [
     url(r'^(?P<pk>.+)/edit$', views.EditorTagEdit.as_view(), name='edit_editor_tag'),
 ]
 
-user_tag_patterns = [
-    url(r'^$', views.UserTagList.as_view(), name='list_user_tags'),
-    url(r'new/$', views.UserTagNew.as_view(), name='new_user_tag'),
-    url(r'^(?P<pk>.+)/$', views.UserTagDisplay.as_view(), name='display_user_tag'),
-    url(r'^(?P<pk>.+)/edit$', views.UserTagEdit.as_view(), name='edit_user_tag'),
-]
-
 tag_patterns = [
     url(r'^editor/', include(editor_tag_patterns)),
-    url(r'^user/', include(user_tag_patterns)),
 ]
 
 urlpatterns = [
