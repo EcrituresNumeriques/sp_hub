@@ -1,128 +1,135 @@
-User
 {
-    _id: 42,
-    name: 'nicolas',
-    roles: [ 'conversation_editor', 'article_editor' ]
-}
-
-{
-    _id: 12,
-    name: 'servanne',
-    roles: [ 'conversation_participant', 'article_editor' ]
-}
-
-Article
-{
-    _id: <ArticleID>,
-    name: SP1234.html,
-    titre: "Mon article",
-    creator: <UserID42>,
-    # l'auteur (au sens document HTML / keyword est un tag)
-    tags: [ <tag_ID1>, <tag_ID2>, <tagID3> ],
-    id_basex: SP1234.html
-    active_version: 2,
-    versions: [
+    "users":
+    [
         {
-            version: 1,
-            path: /media/SP1234/1.html,
+            "_id": 42,
+            "name": "nicolas",
+            "roles": [ "conversation_editor", "article_editor" ]
         },
         {
-            version: 2,
-            path: /media/SP1234/2.html,
-        }
+            "_id": 12,
+            "name": "servanne",
+            "roles": [ "conversation_participant", "article_editor" ]
+        },
     ],
-    # on ne fait pas référence à des annotations ici car elles viennent d'une
-    # source externe (que l'on peut interroger à notre convenance, pas besoin de
-    # les stocker en base)
-    # quid de la validation éditoriale dans ce cas de figure? utilisation d'un
-    # groupe hypothesis? Mise en relation avec la conversation?
-    # Cf ci-dessous: l'ajout de l'annotation hypothesis à la conversation met à jour
-    # cet objet avec:
-    # annotations: [
-    #   {
-    #       id_hypothesis: "UheBnpvEEeeXXOumqgxVYg",
-    #   }
-    # ]
-    # ???
-}
-
-Conversation
-{
-    _id: <ConversationID>,
-    name: 'Une conversation',
-    description: 'Un texte plus long',
-    description_en: 'Pourquoi pas en anglais',
-    tags: [ <tagID1>, <tagID2>, <tagID3> ]
-    articles: [ <ArticleID1>, <ArticleID2>, ... ]
-    # eventually
-    related_urls: [
+    "Articles":
+    [
         {
-            link: 'http://www.google.fr',
-            short_description: "Google",
+            "_id": "<ArticleID1>",
+            "name": "SP1234.html",
+            "titre": "Mon article",
+            "creator": "<UserID42>",
+            "tags": [ "<TagID1>", "<TagID2>", "<TagID3>" ],
+            "id_basex": "SP1234.html",
+            "active_version": 2,
+            "versions":
+            [
+                {
+                    "version": 1,
+                    "path": "/media/SP1234/1.html",
+                },
+                {
+                    "version": 2,
+                    "path": "/media/SP1234/2.html",
+                }
+            ],
+            "comment": "On ne fait pas référence à des annotations ici car elles
+            viennent d'une source externe (que l'on peut interroger à notre convenance,
+            pas besoin de les stocker en base).
+
+            Quid de la validation éditoriale dans ce cas de figure? Utilisation d'un
+            groupe hypothesis? Mise en relation avec la conversation?
+            Cf ci-dessous, qui donnerait dans cet objet:
+            annotations:
+            [
+                {
+                    id_hypothesis: 'UheBnpvEEeeXXOumqgxVYg',
+                }
+            ]
+            ",
+        },
+    ],
+    "conversations":
+    [
+        {
+            "_id": "<ConversationID>",
+            "name": "Une conversation",
+            "description": "Un texte plus long",
+            "description_en": "Pourquoi pas en anglais",
+            "tags": [ "<TagID1>", "<TagID2>", "<TagID3>" ],
+            "articles": [ "<ArticleID1>", "<ArticleID2>" ],
+            "related_urls":
+            [
+                {
+                    "link": "http://www.google.fr",
+                    "short_description": "Google",
+                },
+                {
+                    "id_hypothesis": "UheBnpvEEeeXXOumqgxVYg",
+                    "_comment": "
+                    # voir https://github.com/timoguic/sp_hub/blob/master/doc/json_hypothesis.json",
+                }
+            ],
+            "elements":
+            [
+                {
+                    "timestamp": 1234543555,
+                    "action": "created conversation",
+                    "user": "nicolas"
+                },
+                {
+                    "timestamp": 124325435,
+                    "action": "added document [link to <ArticleID1>]Mon article[/link]",
+                    "user": "marcello",
+                },
+                {
+                    "timestamp": 1412432543,
+                    "action": "added keywords Histoire, Nabila",
+                    "user": "servanne",
+                },
+                {
+                    "timestamp": 1493085032,
+                    "action": "added Hypothesis annotation 'Bonjour'",
+                    "user": "nicolas",
+                    "_comment": "
+                    # cela a été rajouté à la main. Nicolas a choisi en tant qu'éditeur
+                    # une annotation préexistante sur Hypothesis à intégrer à la conversation.
+                    # Cette annotation peut donc avoir été produite sur <ArticleID1> (et donc
+                    # suggérée par l'interface), ou non. Toutes les annotations hypothesis
+                    # disponibles pour <ArticleID1> ne seront donc pas affichées par défaut
+                    # pour les utilisateurs du site lors de la visualisation de la conversation
+                    # (validation éditoriale)."
+                }
+            ]
+        },
+    ],
+    "tags":
+    [
+        {
+            "_id": "<TagID1>",
+            "name": "Histoire",
+            "name_en": "History",
+            "vocabulary": "Thématique",
+            "url_rameau": "http://rameau.com",
+            "aligned": 1,
         },
         {
-            id_hypothesis: "UheBnpvEEeeXXOumqgxVYg",
-            # voir https://github.com/timoguic/sp_hub/blob/master/doc/json_hypothesis.json
+            "_id": "<TagID2>",
+            "name": "Nabila",
+        },
+        {
+            "_id": "<TagID3>",
+            "name": "San Antonio",
+            "vocabulary": "Auteur",
+            "url_rameau": "http://localhost/",
+            "aligned": 1
+        }
+        {
+            "_id": "<TagID4>",
+            "name": "Kevin",
+            "vocabulary": "Auteur",
+            "url_isidore": "http://unknown",
+            "comment": "En cours d'alignement",
         }
     ]
-    # for lack of a better name
-    elements: [
-        {
-            timestamp: 1234543555,
-            action: "created conversation"
-            user: 'nicolas'
-        },
-        {
-            timestamp: 124325435,
-            action: "added document [link to <ArticleID1>]Mon article[/link]",
-            user: 'marcello',
-        },
-        {
-            timestamp: 1412432543,
-            action: "added keywords Histoire, Nabila"
-            user: 'servanne'
-        },
-        # /!\ cela a été rajouté à la main. Nicolas a choisi en tant qu'éditeur
-        # une annotation préexistante sur Hypothesis à intégrer à la conversation.
-        # Cette annotation peut donc avoir été produite sur <ArticleID1> (et donc
-        # suggérée par l'interface), ou non. Toutes les annotations hypothesis
-        # disponibles pour <ArticleID1> ne seront donc pas affichées par défaut
-        # pour les utilisateurs du site lors de la visualisation de la conversation
-        # (validation éditoriale).
-        {
-            timestamp: 1493085032,
-            action: "added Hypothesis annotation 'Bonjour'",
-            user: 'nicolas',
-        }
-    ]
-}
-
-Tag
-{
-    _id: ID,
-    name: "Histoire",
-    name_en: "History",
-    vocabulary: "Thématique",
-    url_rameau: 'http://rameau.com',
-    aligned: 1,
-}
-
-{
-    _id: <TagID2>,
-    name: "Nabila",
-}
-
-{
-    _id: <TagID3>,
-    name: "San Antonio",
-    vocabulary: "Auteur",
-    url_rameau: 'http://localhost/',
-    aligned: 1
-}
-# en cours d'alignement,
-{
-    _id: <TagID4>,
-    name: "Kevin",
-    vocabulary: "Auteur"
-    url_isidore: 'http://unknown'
 }
