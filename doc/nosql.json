@@ -119,7 +119,7 @@ Tag
     url_rameau: 'http://localhost/',
     aligned: 1
 }
-# En cours d'alignement
+# en cours d'alignement,
 {
     _id: <TagID4>,
     name: "Kevin",
