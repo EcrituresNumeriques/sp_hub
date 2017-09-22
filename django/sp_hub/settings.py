@@ -34,8 +34,7 @@ INSTALLED_APPS = [
     'sp_app.apps.SpAppConfig',
     'rest_framework',
     'bootstrap3',
-    'tagulous',
-    'enumfields',
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,6 +119,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+gettext = lambda s: s
+LANGUAGES = (
+    ('fr', gettext('French')),
+    ('en', gettext('English')),
+    ('it', gettext('Italian')),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

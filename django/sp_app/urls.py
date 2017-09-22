@@ -27,6 +27,7 @@ editor_tag_patterns = [
 
 tag_patterns = [
     url(r'^editor/', include(editor_tag_patterns)),
+    url(r'^import/$', views.editor_tags_import),
 ]
 
 urlpatterns = [

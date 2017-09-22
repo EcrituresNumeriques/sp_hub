@@ -6,7 +6,9 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from sp_app.models import EditorTag
 from sp_app.forms import EditorTagForm
+from sp_app.sp_keywords import import_from_csv
 
+import json
 
 class EditorTagList(ListView):
     model = EditorTag
@@ -31,6 +33,9 @@ class EditorTagEdit(UpdateView):
     def form_valid(self, form):
         return super(EditorTagEdit, self).form_valid(form)
 
+def editor_tags_import(request):
+    import_from_csv.my_import()
+    return redirect('sp_app:list_editor_tags')
 
 class EditorTagNew(CreateView):
     model = EditorTag

@@ -7,8 +7,6 @@ from django.dispatch import receiver
 from django.conf import settings
 from django.contrib.auth.models import User
 
-from tagulous.models import TagField
-
 from .sp_object import SpObject
 from .tags import EditorTag
 
@@ -18,7 +16,7 @@ class Article(SpObject):
     # document will be stored on sp_hub too, just in case...
     document = models.FileField(upload_to='tmp/', null=True, blank=True)
     basex_docid = models.CharField(max_length=200, null=True, blank=True)
-    editor_tags = TagField(to=EditorTag)
+    editor_tags = models.ManyToManyField(EditorTag)
 
     def __str__(self):
         return self.title + ' (' + str(self.pk) + '.html)'
