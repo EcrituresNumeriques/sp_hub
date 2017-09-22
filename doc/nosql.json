@@ -3,13 +3,15 @@
     [
         {
             "_id": 42,
-            "name": "nicolas",
+            "name": ["nicolas","sauret]
             "roles": [ "conversation_editor", "article_editor" ]
+            "orcid": "0000-0001-6424-3229"
         },
         {
             "_id": 12,
-            "name": "servanne",
+            "name": ["servanne","monjour"]
             "roles": [ "conversation_participant", "article_editor" ]
+            "orcid": "0000-0001-6424-3224"
         },
     ],
     "Articles":
@@ -18,7 +20,7 @@
             "_id": "<ArticleID1>",
             "name": "SP1234.html",
             "titre": "Mon article",
-            "creator": "<UserID42>",
+            "creator": ["<UserID42>","<UserID43>"],
             "tags": [ "<TagID1>", "<TagID2>", "<TagID3>" ],
             "id_basex": "SP1234.html",
             "active_version": 2,
