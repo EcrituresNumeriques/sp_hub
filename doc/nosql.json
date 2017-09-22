@@ -3,13 +3,14 @@
     [
         {
             "_id": 42,
-            "name": ["nicolas","sauret],
+            "name": [ "nicolas" ],
+            "full_name": "Nicolas Sauret",
             "roles": [ "conversation_editor", "article_editor" ],
             "orcid": "0000-0001-6424-3229"
         },
         {
             "_id": 12,
-            "name": ["servanne","monjour"],
+            "name": [ "servanne" ],
             "roles": [ "conversation_participant", "article_editor" ],
             "orcid": "0000-0001-6424-3224"
         },
