@@ -50,6 +50,12 @@
                 }
             ]
             ",
+            "comment de Nicolas": "on aura très probablement un groupe d'annotation
+            unique pour tout le site. Pas de validation éditoriale, à voir si
+            hypothes.is offre une fonction de modération à posteriori (suppression
+            ou masquage d'annotation, blocage de user, à voir.)
+
+            Peux tu préciser la question sur : 'mise en relaction avec la conversation' et 'id_hypothesis'"
         },
     ],
     "conversations":
