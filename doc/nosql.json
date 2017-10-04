@@ -22,8 +22,10 @@
             "name": "SP1234.html",
             "titre": "Mon article",
             "subtitle": "Mon sous-titre",
-            "typeArticle": "essai"
-            /*voir https://github.com/timoguic/sp_hub/blob/master/doc/specificationsEditoriales.md#correspondance-pour-les-type-de-contenus*/
+            "typeArticle": "essai",
+            /*voir https://github.com/timoguic/sp_hub/blob/master/doc/specificationsEditoriales.md#correspondance-pour-les-type-de-contenus */
+            "thematique": "histoire",
+            /*voir gestion des thématiques : https://github.com/timoguic/sp_hub/blob/master/doc/20170914_RecapReunion9sept.md#th%C3%A9matiques */
             "creator": ["<UserID42>","<UserID43>"],
             /*creator = auteur ou éditeur ?
             je suggère d'avoir pour l'objet article une information "author" +
@@ -143,29 +145,65 @@
     [
         {
             "_id": "<TagID1>",
+            "type": "editor",
             "name": "Histoire",
-            "name_en": "History",
-            "vocabulary": "Thématique",
+            "vocabulary": "Sujets",
             "url_rameau": "http://rameau.com",
             "aligned": 1,
+            "lang": "fr",
+            "lang_correspondance": [
+              {
+                "lang": "en",
+                "tag": "<TagID6>"
+              },
+              {
+                "lang": "uk",
+                "tag": "<TagID7>"
+              }
+            ]
         },
         {
             "_id": "<TagID2>",
+            "type": "user",
             "name": "Nabila",
+            "lang": "fr"
         },
         {
             "_id": "<TagID3>",
+            "type": "editor",
             "name": "San Antonio",
             "vocabulary": "Auteur",
             "url_rameau": "http://localhost/",
-            "aligned": 1
+            "aligned": 1,
+            "lang": "fr"
         }
         {
             "_id": "<TagID4>",
+            "type": "user",
             "name": "Kevin",
             "vocabulary": "Auteur",
             "url_isidore": "http://unknown",
             "comment": "En cours d'alignement",
+            "lang": "fr"
         }
+        {
+            "_id": "<TagID6>",
+            "type": "editor",
+            "name": "History",
+            "vocabulary": "Sujets",
+            "url_loc": "http://loc.gov",
+            "aligned": 1,
+            "lang": "en",
+            "lang_correspondance": [
+              {
+                "lang": "fr",
+                "tag": "<TagID1>"
+              },
+              {
+                "lang": "uk",
+                "tag": "<TagID7>"
+              }
+            ]
+        },
     ]
 }
