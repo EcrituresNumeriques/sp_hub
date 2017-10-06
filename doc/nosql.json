@@ -23,36 +23,36 @@
             "titre": "Mon article",
             "subtitle": "Mon sous-titre",
             "typeArticle": "essai",
-            /*voir https://github.com/timoguic/sp_hub/blob/master/doc/specificationsEditoriales.md#correspondance-pour-les-type-de-contenus */
+            "comment": "voir https://github.com/timoguic/sp_hub/blob/master/doc/specificationsEditoriales.md#correspondance-pour-les-type-de-contenus",
             "thematique": "histoire",
-            /*voir gestion des thématiques : https://github.com/timoguic/sp_hub/blob/master/doc/20170914_RecapReunion9sept.md#th%C3%A9matiques */
+            "comment": "voir gestion des thématiques : https://github.com/timoguic/sp_hub/blob/master/doc/20170914_RecapReunion9sept.md#th%C3%A9matiques",
             "creator": ["<UserID42>","<UserID43>"],
-            /*creator = auteur ou éditeur ?
-            je suggère d'avoir pour l'objet article une information "author" +
-            une information "editor/creator" car les deux ne sont pas équivalents.
+            "comment": "creator = auteur ou éditeur ?
+            je suggère d'avoir pour l'objet article une information 'author' +
+            une information 'editor/creator' car les deux ne sont pas équivalents.
             D'un point de vue métier, on doit pouvoir identifier l'éditeur (celui
-            qui initie l'objet sur le site) et l'auteur (celui qui soumet un texte). */
+            qui initie l'objet sur le site) et l'auteur (celui qui soumet un texte).",
             "tags": [ "<TagID1>", "<TagID2>", "<TagID3>" ],
-            /*donc si je comprends bien, tu amalgames ici les différents types
-            de mot-clés, mais tu les distingues dans l'objet "tag"*/
+            "comment": "donc si je comprends bien, tu amalgames ici les différents types
+            de mot-clés, mais tu les distingues dans l'objet 'tag'",
             "id_basex": "SP1234.html",
             "abstract":
             [
               {
                 "lang": "en",
-                "content": "this is my abstract.",
+                "content": "this is my abstract."
               },
               {
                 "lang": "fr",
-                "content": "ceci est mon résumé.",
-              }
-            ]
+                "content": "ceci est mon résumé."
+              },
+            ],
             "traductions": [
               {
                 "lang": "en",
                 "article": "<ArticleID2>"
               }
-            ]
+            ],
             "active_version": 2,
             "versions":
             [
