@@ -21,9 +21,38 @@
             "_id": "<ArticleID1>",
             "name": "SP1234.html",
             "titre": "Mon article",
+            "subtitle": "Mon sous-titre",
+            "typeArticle": "essai",
+            "comment": "voir https://github.com/timoguic/sp_hub/blob/master/doc/specificationsEditoriales.md#correspondance-pour-les-type-de-contenus",
+            "thematique": "histoire",
+            "comment": "voir gestion des thématiques : https://github.com/timoguic/sp_hub/blob/master/doc/20170914_RecapReunion9sept.md#th%C3%A9matiques",
             "creator": ["<UserID42>","<UserID43>"],
+            "comment": "creator = auteur ou éditeur ?
+            je suggère d'avoir pour l'objet article une information 'author' +
+            une information 'editor/creator' car les deux ne sont pas équivalents.
+            D'un point de vue métier, on doit pouvoir identifier l'éditeur (celui
+            qui initie l'objet sur le site) et l'auteur (celui qui soumet un texte).",
             "tags": [ "<TagID1>", "<TagID2>", "<TagID3>" ],
+            "comment": "donc si je comprends bien, tu amalgames ici les différents types
+            de mot-clés, mais tu les distingues dans l'objet 'tag'",
             "id_basex": "SP1234.html",
+            "abstract":
+            [
+              {
+                "lang": "en",
+                "content": "this is my abstract."
+              },
+              {
+                "lang": "fr",
+                "content": "ceci est mon résumé."
+              },
+            ],
+            "traductions": [
+              {
+                "lang": "en",
+                "article": "<ArticleID2>"
+              }
+            ],
             "active_version": 2,
             "versions":
             [
@@ -50,6 +79,12 @@
                 }
             ]
             ",
+            "comment de Nicolas": "on aura très probablement un groupe d'annotation
+            unique pour tout le site. Pas de validation éditoriale, à voir si
+            hypothes.is offre une fonction de modération à posteriori (suppression
+            ou masquage d'annotation, blocage de user, à voir.)
+
+            Peux tu préciser la question sur : 'mise en relaction avec la conversation' et 'id_hypothesis'"
         },
     ],
     "conversations":
@@ -110,29 +145,65 @@
     [
         {
             "_id": "<TagID1>",
+            "type": "editor",
             "name": "Histoire",
-            "name_en": "History",
-            "vocabulary": "Thématique",
+            "vocabulary": "Sujets",
             "url_rameau": "http://rameau.com",
             "aligned": 1,
+            "lang": "fr",
+            "lang_correspondance": [
+              {
+                "lang": "en",
+                "tag": "<TagID6>"
+              },
+              {
+                "lang": "uk",
+                "tag": "<TagID7>"
+              }
+            ]
         },
         {
             "_id": "<TagID2>",
+            "type": "user",
             "name": "Nabila",
+            "lang": "fr"
         },
         {
             "_id": "<TagID3>",
+            "type": "editor",
             "name": "San Antonio",
             "vocabulary": "Auteur",
             "url_rameau": "http://localhost/",
-            "aligned": 1
+            "aligned": 1,
+            "lang": "fr"
         }
         {
             "_id": "<TagID4>",
+            "type": "user",
             "name": "Kevin",
             "vocabulary": "Auteur",
             "url_isidore": "http://unknown",
             "comment": "En cours d'alignement",
+            "lang": "fr"
         }
+        {
+            "_id": "<TagID6>",
+            "type": "editor",
+            "name": "History",
+            "vocabulary": "Sujets",
+            "url_loc": "http://loc.gov",
+            "aligned": 1,
+            "lang": "en",
+            "lang_correspondance": [
+              {
+                "lang": "fr",
+                "tag": "<TagID1>"
+              },
+              {
+                "lang": "uk",
+                "tag": "<TagID7>"
+              }
+            ]
+        },
     ]
 }

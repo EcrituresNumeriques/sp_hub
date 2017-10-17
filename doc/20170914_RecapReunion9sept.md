@@ -11,8 +11,11 @@ Soit l'organisation des mots-clés suivantes :
   * Sujets
   * Domaine artistique
   * Thématiques (voir ci-dessous)
-2. mots-clés auteurs: ils ne sont pas alignés. Ils sont associés à l'objet auteur.
+2. mots-clés auteurs: ils ne sont pas nécessairement alignés, mais peuvent l'être. Typiquement, si l'auteur a choisi un mot-clé existant dans la base de mot-clés alignés, le système devra ajouter cet alignement. Ils sont associés à l'objet auteur.
 3. mots-clés utilisateurs : ils ne sont pas alignés. Il faut conserver l'information : **qui** a utilisé **quel** mot-clé, **où** et **quand** (comme sur hypothes.is)
+
+Finalement, l'attribut pertinent qui distingue les trois types de mot-clés est le "taggeur" : il est soit éditeur, auteur ou utilisateur (lecteur). Il faudra également distinguer les "mots-clés auteur" choisi par l'auteur pour caractériser l'article _avant publication_, des "mots-clés utilisateur" ajoutés par l'auteur _après sa publication_ (via annotation hypothes.is).
+D'un point de vue éditorial, le jeu de mot-clé caractérisant l'article est très important. Le second jeu de mot-clés vient enrichir l'article et ses rebonds potentiels, mais n'a pas la même valeur éditoriale.
 
 Question technique : comment exprimer cette taxonomie de mot-clé dans les html ? On s'oriente vers des balises RDF-a. Suggestions bienvenues.
 
