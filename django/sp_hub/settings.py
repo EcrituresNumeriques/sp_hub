@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'sp_app.apps.SpAppConfig',
     'rest_framework',
     'bootstrap3',
-    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,11 +80,14 @@ WSGI_APPLICATION = 'sp_hub.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'sp_hub.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sp_hub',
+        'USER': 'sp_hub',
+        'PASSWORD': 'sp_hub',
+        'HOST': '192.168.178.51',
+        'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

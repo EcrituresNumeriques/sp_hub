@@ -4,26 +4,26 @@ from django.http import HttpResponse, HttpResponseForbidden
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
-from sp_app.models import EditorTag
-from sp_app.forms import EditorTagForm
+from sp_app.models import SPKeyword
+from sp_app.forms import SPKeywordForm
 from sp_app.sp_keywords import import_from_csv
 
 import json
 
-class EditorTagList(ListView):
-    model = EditorTag
+class SPKeywordList(ListView):
+    model = SPKeyword
     context_object_name = 'tags'
     template_name = 'tags/editor_list_page.html'
 
 
-class EditorTagDisplay(DetailView):
-    model = EditorTag
+class SPKeywordDisplay(DetailView):
+    model = SPKeyword
     context_object_name = 'tag'
     template_name = 'tags/editor_display.html'
 
 
-class EditorTagEdit(UpdateView):
-    model = EditorTag
+class SPKeywordEdit(UpdateView):
+    model = SPKeyword
     fields = [ 'description', 'link_rameau', 'categorie' ]
     template_name = 'tags/edit.html'
 
@@ -37,8 +37,8 @@ def editor_tags_import(request):
     import_from_csv.my_import()
     return redirect('sp_app:list_editor_tags')
 
-class EditorTagNew(CreateView):
-    model = EditorTag
+class SPKeywordNew(CreateView):
+    model = SPKeyword
     fields = [ 'name', 'description', 'link_rameau', 'categorie' ]
     template_name = 'tags/edit.html'
 
@@ -47,4 +47,4 @@ class EditorTagNew(CreateView):
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
-        return super(EditorTagNew, self).form_valid(form)
+        return super(SPKeywordNew, self).form_valid(form)

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Article, Conversation, EditorTag
+from .models import Article, Conversation, SPKeyword
 
 class ConversationForm(ModelForm):
     class Meta:
@@ -11,7 +11,7 @@ class ArticleForm(ModelForm):
         model = Article
         fields = [ 'title', 'document', ]
 
-class EditorTagForm(ModelForm):
+class SPKeywordForm(ModelForm):
     class Meta:
-        model = EditorTag
+        model = SPKeyword
         fields = [ 'description', ]

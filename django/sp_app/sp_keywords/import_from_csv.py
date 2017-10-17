@@ -1,7 +1,6 @@
 import csv
 import re
-from sp_app.models import EditorTag
-
+from sp_app.models import SPKeyword
 
 def my_import():
     EditorTag.objects.all().delete()
@@ -21,7 +20,7 @@ def my_import():
 
                 print(line[0], line[1])
                 print(val)
-                tag = EditorTag(id_spip=line[0], **val)
+                tag = SPKeyword(id_spip=line[0], **val)
                 tag.save()
 
 

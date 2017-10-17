@@ -19,10 +19,10 @@ conversation_patterns = [
 ]
 
 editor_tag_patterns = [
-    url(r'^$', views.EditorTagList.as_view(), name='list_editor_tags'),
-    url(r'new/$', views.EditorTagNew.as_view(), name='new_editor_tag'),
-    url(r'^(?P<pk>.+)/$', views.EditorTagDisplay.as_view(), name='display_editor_tag'),
-    url(r'^(?P<pk>.+)/edit$', views.EditorTagEdit.as_view(), name='edit_editor_tag'),
+    url(r'^$', views.SPKeywordList.as_view(), name='list_editor_tags'),
+    url(r'new/$', views.SPKeywordNew.as_view(), name='new_editor_tag'),
+    url(r'^(?P<pk>.+)/$', views.SPKeywordDisplay.as_view(), name='display_editor_tag'),
+    url(r'^(?P<pk>.+)/edit$', views.SPKeywordEdit.as_view(), name='edit_editor_tag'),
 ]
 
 tag_patterns = [
