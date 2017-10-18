@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>{{ keyword.name }}</h2>
+<h4><a href="{% url 'sp_app:edit_sp_keyword' keyword.pk %}">Edit</a></h4>
+{% for lang, info in keyword.data.items %}
+<h4>{{ lang }}</h4>
+<ul>
+    <li>Titre: {{ info.title }}</li>
+    <li>URL référence: {{ info.reference_url }}</li>
+</ul>
+{% endfor %}
+<h3>Tagged articles</h3>
+{% if tagged_articles %}
+    <ul>
+    {% for article in tagged_articles %}
+        <li><a href="{% url 'sp_app:display_article' article.pk %}">{{ article }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

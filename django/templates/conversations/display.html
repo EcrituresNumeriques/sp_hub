@@ -16,5 +16,10 @@
         {% endfor %}
     </ul>
 {% endif %}
-
+{% if conversation.timeline.items %}
+<h3>Timeline</h3>
+{% for timestamp, info in conversation.timeline.items|dictsortreversed:0 %}
+<p><em>{{ timestamp }}</em> | <strong>{{ info.user }}</strong> {{ info.action }}.</p>
+{% endfor %}
+{% endif %}
 {% endblock %}

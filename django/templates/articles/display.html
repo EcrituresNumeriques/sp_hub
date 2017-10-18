@@ -10,7 +10,17 @@
     <dd>Author: {{ article.creator }}</dd>
     <dd>Original file: {{ article.document.name }}</dd>
 </dl>
-
+<dl id="article_keywords" class="well">
+    {% for keyword in keywords %}
+    <dd><a href="{% url 'sp_app:display_sp_keyword' keyword.pk %}">{{ keyword.data.fr.title }}</a></dd>
+        <dd>{{ keyword.data.fr.reference_url }}</dd>
+    {% endfor %}
+</dl>
+<dl class="well">
+    {% for convo in article.conversations.all %}
+    <dd><a href="{% url 'sp_app:display_conversation' convo.pk %}">{{ convo }}</a></dd>
+    {% endfor %}
+</dl>
 <h3>
     <a data-toggle="collapse" data-target="#annotations" href="#annotations">Annotations hypothes.is</a>
 </h3>

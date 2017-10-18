@@ -1,8 +1,0 @@
-{% extends 'core/base.html' %}
-
-{% block content %}
-<h2>{{ tag.name }}</h2>
-<h4><a href="{% url 'sp_app:edit_user_tag' tag.pk %}">Edit</a></h4>
-<p>{{ tag.description }}</p>
-
-{% endblock %}

@@ -4,7 +4,7 @@ from .models import Article, Conversation, SPKeyword
 class ConversationForm(ModelForm):
     class Meta:
         model = Conversation
-        fields = [ 'title', 'articles', ]
+        fields = [ 'title', 'articles', 'keywords', 'timeline', 'references' ]
 
 class ArticleForm(ModelForm):
     class Meta:
@@ -14,4 +14,4 @@ class ArticleForm(ModelForm):
 class SPKeywordForm(ModelForm):
     class Meta:
         model = SPKeyword
-        fields = [ 'description', ]
+        fields = [ 'data', ]

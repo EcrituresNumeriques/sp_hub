@@ -9,11 +9,15 @@ class KeywordType(Enum):
     EDITOR = 'Editor'
 
 class SPKeyword(models.Model):
-    name = models.CharField(max_length=200, null=True, blank=True)
     kw_type = EnumField(KeywordType, default=KeywordType.AUTHOR)
-    description = models.CharField(max_length=200, null=True, blank=True)
-    aligned = models.IntegerField(null=True, blank=False, default=0)
+    base_language = models.CharField(max_length=20, null=False, blank=False, default='fr')
     data = JSONField()
+    aligned = models.IntegerField(null=True, blank=False, default=0)
+
 
     def __str__(self):
-        return self.name
+        print(self.base_language)
+        if(self.data):
+            return str(self.data[self.base_language]['title'])
+        else:
+            return 'base lang undefined'

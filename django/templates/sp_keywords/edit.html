@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+
+{% block js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            data = JSON.parse($('#id_data').text());
+            for(var k in data) {
+              $('form').prepend('<h4>' + k + '</h4><input type="text" value="' + data[k].title + '">');
+            }
+
+            $('form').submit(function(){
+                my_data = { "fr": { "title": "test fr js" } };
+                $('#id_data').html(JSON.stringify(my_data));
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h1>Edit tag</h1>
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="save btn btn-default">Save</button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

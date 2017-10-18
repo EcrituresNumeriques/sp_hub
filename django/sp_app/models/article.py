@@ -6,7 +6,7 @@ from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
 from django.conf import settings
 from django.contrib.auth.models import User
-
+from .spkeyword import SPKeyword
 from sp_app.sp_constants import Constants
 
 class Article(models.Model):
@@ -17,7 +17,7 @@ class Article(models.Model):
     # document will be stored on sp_hub too, just in case...
     document = models.FileField(upload_to='tmp/', null=True, blank=True)
     basex_docid = models.CharField(max_length=200, null=True, blank=True)
-    keywords = models.ManyToManyField(SPKeyword)
+    keywords = models.ManyToManyField(SPKeyword, related_name='articles')
 
     def __str__(self):
         return self.title + ' (' + str(self.pk) + '.html)'

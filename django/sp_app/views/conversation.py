@@ -22,7 +22,7 @@ class ConversationDisplay(DetailView):
 
 class ConversationEdit(UpdateView):
     model = Conversation
-    fields = [ 'title', 'articles' ]
+    fields = [ 'title', 'articles', 'timeline', 'keywords' ]
     template_name = 'conversations/edit.html'
 
     def get_success_url(self):
@@ -37,7 +37,7 @@ class ConversationEdit(UpdateView):
 # Class based view, form
 class ConversationNew(CreateView):
     model = Conversation
-    fields = [ 'title', 'articles' ]
+    fields = [ 'title', 'articles', 'keywords', 'timeline', 'references' ]
     template_name = 'conversations/edit.html'
 
     def get_success_url(self):

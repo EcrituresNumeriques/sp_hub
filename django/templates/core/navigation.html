@@ -15,7 +15,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'sp_app:list_articles' %}">Articles</a></li>
                 <li><a href="{% url 'sp_app:list_conversations' %}">Conversations</a></li>
-                <li><a href="{% url 'sp_app:list_editor_tags' %}">Tags éditeur</a></li>
+                <li><a href="{% url 'sp_app:list_sp_keywords' %}">Mots-clés</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" style="padding-right: 40px;">
                 {% if user.is_authenticated %}
@@ -46,7 +46,7 @@
             <ul class="nav navbar-nav">
                     <li><a href="{% url 'sp_app:new_article' %}"><i class="fa fa-plus-square" aria-hidden="true"></i> Article</a></li>
                     <li><a href="{% url 'sp_app:new_conversation' %}"><i class="fa fa-plus-square" aria-hidden="true"></i> Conversation</a></li>
-                    <li><a href="{% url 'sp_app:new_editor_tag' %}"><i class="fa fa-plus-square" aria-hidden="true"></i> Tag éditeur</a></li>
+                    <li><a href="{% url 'sp_app:new_sp_keyword' %}"><i class="fa fa-plus-square" aria-hidden="true"></i> Mot-clé</a></li>
             </ul>
         </div>
     </div>

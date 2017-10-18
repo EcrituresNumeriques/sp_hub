@@ -1,6 +1,0 @@
-<h2>Liste de tags éditeur</h2>
-<ul>
-    {% for item in tags %}
-    <li><a href="{% url 'sp_app:display_editor_tag' item.pk %}">{{ item.name }}</a></li>
-    {% endfor %}
-</ul>

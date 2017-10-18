@@ -21,7 +21,7 @@ class ArticleList(ListView):
 
 class ArticleNew(CreateView):
     model = Article
-    fields = [ 'title', 'document', 'editor_tags' ]
+    fields = [ 'title', 'document', 'keywords' ]
     template_name = 'articles/edit.html'
 
     def get_success_url(self):
@@ -55,7 +55,7 @@ def new_article(request):
 
 class ArticleEdit(UpdateView):
     model = Article
-    fields = [ 'title', 'document', 'editor_tags' ]
+    fields = [ 'title', 'document', 'keywords' ]
     template_name = 'articles/edit.html'
 
     def get_success_url(self):
@@ -71,7 +71,7 @@ class ArticleEdit(UpdateView):
 def display_article(request, pk):
     article = Article.objects.get(pk=pk)
 
-    basex_id = str(article.pk) + '.html'
+    basex_id = article.basex_docid
     data = ''
 
     my_url = Constants.BASEX_URL + '/sph/tim' +  "/articles/view/" + basex_id
@@ -92,6 +92,8 @@ def display_article(request, pk):
         'article': article,
         'basex_document': data,
         'annotations': annotations['rows'],
+        'conversations': article.conversations.all(),
+        'keywords': article.keywords.all(),
     })
 
 
