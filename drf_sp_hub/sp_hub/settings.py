@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'frontend.apps.FrontendConfig',
     'sp_api.apps.SpApiConfig',
     'rest_framework',
     'webpack_loader',
