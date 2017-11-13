@@ -31,9 +31,11 @@ class Article(models.Model):
 
 class Conversation(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
+    description = models.TextField(null=True, blank=True)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, null=True, blank=False, related_name='conversations')
     created_on = models.DateTimeField('published date', auto_now_add=True, blank=True)
     updated_on = models.DateTimeField('updated date', auto_now_add=True)
+
     articles = models.ManyToManyField(Article, blank=True, related_name='conversations')
     keywords = models.ManyToManyField(SPKeyword, blank=True, related_name='conversations')
     references = JSONField(null=True, blank=True)
@@ -42,4 +44,3 @@ class Conversation(models.Model):
 
     def __str__(self):
         return self.title + ' ' + str([ article.pk for article in self.articles.all() ])
-

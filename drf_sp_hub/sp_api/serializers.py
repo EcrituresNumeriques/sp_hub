@@ -13,7 +13,7 @@ class ConversationSerializer(serializers.HyperlinkedModelSerializer):
     created_by = serializers.StringRelatedField()
     class Meta:
         model = Conversation
-        fields = ('id', 'title', 'created_by', 'created_on', 'updated_on', 'timeline')
+        fields = ('id', 'title', 'created_by', 'created_on', 'updated_on', 'description', 'timeline')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='article-detail')
