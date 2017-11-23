@@ -21,5 +21,7 @@ from .views import homepage_view
 urlpatterns = [
     url(r'^api/', include('sp_api.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', homepage_view, name='home'),
+    url(r'^articles/', homepage_view, name='articles'),
+    url(r'^conversations/', homepage_view, name='conversations'),
+    url(r'^', homepage_view, name='home'),
 ]

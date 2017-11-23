@@ -1,18 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 
-import Typography from 'material-ui/Typography'
+import SpApp from './sp_app'
+import SpCardList, { SpCard } from './sp_cards'
+import SpArticles from './sp_articles'
 
-import SpAppBar from './sp_appbar'
-import SpCardList from './sp_cards'
-
-function SpApp() {
-    return (
-        <div>
-            <SpAppBar />
-        </div>
-    );
-}
-
-render(<BrowserRouter><SpApp /></BrowserRouter>, document.getElementById('container'))
+render (
+  <BrowserRouter>
+    <SpApp>
+      <Route path="/articles" component={SpArticles} />
+      <Route path="/conversations" render={()=><SpCardList url='http://localhost:8080/api/conversations/' />}/>
+    </SpApp>
+  </BrowserRouter>
+  , document.getElementById('container'))

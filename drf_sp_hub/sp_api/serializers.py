@@ -7,7 +7,7 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     created_by = serializers.StringRelatedField()
     class Meta:
         model = Article
-        fields = ('id', 'title', 'created_by', 'created_on')
+        fields = ('id', 'title', 'created_by', 'created_on', 'url')
 
 class ConversationSerializer(serializers.HyperlinkedModelSerializer):
     created_by = serializers.StringRelatedField()
