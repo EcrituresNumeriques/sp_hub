@@ -23,8 +23,6 @@ export default class SpArticles extends React.Component {
           url={item.url}
         />;
       });
-    } else {
-      output = <SpCard url={{"/articles/" + {this.props.url}}}/>;
     }
     return (
       <div>{output}</div>
