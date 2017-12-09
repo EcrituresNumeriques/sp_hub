@@ -31,7 +31,7 @@ export default class SpArticles extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: "http://localhost:8080/api/articles/",
+      url: "/api/articles/",
       datatype: 'json',
       cache: false,
       success: (data) => {
