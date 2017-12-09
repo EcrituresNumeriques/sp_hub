@@ -10,5 +10,5 @@ COPY ./drf_sp_hub/package.json ./
 RUN npm install
 COPY ./drf_sp_hub .
 # Run webpack
-RUN cd drf_sp_hub && ./node_modules/.bin/webpack --config webpack.config.js
+RUN ./node_modules/.bin/webpack --config webpack.config.js
 CMD [ "python3", "/usr/src/app/manage.py", "runserver 0.0.0.0:8000" ]
