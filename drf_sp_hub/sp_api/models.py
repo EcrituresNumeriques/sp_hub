@@ -32,7 +32,7 @@ class Article(models.Model):
 class Conversation(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     description = models.TextField(null=True, blank=True)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, null=True, blank=False, related_name='conversations')
+    #created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, null=True, blank=False, related_name='conversations')
     created_on = models.DateTimeField('published date', auto_now_add=True, blank=True)
     updated_on = models.DateTimeField('updated date', auto_now_add=True)
 
