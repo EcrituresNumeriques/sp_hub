@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['localhost', '.ecrituresnumeriques.ca', '*']
 
 INSTALLED_APPS = [
     'sp_api.apps.SpApiConfig',
+    'lxml',
     'rest_framework',
     'webpack_loader',
     'django.contrib.admin',

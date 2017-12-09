@@ -1,7 +1,7 @@
 FROM python:3-alpine
 WORKDIR /usr/src/app
 # This is required to build psycopg2 (PGSQL connector)
-RUN apk add --update gcc musl-dev python-dev postgresql postgresql-dev
+RUN apk add --update gcc musl-dev python-dev postgresql-dev libxml2-dev libxslt-dev
 COPY ./drf_sp_hub/requirements.txt ./
 RUN pip install -r requirements.txt
 # NPM deployment for webpack and all
