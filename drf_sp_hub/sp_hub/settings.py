@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['localhost', '.ecrituresnumeriques.ca', '*']
 INSTALLED_APPS = [
     'sp_api.apps.SpApiConfig',
     'lxml',
+    'logging',
     'rest_framework',
     'webpack_loader',
     'django.contrib.admin',
@@ -80,7 +81,7 @@ WSGI_APPLICATION = 'sp_hub.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'sp_hub',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'sp_db',

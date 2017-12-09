@@ -1,3 +1,4 @@
+import logging
 from django.db import models
 from django.conf import settings
 
@@ -5,16 +6,12 @@ from django.contrib.postgres.fields import JSONField
 
 class SPKeyword(models.Model):
     base_language = models.CharField(max_length=20, null=False, blank=False, default='fr')
-    data = JSONField()
+    name = models.CharField(max_length=200, null=False, blank=False, db_index=True, unique=True)
+    data = JSONField(null=True, blank=True)
     aligned = models.IntegerField(null=True, blank=False, default=0)
 
-
     def __str__(self):
-        print(self.base_language)
-        if(self.data):
-            return str(self.data[self.base_language]['title'])
-        else:
-            return 'base lang undefined'
+        return self.name
 
 class Article(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
@@ -25,6 +22,10 @@ class Article(models.Model):
     html_file = models.FileField(upload_to='tmp/', null=True, blank=True)
     basex_docid = models.CharField(max_length=200, null=True, blank=True)
     keywords = models.ManyToManyField(SPKeyword, related_name='articles', blank=True)
+
+    def save(self, *args, **kwargs):
+        logging.debug("IN SAVE METHOD")
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title + ' (ID ' + str(self.pk) + ')'

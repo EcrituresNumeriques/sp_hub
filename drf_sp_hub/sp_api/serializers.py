@@ -1,19 +1,24 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Article, Conversation
+from .models import Article, Conversation, SPKeyword
 
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     created_by = serializers.StringRelatedField()
     class Meta:
         model = Article
-        fields = ('id', 'title', 'created_by', 'created_on', 'url')
+        fields = ('id', 'title', 'created_by', 'created_on', 'url', 'html_file', 'keywords')
 
 class ConversationSerializer(serializers.HyperlinkedModelSerializer):
     created_by = serializers.StringRelatedField()
     class Meta:
         model = Conversation
         fields = ('id', 'title', 'created_by', 'created_on', 'updated_on', 'description', 'timeline')
+
+class SPKeywordSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = SPKeyword
+        fields = ('id', 'name', 'aligned', 'data')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='article-detail')

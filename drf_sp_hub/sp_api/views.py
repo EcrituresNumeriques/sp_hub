@@ -4,8 +4,8 @@ from rest_framework import viewsets, generics
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
 
-from .models import Article, Conversation
-from .serializers import ArticleSerializer, ConversationSerializer
+from .models import Article, Conversation, SPKeyword
+from .serializers import ArticleSerializer, ConversationSerializer, SPKeywordSerializer
 
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
@@ -14,6 +14,10 @@ class ArticleViewSet(viewsets.ModelViewSet):
 class ConversationViewSet(viewsets.ModelViewSet):
     queryset = Conversation.objects.all()
     serializer_class = ConversationSerializer
+
+class SPKeywordViewSet(viewsets.ModelViewSet):
+    queryset = SPKeyword.objects.all()
+    serializer_class = SPKeywordSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
