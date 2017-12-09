@@ -25,7 +25,7 @@ SECRET_KEY = '5i&a_7vhapg%u!$mq*9r-@*ovr4l@11#ofahwoo)epromyn@#k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '.ecrituresnumeriques.ca', '*']
 
 
 # Application definition
