@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets, generics
+from rest_framework.response import Response
+from rest_framework.decorators import list_route
 
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
@@ -18,6 +20,24 @@ class ConversationViewSet(viewsets.ModelViewSet):
 class SPKeywordViewSet(viewsets.ModelViewSet):
     queryset = SPKeyword.objects.all()
     serializer_class = SPKeywordSerializer
+
+    @list_route()
+    def list_parent(self, request):
+        queryset = SPKeyword.objects.all().exclude(children__isnull=True)
+        serializer = self.get_serializer(queryset, many=True, context={'request': request})
+        return Response(serializer.data)
+
+    @list_route()
+    def list_editor(self, request):
+        queryset = SPKeyword.objects.filter(aligned=True, children__isnull=True)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @list_route()
+    def list_author(self, request):
+        queryset = SPKeyword.objects.filter(aligned=False, children__isnull=True)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()

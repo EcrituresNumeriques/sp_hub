@@ -8,7 +8,8 @@ class SPKeyword(models.Model):
     base_language = models.CharField(max_length=20, null=False, blank=False, default='fr')
     name = models.CharField(max_length=200, null=False, blank=False, db_index=True, unique=True)
     data = JSONField(null=True, blank=True)
-    aligned = models.IntegerField(null=True, blank=False, default=0)
+    aligned = models.BooleanField(null=False, blank=False, default=False)
+    parent_category = models.ForeignKey('self', unique=False, related_name='children', db_index=True, null=True, blank=True, default=None, on_delete=models.SET_DEFAULT)
 
     def __str__(self):
         return self.name
