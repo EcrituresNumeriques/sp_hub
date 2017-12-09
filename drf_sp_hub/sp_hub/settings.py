@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'sp_hub.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'database',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'sp_db',
