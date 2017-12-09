@@ -16,9 +16,10 @@ class ConversationSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'title', 'created_by', 'created_on', 'updated_on', 'description', 'timeline')
 
 class SPKeywordSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
+    articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='article-detail')
+        class Meta:
         model = SPKeyword
-        fields = ('id', 'name', 'aligned', 'data')
+        fields = ('id', 'name', 'aligned', 'data', 'articles')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='article-detail')
