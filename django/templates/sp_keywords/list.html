@@ -1,6 +1,0 @@
-<h2>Liste de mots-clés</h2>
-<ul>
-    {% for item in keywords %}
-    <li><a href="{% url 'sp_app:display_sp_keyword' item.pk %}">{{ item.data.fr.title }}</a></li>
-    {% endfor %}
-</ul>
