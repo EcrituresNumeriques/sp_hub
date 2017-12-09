@@ -5,6 +5,8 @@ from .models import Article, Conversation, SPKeyword
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     created_by = serializers.StringRelatedField()
+    keywords = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='spkeyword-detail')
+
     class Meta:
         model = Article
         fields = ('id', 'title', 'created_by', 'created_on', 'url', 'html_file', 'keywords')

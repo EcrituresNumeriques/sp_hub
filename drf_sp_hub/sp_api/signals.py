@@ -1,9 +1,9 @@
 import logging
 import os
-import pprint
+from lxml import etree
+
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
-from lxml import etree
 
 from .models import Article, SPKeyword
 
@@ -51,14 +51,14 @@ def update_spkeywords_from_article(sender, instance, created, **kwargs):
                  is_aligned = 1
                  my_data[field] = content
 
-        existing_kw = SPKeyword.objects.filter(name=my_name)
+        existing_kw = models.SPKeyword.objects.filter(name=my_name)
         if existing_kw:
             existing_kw.update(data=my_data, aligned=is_aligned)
             logging.debug('Keyword ' + my_name + ' exists. Linking to ' + instance.title)
             instance.keywords.add(*existing_kw)
         else:
             logging.debug('Adding keyword ' + my_name)
-            my_kw = SPKeyword.objects.create(name=my_name, data=my_data, aligned=is_aligned)
+            my_kw = models.SPKeyword.objects.create(name=my_name, data=my_data, aligned=is_aligned)
             my_kw.save()
             logging.debug('Linking keyword ' + my_name + ' to ' + instance.title)
             instance.keywords.add(my_kw)
