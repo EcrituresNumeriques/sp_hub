@@ -17,7 +17,7 @@ class ConversationSerializer(serializers.HyperlinkedModelSerializer):
 
 class SPKeywordSerializer(serializers.HyperlinkedModelSerializer):
     articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='article-detail')
-        class Meta:
+    class Meta:
         model = SPKeyword
         fields = ('id', 'name', 'aligned', 'data', 'articles')
 
