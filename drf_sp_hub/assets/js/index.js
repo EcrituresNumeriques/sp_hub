@@ -10,7 +10,7 @@ render (
   <BrowserRouter>
     <SpApp>
       <Route path="/articles" component={SpArticles} />
-      <Route path="/conversations" render={()=><SpCardList url='http://localhost:8080/api/conversations/' />}/>
+      <Route path="/conversations" render={()=><SpCardList url='/api/conversations/' />}/>
     </SpApp>
   </BrowserRouter>
   , document.getElementById('container'))
