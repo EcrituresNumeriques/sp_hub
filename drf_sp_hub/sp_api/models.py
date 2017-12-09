@@ -18,7 +18,7 @@ class SPKeyword(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, related_name='articles', null=False, blank=False)
+    #created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, related_name='articles', null=False, blank=False)
     created_on = models.DateTimeField('published date', auto_now_add=True, blank=True)
 
     # Not yet
