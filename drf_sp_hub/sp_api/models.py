@@ -18,7 +18,7 @@ class SPKeyword(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
-    #created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, related_name='articles', null=False, blank=False)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.SET_DEFAULT, related_name='articles', null=False, blank=False)
     created_on = models.DateTimeField('published date', auto_now_add=True, blank=True)
 
     # Not yet
@@ -32,7 +32,7 @@ class Article(models.Model):
 class Conversation(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     description = models.TextField(null=True, blank=True)
-    #created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, null=True, blank=False, related_name='conversations')
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.SET_DEFAULT, null=True, blank=False, related_name='conversations')
     created_on = models.DateTimeField('published date', auto_now_add=True, blank=True)
     updated_on = models.DateTimeField('updated date', auto_now_add=True)
 

@@ -6,6 +6,10 @@ services:
     restart: always
     links:
       - sp_proto_db:sp_db
+    ports:
+      - 8000:8000
+    volumes:
+      - ./drf_sp_hub:/usr/src/app
     build:
       context: .
       dockerfile: Dockerfile
