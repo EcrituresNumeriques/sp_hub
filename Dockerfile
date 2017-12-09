@@ -19,6 +19,6 @@ WORKDIR /usr/src/app/sp_hub/drf_sp_hub
 
 # Run webpack
 RUN ../../node_modules/.bin/webpack --config webpack.config.js
-
+VOLUME [ '/usr/src/app' ]
 EXPOSE 8000
 CMD [ "python3", "/usr/src/app/sp_hub/drf_sp_hub/manage.py", "runserver", "0.0.0.0:8000" ]
