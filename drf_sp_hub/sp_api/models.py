@@ -22,7 +22,7 @@ class Article(models.Model):
     created_on = models.DateTimeField('published date', auto_now_add=True, blank=True)
 
     # Not yet
-    # document = models.FileField(upload_to='tmp/', null=True, blank=True)
+    html_doc = models.FileField(upload_to='tmp/', null=True, blank=True)
     basex_docid = models.CharField(max_length=200, null=True, blank=True)
     keywords = models.ManyToManyField(SPKeyword, related_name='articles', blank=True)
 
