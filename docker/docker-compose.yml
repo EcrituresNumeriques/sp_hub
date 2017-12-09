@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  sp_proto:
+    container_name: sp_proto
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - sp_net
+
+  sp_proto_db:
+    container_name: sp_proto_db
+    restart: always
+    image: postgres
+    networks:
+      - sp_net
