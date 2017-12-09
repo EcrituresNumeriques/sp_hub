@@ -1,0 +1,11 @@
+FROM python:3-alpine
+# This is required to build psycopg2 (PGSQL connector)
+RUN apk add --update gcc git musl-dev python-dev postgresql-dev libxml2-dev libxslt-dev nodejs
+
+COPY drf_sp_hub/requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
+
+EXPOSE 8000
+
+WORKDIR /usr/src/app
+CMD [ "python3", "/usr/src/app/manage.py", "runserver", "0.0.0.0:8000" ]

@@ -13,7 +13,7 @@ COPY ./drf_sp_hub/requirements.txt ./
 RUN pip install -r requirements.txt
 RUN npm install
 
-RUN git clone https://github.com/timoguic/sp_hub.git
+#RUN git clone https://github.com/timoguic/sp_hub.git
 
 WORKDIR /usr/src/app/sp_hub/drf_sp_hub
 
