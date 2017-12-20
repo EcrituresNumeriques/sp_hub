@@ -42,3 +42,22 @@ Thématiques existantes :
   -  Philosophie
   -  Politique et société (comprend les chroniques et donc l'actualité)
   -  Sciences et environnement
+
+## Multilinguisme
+
+Principe : les objets article, résumé et mot-clé possèdent une information de langue.
+
+### article
+
+Deux articles peuvent être associés par un lien de traduction. Ils restent cependant deux objets "article" indépendants.
+
+Quelque soit sa langue, un article est accompagné d'au moins un résumé en français, et le plus souvent d'un résumé en anglais (voir balises <meta> "description" et "DC.description"), ainsi que de deux séries de mot-clé auteurs FR et EN (voir balise <meta> "keywords")
+
+### mot-clé éditeur
+On considère le français comme la langue pivot pour les mot-clés éditeurs.
+Un mot-clé FR peut avoir plusieurs traductions. Les articles sont taggés en français (association déclarée). Les mot-clés des autres langues sont inférés (association inférée).
+
+Cela simplifie la recherche par mot-clé (une recherche sur un mot-clé EN passera par le mot-clé FR).
+
+### mot-clé auteur
+Les mot-clé auteurs possèdent également une information de langue, mais sont plus indépendants et peuvent exister sans être associés à un mot-clé FR. L'association de traduction est possible, et passe alors par la langue pivot FR.
