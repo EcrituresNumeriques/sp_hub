@@ -21,10 +21,14 @@ class ConversationSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'title', 'created_by', 'created_on', 'updated_on', 'description', 'timeline')
 
 class SPCategorySerializer(serializers.HyperlinkedModelSerializer):
-    keywords = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='spkeyword-detail')
+    keywords = serializers.StringRelatedField(many=True)
+    keywords_url = serializers.HyperlinkedRelatedField(
+        source='keywords',
+        many=True, read_only=True, view_name='spkeyword-detail'
+    )
     class Meta:
         model = SPCategory
-        fields = ('id', 'name', 'url', 'keywords')
+        fields = ('id', 'name', 'url', 'keywords', 'keywords_url')
 
 class SPKeywordSerializer(serializers.HyperlinkedModelSerializer):
     articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='article-detail')
