@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Article, Conversation, SPKeyword
+from .models import Article, Conversation, SPKeyword, SPCategory
 
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
@@ -16,14 +16,18 @@ class ConversationSerializer(serializers.HyperlinkedModelSerializer):
         model = Conversation
         fields = ('id', 'title', 'created_by', 'created_on', 'updated_on', 'description', 'timeline')
 
+class SPCategorySerializer(serializers.HyperlinkedModelSerializer):
+    keywords = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='spkeyword-detail')
+    class Meta:
+        model = SPCategory
+        fields = ('id', 'name', 'url', 'keywords')
+
 class SPKeywordSerializer(serializers.HyperlinkedModelSerializer):
     articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='article-detail')
-    parent_category = serializers.HyperlinkedRelatedField(read_only=True, view_name='spkeyword-detail')
-    children = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='spkeyword-detail')
-    #children = serializers.StringRelatedField()
+    category = serializers.HyperlinkedRelatedField(read_only=True, view_name='spcategory-detail')
     class Meta:
         model = SPKeyword
-        fields = ('id', 'name', 'url', 'aligned', 'parent_category', 'data', 'articles', 'children')
+        fields = ('id', 'name', 'url', 'aligned', 'category', 'data', 'articles')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='article-detail')

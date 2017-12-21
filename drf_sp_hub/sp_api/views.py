@@ -6,8 +6,9 @@ from rest_framework.decorators import list_route
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
 
-from .models import Article, Conversation, SPKeyword
-from .serializers import ArticleSerializer, ConversationSerializer, SPKeywordSerializer
+from .models import Article, Conversation, SPKeyword, SPCategory
+from .serializers import ArticleSerializer, ConversationSerializer
+from .serializers import SPKeywordSerializer, SPCategorySerializer
 
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
@@ -16,6 +17,10 @@ class ArticleViewSet(viewsets.ModelViewSet):
 class ConversationViewSet(viewsets.ModelViewSet):
     queryset = Conversation.objects.all()
     serializer_class = ConversationSerializer
+
+class SPCategoryViewSet(viewsets.ModelViewSet):
+    queryset = SPCategory.objects.all()
+    serializer_class = SPCategorySerializer
 
 class SPKeywordViewSet(viewsets.ModelViewSet):
     queryset = SPKeyword.objects.all()

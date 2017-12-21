@@ -6,7 +6,7 @@ import csv
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
 
-from .models import Article, SPKeyword
+from .models import Article, SPKeyword, SPCategory
 
 # Update keywords and article based on HTML file
 @receiver(post_save, sender=Article)
@@ -40,7 +40,6 @@ def match_and_associate_editor_keywords(obj, editor_kw):
 
     for kw in editor_kw:
         my_name = kw.get('content')
-
         if not my_name:
             # Empty keyword
             continue
@@ -62,15 +61,16 @@ def match_and_associate_editor_keywords(obj, editor_kw):
 
         # Search for the parent category in the matcher
         parent_cat = kw_matcher.find_parent(my_name)
-        if not parent_cat > 0:
-            parent_cat = None
+        if parent_cat:
+            logging.debug('Found parent category: ' + parent_cat.name)
+            my_args['category'] = parent_cat
 
-        my_args['parent_category'] = parent_cat
-
+        # Check for an existing keyword already in the database
         existing_kw = SPKeyword.objects.filter(name=my_name)
         if existing_kw:
             existing_kw.update(**my_args)
             logging.debug('Keyword ' + my_name + ' exists. Linking to ' + obj.title)
+            # We use * just in case we have a list
             obj.keywords.add(*existing_kw)
         else:
             logging.debug('Adding keyword ' + my_name)
@@ -95,12 +95,14 @@ def match_and_associate_author_keywords(obj, author_kw):
             word_list = ''.join(word_list).split(',')
 
         word_list = [ w.strip() for w in word_list ]
+        logging.debug('Author keywords found:' + ','.join(word_list))
         for word in word_list:
             possible_kw = SPKeyword.objects.filter(name__iexact=word)
             if possible_kw:
                 logging.debug(word + ' looks like ' + possible_kw.get().name + '. Linking.')
                 obj.keywords.add(possible_kw.get())
             else:
+                logging.debug('Creating ' + word)
                 my_kw = SPKeyword.objects.create(name=word)
                 my_kw.save()
                 obj.keywords.add(my_kw)
@@ -131,28 +133,28 @@ class KeywordMatcherFromSpip:
     def __init__(self, file_path):
         csvfile = open(file_path, encoding='utf-8')
         csvreader = csv.reader(csvfile, delimiter=';')
-        self.data = {}
+        self.parent_cat = {}
         for row in csvreader:
             cat_name = row[1]
             parent_name = row[5]
             if row[1].rfind('[fr]') > 0:
                 cat_name = row[1].split('[fr]')[1].split('[')[0]
-            self.data[cat_name] = parent_name
-            logging.debug(self.data)
+            self.parent_cat[cat_name] = parent_name
 
     def find_parent(self, name):
-        if name in self.data.keys():
-            parent_name = self.data[name]
+        if name in self.parent_cat.keys():
+            parent_name = self.parent_cat[name]
             if parent_name:
                 # Does this keyword exist?
-                existing_kw = SPKeyword.objects.filter(name=parent_name)
-                if existing_kw:
-                    logging.debug('Found existing parent!' + str(existing_kw.get().id))
-                    return existing_kw.get().id
+                existing_cat = SPCategory.objects.filter(name=parent_name)
+                if existing_cat:
+                    existing_cat = existing_cat.get()
+                    logging.debug('Found existing parent category: ' + existing_cat.name + ' (' + str(existing_cat.id) + ')')
+                    return existing_cat
                 else:
-                    logging.debug('Creating parent: ' + parent_name)
-                    my_kw = SPKeyword.objects.create(name=parent_name)
+                    logging.debug('Creating parent cat: ' + parent_name)
+                    my_kw = SPCategory.objects.create(name=parent_name)
                     my_kw.save()
-                    return my_kw.id
+                    return my_kw
         else:
             return False
