@@ -27,20 +27,14 @@ class SPKeywordViewSet(viewsets.ModelViewSet):
     serializer_class = SPKeywordSerializer
 
     @list_route()
-    def list_parent(self, request):
-        queryset = SPKeyword.objects.all().exclude(children__isnull=True)
-        serializer = self.get_serializer(queryset, many=True, context={'request': request})
-        return Response(serializer.data)
-
-    @list_route()
     def list_editor(self, request):
-        queryset = SPKeyword.objects.filter(aligned=True, children__isnull=True)
+        queryset = SPKeyword.objects.filter(aligned=True)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
     @list_route()
     def list_author(self, request):
-        queryset = SPKeyword.objects.filter(aligned=False, children__isnull=True)
+        queryset = SPKeyword.objects.filter(aligned=False)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
