@@ -5,7 +5,7 @@ from .models import Article, Conversation, SPKeyword, SPCategory
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     created_by = serializers.StringRelatedField()
-    keywords = serializers.StringRelatedField(many=True)
+    keywords = serializers.StringRelatedField(many=True, read_only=True)
     keywords_url = serializers.HyperlinkedRelatedField(
         source='keywords',
         many=True, read_only=True, view_name='spkeyword-detail'
