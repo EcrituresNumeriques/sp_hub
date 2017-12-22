@@ -8,6 +8,8 @@ exemple : j'affiche un article, je clique un mot-clé de l'article et une page d
 * les éléments inférés (2eme niveau) :
   - ...
 
-Si une même chaine de caractère existe en tant que mot-clé éditeur et mot-clé auteur, alors les résultats représentent la distinction. A définir: comment est faite cette distinction? Sachant que lors de notre derniere discussion, il avait été défini "un mot clé éditeur existe => on utilise ce mot clé même si il est comme mot clé auteur dans le document". Quel est l'intérêt d'avoir un doublon mot clé éditeur == mot clé auteur?
+Si une même chaine de caractère existe en tant que mot-clé éditeur et mot-clé auteur, alors les résultats représentent la distinction.
+
+> A définir: comment est faite cette distinction? Sachant que lors de notre derniere discussion, il avait été défini "un mot clé éditeur existe => on utilise ce mot clé même si il est comme mot clé auteur dans le document". Quel est l'intérêt d'avoir un doublon mot clé éditeur == mot clé auteur? ([--> voir ma réponse](sc_afficheArticle.md))
 
 Organisation des résultats et fonctionnalités de filtrage à designer.
