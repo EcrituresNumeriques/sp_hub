@@ -10,3 +10,12 @@ corps de l'article  | X  | X  | X
 annotations hypothesis (voir [scénario #L2](./sc_visuAnnotations.md)) | X  | X  | X
 encart annotations (voir [scénario #L2](./sc_visuAnnotations.md)) |   | X  | X  
 conversations liées  |   | X  | X
+
+#### Précision sur les mot-clés
+D'un point de vue éditorial, les mot-clés éditeurs sont utilisés par l'éditeur pour _catégoriser_ l'article parmi le corpus d'article, tandis que les mot-clé auteurs sont utilisés par l'auteur pour _caractériser_ l'article. Il est donc important que l'affichage d'un article présente les mot-clés auteurs tels que l'auteur les a renseignés.
+
+On retrouvera donc une présentation équivalente (en données, pas en mise en forme) à ce que peut proposer le site Sens Public aujourd'hui :
+
+![](../SPtitreResumeMotClesAuteur.png)
+
+Il est donc nécessaire de conserver les mot-clés auteur dont la chaine de caractère pourrait être équivalente à celle d'un mot-clé éditeur.
