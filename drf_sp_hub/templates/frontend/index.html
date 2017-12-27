@@ -1,12 +1,41 @@
-{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Grouik</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-</head>
-<body>
-    <div id="container"></div>
-    {% render_bundle 'main' %}
-</body>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="app">
+    </div>
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      function loadArticles(myUrl) {
+        myDiv = $('#app');
+        $.ajax(myUrl).done(function(data) {
+          $.each(data, function(key, value) {
+            console.log(value);
+            myHtml = '<h2>' + value.title + '</h2>';
+            myHtml += '<h4>' + value.created_on + '</h4>';
+            myHtml += '<ul>'
+            $.each(value.keywords, function(id, kw) {
+              myHtml += '<li>' + kw + '</li>';
+            });
+            myHtml += '</ul>';
+            $(myDiv).append(myHtml);
+          });
+        });
+      }
+
+      $(document).ready(function() {
+        loadArticles('/api/articles/');
+      });
+    </script>
+  </body>
 </html>

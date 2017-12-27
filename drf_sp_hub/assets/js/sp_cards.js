@@ -4,6 +4,7 @@ import Typography from 'material-ui/Typography';
 import Card, {CardActions, CardHeader, CardContent} from 'material-ui/Card';
 import Button from 'material-ui/Button';
 
+import { Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 export default class SpCardList extends React.Component {
@@ -55,6 +56,7 @@ class SpCard extends React.Component {
         cache: false,
         success: (data) => {
           this.setState({data: data});
+          console.log(data);
         }
       });
     }
@@ -65,9 +67,10 @@ class SpCard extends React.Component {
       <Card>
         <CardHeader title={this.state.data.title} subheader={this.state.data.created_by} />
         <CardContent>
-          <Button>{this.state.data.title}</Button>
+          <Typography component="h3">{this.state.data.title}</Typography>
           <Typography component="p">
-            {this.state.data.description ? this.state.data.description : 'vide'}
+              URL: {this.state.data.url}
+              ID: {this.state.data.id}
           </Typography>
         </CardContent>
         <CardActions>

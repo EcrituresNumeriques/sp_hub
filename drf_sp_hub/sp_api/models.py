@@ -11,8 +11,9 @@ class SPCategory(models.Model):
         return self.name + ' (' + str(self.id) + ')'
 
 class SPKeyword(models.Model):
-    base_language = models.CharField(max_length=20, null=False, blank=False, default='fr')
     name = models.CharField(max_length=200, null=False, blank=False, db_index=True, unique=True)
+    language = models.CharField(max_length=3, null=False, blank=False, default='fr')
+    translations = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL)
     data = JSONField(null=True, blank=True)
     aligned = models.BooleanField(null=False, blank=False, default=False)
     category = models.ForeignKey(SPCategory, unique=False, related_name='keywords', db_index=True, null=True, blank=True, default=None, on_delete=models.SET_DEFAULT)

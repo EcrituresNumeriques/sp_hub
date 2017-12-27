@@ -8,13 +8,15 @@ from django.dispatch import receiver
 
 from .models import Article, SPKeyword, SPCategory
 
+logger = logging.getLogger(__name__)
+
 # Update keywords and article based on HTML file
 @receiver(post_save, sender=Article)
 def update_spkeywords_from_article(sender, instance, created, **kwargs):
-    logging.debug('RECEIVER POST SAVE')
+    logger.info('RECEIVER POST SAVE')
 
     if not instance.html_file:
-        logging.debug('No HTML file on this object')
+        logger.info('No HTML file on this object')
         return False
 
     # Init HTML parser
@@ -44,7 +46,7 @@ def match_and_associate_editor_keywords(obj, editor_kw):
             # Empty keyword
             continue
 
-        logging.debug('Found keyword: ' + my_name)
+        logger.info('Found keyword: ' + my_name)
 
         my_data = {}
         # By default, keywords are not aligned
@@ -62,21 +64,21 @@ def match_and_associate_editor_keywords(obj, editor_kw):
         # Search for the parent category in the matcher
         parent_cat = kw_matcher.find_parent(my_name)
         if parent_cat:
-            logging.debug('Found parent category: ' + parent_cat.name)
+            logger.info('Found parent category: ' + parent_cat.name)
             my_args['category'] = parent_cat
 
         # Check for an existing keyword already in the database
         existing_kw = SPKeyword.objects.filter(name=my_name)
         if existing_kw:
             existing_kw.update(**my_args)
-            logging.debug('Keyword ' + my_name + ' exists. Linking to ' + obj.title)
+            logger.info('Keyword ' + my_name + ' exists. Linking to ' + obj.title)
             # We use * just in case we have a list
             obj.keywords.add(*existing_kw)
         else:
-            logging.debug('Adding keyword ' + my_name)
+            logger.info('Adding keyword ' + my_name)
             my_kw = SPKeyword.objects.create(name=my_name, **my_args)
             my_kw.save()
-            logging.debug('Linking keyword ' + my_name + ' to ' + obj.title)
+            logger.info('Linking keyword ' + my_name + ' to ' + obj.title)
             obj.keywords.add(my_kw)
 
 def match_and_associate_author_keywords(obj, author_kw):
@@ -95,14 +97,14 @@ def match_and_associate_author_keywords(obj, author_kw):
             word_list = ''.join(word_list).split(',')
 
         word_list = [ w.strip() for w in word_list ]
-        logging.debug('Author keywords found:' + ','.join(word_list))
+        logger.info('Author keywords found:' + ','.join(word_list))
         for word in word_list:
             possible_kw = SPKeyword.objects.filter(name__iexact=word)
             if possible_kw:
-                logging.debug(word + ' looks like ' + possible_kw.get().name + '. Linking.')
+                logger.info(word + ' looks like ' + possible_kw.get().name + '. Linking.')
                 obj.keywords.add(possible_kw.get())
             else:
-                logging.debug('Creating ' + word)
+                logger.info('Creating ' + word)
                 my_kw = SPKeyword.objects.create(name=word)
                 my_kw.save()
                 obj.keywords.add(my_kw)
@@ -149,10 +151,10 @@ class KeywordMatcherFromSpip:
                 existing_cat = SPCategory.objects.filter(name=parent_name)
                 if existing_cat:
                     existing_cat = existing_cat.get()
-                    logging.debug('Found existing parent category: ' + existing_cat.name + ' (' + str(existing_cat.id) + ')')
+                    logger.info('Found existing parent category: ' + existing_cat.name + ' (' + str(existing_cat.id) + ')')
                     return existing_cat
                 else:
-                    logging.debug('Creating parent cat: ' + parent_name)
+                    logger.info('Creating parent cat: ' + parent_name)
                     my_kw = SPCategory.objects.create(name=parent_name)
                     my_kw.save()
                     return my_kw
