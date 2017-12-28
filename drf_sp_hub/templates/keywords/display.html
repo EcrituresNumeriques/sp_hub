@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>{{ keyword.name }}</h2>
+<h4><a href="#">Edit</a></h4>
+{% for source, reference in keyword.data.items %}
+<ul>
+    <li>{{ source }}: {{ reference }}</li>
+</ul>
+{% endfor %}
+<h3>Tagged articles</h3>
+  <ul>
+  {% for article in keyword.articles.all %}
+    <li><a href="{% url 'display_article' article.pk %}">{{ article }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}

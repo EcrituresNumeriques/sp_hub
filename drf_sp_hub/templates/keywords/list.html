@@ -1,0 +1,6 @@
+<h2>Liste de mots-clés</h2>
+<ul>
+    {% for item in keywords %}
+    <li><a href="{% url 'display_keyword' item.pk %}">{{ item.name }}</a></li>
+    {% endfor %}
+</ul>

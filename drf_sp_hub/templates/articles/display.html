@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>{{ article.title }}</h2>
+<h4><a href="#">Edit</a></h4>
+<script src="https://hypothes.is/embed.js" async></script>
+<dl id="article_metadata" class="well">
+    <dd>sp_hub ID: {{ article.pk }}</dd>
+    <dd>Author: {{ article.creator }}</dd>
+    <dd>Original file: {{ article.html_file.name }}</dd>
+</dl>
+<dl id="article_keywords" class="well">
+    {% for keyword in keywords %}
+      <dd><a href="{% url 'display_keyword' keyword.pk %}">{{ keyword.name }}</a></dd>
+    {% endfor %}
+</dl>
+<dl class="well">
+    {% for convo in article.conversations.all %}
+    <dd><a href="#">{{ convo }}</a></dd>
+    {% endfor %}
+</dl>
+<h3>
+    <a data-toggle="collapse" data-target="#annotations" href="#annotations">Annotations hypothes.is</a>
+</h3>
+
+{% if annotations %}
+<div id="annotations" class="list-group panel-collapse collapse">
+    {% for value in annotations %}
+    <a href="{{ value.links.html }}" class="list-group-item">
+        <h4 class="list-group-item-heading">{{ value.text }}</h4>
+        <p class="list-group-item-text">{{ value.user }}</p>
+        {% if value.tags %}
+            {% for tag in value.tags %}
+                <button type="button" class="btn btn-xs btn-default">{{ tag }}</button>
+            {% endfor %}
+        {% endif %}
+    </a>
+    {% endfor %}
+</div>
+{% endif %}
+
+<h3>
+    <a data-toggle="collapse" data-target="#article_content" href="#article_content">BaseX document</a>
+</h3>
+
+<div id="article_content" class="collapse">
+    {% autoescape off %}
+    {{ basex_document }}
+    {% endautoescape %}
+</div>
+{% endblock %}

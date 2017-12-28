@@ -1,0 +1,6 @@
+<h2>Liste d'articles</h2>
+<ul>
+    {% for item in articles %}
+    <li><a href="{% url 'display_article' item.pk %}">{{ item.title }}</a></li>
+    {% endfor %}
+</ul>
