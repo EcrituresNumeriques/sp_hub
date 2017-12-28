@@ -1,0 +1,678 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"
+[<!ENTITY % Ruby.common.attlists "IGNORE" >]>
+ -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      version="XHTML+RDFa 1.0"  xml:lang="fr">
+
+<head>
+  <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+  <link rel="schema.MARCREL" href="http://www.loc.gov/loc.terms/relators/"/>
+  <link rel="DCTERMS.subject" href="http://rameau.bnf.fr"/>
+  <link rel="schema.prism" href="http://prismstandard.org/namespaces/basic/2.0/"/>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc templateHtmlEruditV2" />
+
+
+<!--  Dublin Core -->
+  <meta name="DC.type" content="Text" />
+  <meta name="DC.format" content="text/html" />
+    <meta http-equiv="Content-language" content="fr" />
+    <meta name="url" content="http://sens-public.org/article1275.html" />
+    <meta name="DC.identifier" scheme="URI" content="http://sens-public.org/article1275.html" />
+    <meta name="DC.identifier" scheme="ISSN" content="2104-3272" />
+    <meta name="DC.title" content="La pyramide algorithmique" />
+    <meta name="DC.publisher" content="D&#233;partement des litt&#233;ratures de langue fran&#231;aise" />
+    <meta name="DC.language" scheme="RFC3066" content="fr" />
+    <meta name="DC.type" content="journalArticle" />
+
+    <meta name="author" content="Pierre L&#233;vy" />
+    <meta name="DC.creator" content="Pierre L&#233;vy" />
+       <meta name="description" xml:lang="fr" lang="fr" content="Le medium algorithmique est une infrastructure de communication qui augmente les pouvoirs des m&#233;dias ant&#233;rieurs en y ajoutant la m&#233;canisation des op&#233;rations symboliques. Son &#233;mergence au milieu du vingti&#232;me si&#232;cle r&#233;sulte d&#8217;une longue histoire scientifique et technique que je r&#233;sume au d&#233;but de l&#8217;article. Je rappelle ensuite les grandes &#233;tapes de son d&#233;veloppement (ordinateurs centraux, internet et PC, Web social, Cloud augment&#233; par l&#8217;intelligence artificielle et la cha&#238;ne de blocs) ainsi que leurs cons&#233;quences sociocognitives. J&#8217;&#233;voque pour finir les d&#233;veloppements futurs de ce m&#233;dium dans la perspective d&#8217;une intelligence collective r&#233;flexive bas&#233;e sur une nouvelle forme de calcul s&#233;mantique." />
+    <meta name="DC.description" xml:lang="fr" lang="fr" content="Le medium algorithmique est une infrastructure de communication qui augmente les pouvoirs des m&#233;dias ant&#233;rieurs en y ajoutant la m&#233;canisation des op&#233;rations symboliques. Son &#233;mergence au milieu du vingti&#232;me si&#232;cle r&#233;sulte d&#8217;une longue histoire scientifique et technique que je r&#233;sume au d&#233;but de l&#8217;article. Je rappelle ensuite les grandes &#233;tapes de son d&#233;veloppement (ordinateurs centraux, internet et PC, Web social, Cloud augment&#233; par l&#8217;intelligence artificielle et la cha&#238;ne de blocs) ainsi que leurs cons&#233;quences sociocognitives. J&#8217;&#233;voque pour finir les d&#233;veloppements futurs de ce m&#233;dium dans la perspective d&#8217;une intelligence collective r&#233;flexive bas&#233;e sur une nouvelle forme de calcul s&#233;mantique." />
+    <meta name="description" xml:lang="en" lang="en" content="The algorithmic medium is an infrastructure of communication augmenting the powers of previous media by adding the automation of symbolic operations. Its emergence in the middle of the twentieth century results from a long scientific and technological history that I summarize at the beginning of the paper. Then I recall in this article the main stages of its development (mainframes, Internet and PC, social Web, cloud augmented by artificial intelligence and the blockchain) as well as their socio-cognitive consequences. I evoke in the end the future developments of this medium, in the perspective of a reflexive collective intelligence based on a new form of semantic computation." />
+    <meta name="DC.description" xml:lang="en" lang="en" content="The algorithmic medium is an infrastructure of communication augmenting the powers of previous media by adding the automation of symbolic operations. Its emergence in the middle of the twentieth century results from a long scientific and technological history that I summarize at the beginning of the paper. Then I recall in this article the main stages of its development (mainframes, Internet and PC, social Web, cloud augmented by artificial intelligence and the blockchain) as well as their socio-cognitive consequences. I evoke in the end the future developments of this medium, in the perspective of a reflexive collective intelligence based on a new form of semantic computation." />
+
+<meta name="keywords" xml:lang="fr" lang="fr" content="algorithme, cha&#238;ne de blocs, computation, &#233;pist&#233;mologie, histoire des sciences, histoire des techniques, IEML, intelligence artificielle, intelligence collective, internet, langue, m&#233;dias sociaux, m&#233;dias, sensorium, symbole." />
+
+<meta name="keywords" xml:lang="en" lang="en" content="algorithm, blockchain, computing, epistemology, history of science, history of technology, IEML, artificial intelligence, collective intelligence, internet, language, social media, media, sensorium, symbol." />
+
+    <meta name="DC.subject" xml:lang="fr" lang="fr" content="Internet" />
+    <meta name="DC.subject" xml:lang="fr" lang="fr" content="Monde num&#233;rique" />
+    <meta name="DC.subject" xml:lang="fr" lang="fr" content="Philosophie" />
+
+    <meta name="DC.date" scheme="W3CDTF" content="2017/12/15" />
+    <meta name="DC.rights" content="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)" />
+    <meta name="DC.relation.isPartOf" content="true" />
+    <meta name="DC.source" content="Sens public" />
+
+                <meta name="DC.contributor.trl" content=" " />
+        <meta name="MARCREL.trl" content=" " />
+        
+                <meta name="DC.contributor.edt" content="Marcello Vitali-Rosati" />
+        <meta name="MARCREL.edt" content="Marcello Vitali-Rosati" />
+            <meta name="DC.contributor.edt" content="Servanne Monjour" />
+        <meta name="MARCREL.edt" content="Servanne Monjour" />
+            <meta name="DC.contributor.edt" content="Matteo Treleani" />
+        <meta name="MARCREL.edt" content="Matteo Treleani" />
+        
+    
+
+<!-- citation : Indexation pour Google Scholar  -->
+    <meta name="citation_journal_title" content="Sens public" />
+    <meta name="citation_publisher" content="D&#233;partement des litt&#233;ratures de langue fran&#231;aise" />
+    <meta name="citation_authors" content="Pierre L&#233;vy" />
+    <meta name="citation_title" content="La pyramide algorithmique" />
+    <meta name="citation_publication_date" content="2017/12/15" />
+    <meta name="citation_online_date" content="2017/12/15" />
+    <meta name="citation_issn" content="2104-3272" />
+    <meta name="citation_isbn" content="2104-3272" />
+<!--si num&#233;ro de dossier existe
+    <meta name="citation_issue" content="" />
+-->
+    <meta name="citation_language" content="fr" />
+
+    <meta name="citation_abstract" xml:lang="fr" lang="fr" content="Le medium algorithmique est une infrastructure de communication qui augmente les pouvoirs des m&#233;dias ant&#233;rieurs en y ajoutant la m&#233;canisation des op&#233;rations symboliques. Son &#233;mergence au milieu du vingti&#232;me si&#232;cle r&#233;sulte d&#8217;une longue histoire scientifique et technique que je r&#233;sume au d&#233;but de l&#8217;article. Je rappelle ensuite les grandes &#233;tapes de son d&#233;veloppement (ordinateurs centraux, internet et PC, Web social, Cloud augment&#233; par l&#8217;intelligence artificielle et la cha&#238;ne de blocs) ainsi que leurs cons&#233;quences sociocognitives. J&#8217;&#233;voque pour finir les d&#233;veloppements futurs de ce m&#233;dium dans la perspective d&#8217;une intelligence collective r&#233;flexive bas&#233;e sur une nouvelle forme de calcul s&#233;mantique." />
+    <meta name="citation_abstract" xml:lang="en" lang="en" content="The algorithmic medium is an infrastructure of communication augmenting the powers of previous media by adding the automation of symbolic operations. Its emergence in the middle of the twentieth century results from a long scientific and technological history that I summarize at the beginning of the paper. Then I recall in this article the main stages of its development (mainframes, Internet and PC, social Web, cloud augmented by artificial intelligence and the blockchain) as well as their socio-cognitive consequences. I evoke in the end the future developments of this medium, in the perspective of a reflexive collective intelligence based on a new form of semantic computation." />
+
+<meta name="citation_keywords" xml:lang="fr" lang="fr" content="algorithme, cha&#238;ne de blocs, computation, &#233;pist&#233;mologie, histoire des sciences, histoire des techniques, IEML, intelligence artificielle, intelligence collective, internet, langue, m&#233;dias sociaux, m&#233;dias, sensorium, symbole." />
+
+<meta name="citation_keywords" xml:lang="en" lang="en" content="algorithm, blockchain, computing, epistemology, history of science, history of technology, IEML, artificial intelligence, collective intelligence, internet, language, social media, media, sensorium, symbol." />
+
+<!--pour indexer le lien vers le pdf
+<meta name="citation_pdf_url" content="">
+-->
+
+
+
+<!-- PRISM schema - Publishing Requirements for Industry Standard Metadata -->
+    <meta name="prism.url" content="http://sens-public.org/article1275.html"/>
+    <meta name="prism.publicationName" content="Sens public"/>
+    <meta name="prism.corporateEntity" content="D&#233;partement des litt&#233;ratures de langue fran&#231;aise"/>
+    <meta name="prism.issueName" content="true"/>
+    <meta name="prism.publicationDate" content="2017/12/15"/>
+    <meta name="prism.genre" content="Essai"/>
+    <meta name="prism.issn" content="2104-3272"/>
+    <meta name="prism.eIssn" content="2104-3272"/>
+    <meta name="prism.teaser" content=""/>
+  <!--  <meta name="prism.number" content="" />
+        Num&#233;ro de dossier &#224; rajouter dans le yaml (si ce num&#233;ro existe)?-->
+
+
+<!---   RDFa   --------->
+    <meta property="dc:type" content="Text" />
+    <meta property="dc:format" content="text/html" />
+    <meta property="dc:identifier" scheme="URI" content="http://sens-public.org/article1275.html" />
+    <meta property="dc:identifier" scheme="ISSN" content="2104-3272" />
+    <meta property="dc:title" content="La pyramide algorithmique" />
+    <meta property="dc:publisher" content="D&#233;partement des litt&#233;ratures de langue fran&#231;aise" />
+    <meta property="dc:language" scheme="RFC3066" content="fr" />
+    <meta property="dc:type" content="journalArticle" />
+    <meta property="dc:creator" content="Pierre L&#233;vy" />
+
+    <meta property="dcterms:abstract" xml:lang="fr" lang="fr" content="Le medium algorithmique est une infrastructure de communication qui augmente les pouvoirs des m&#233;dias ant&#233;rieurs en y ajoutant la m&#233;canisation des op&#233;rations symboliques. Son &#233;mergence au milieu du vingti&#232;me si&#232;cle r&#233;sulte d&#8217;une longue histoire scientifique et technique que je r&#233;sume au d&#233;but de l&#8217;article. Je rappelle ensuite les grandes &#233;tapes de son d&#233;veloppement (ordinateurs centraux, internet et PC, Web social, Cloud augment&#233; par l&#8217;intelligence artificielle et la cha&#238;ne de blocs) ainsi que leurs cons&#233;quences sociocognitives. J&#8217;&#233;voque pour finir les d&#233;veloppements futurs de ce m&#233;dium dans la perspective d&#8217;une intelligence collective r&#233;flexive bas&#233;e sur une nouvelle forme de calcul s&#233;mantique." />
+    <meta property="dcterms:abstract" xml:lang="en" lang="en" content="The algorithmic medium is an infrastructure of communication augmenting the powers of previous media by adding the automation of symbolic operations. Its emergence in the middle of the twentieth century results from a long scientific and technological history that I summarize at the beginning of the paper. Then I recall in this article the main stages of its development (mainframes, Internet and PC, social Web, cloud augmented by artificial intelligence and the blockchain) as well as their socio-cognitive consequences. I evoke in the end the future developments of this medium, in the perspective of a reflexive collective intelligence based on a new form of semantic computation." />
+
+    <meta property="dc:subject" xml:lang="fr" lang="fr" content="Internet" />
+   <link rel="dc:subject" href="http://catalogue.bnf.fr/ark:/12148/cb12337059x/"/>
+    <meta property="dc:subject" xml:lang="fr" lang="fr" content="Monde num&#233;rique" />
+   <link rel="dc:subject" href="http://catalogue.bnf.fr/ark:/12148/cb133328054"/>
+    <meta property="dc:subject" xml:lang="fr" lang="fr" content="Philosophie" />
+   <link rel="dc:subject" href="http://catalogue.bnf.fr/ark:/12148/cb119368422"/>
+
+    <meta property="dcterm:created" scheme="W3CDTF" content="2017/12/15" />
+    <meta property="dc:rights" content="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)" />
+    <meta property="dc:relation.isPartOf" content="true" />
+    <meta property="dc:source" content="Sens public" />
+
+<!-- A rajouter dans le yaml? dates de soumission et acceptation des articles
+
+
+-->
+
+
+<!--Mots cl&#233;s contr&#244;l&#233;s-->
+
+<meta name="controlledKeyword" content="Internet" uriRameau="http://catalogue.bnf.fr/ark:/12148/cb12337059x/" idRameau="FRBNF12337059" wikidata="" />
+<meta name="controlledKeyword" content="Monde num&#233;rique" uriRameau="http://catalogue.bnf.fr/ark:/12148/cb133328054" idRameau="FRBNF133328055" wikidata="" />
+<meta name="controlledKeyword" content="Philosophie" uriRameau="http://catalogue.bnf.fr/ark:/12148/cb119368422" idRameau="FRBNF11936842X" wikidata="" />
+
+
+  <title>La pyramide algorithmique</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+
+<body>
+
+
+
+<div vocab="http://xmlns.com/foaf/0.1/" typeof="Person" id="foaf-author">
+<span property="familyName">L&#233;vy</span>
+<span property="firstName">Pierre</span>
+<span property="openid">0000-0003-1599-221X</span>
+</div>
+
+<div vocab="http://xmlns.com/foaf/0.1/" typeof="Person" id="foaf-author">
+<span property="familyName">Vitali-Rosati</span>
+<span property="firstName">Marcello</span>
+<span property="openid">0000-0001-6424-3229</span>
+
+<div vocab="http://xmlns.com/foaf/0.1/" typeof="Person" id="foaf-author">
+<span property="familyName">Vitali-Rosati</span>
+<span property="firstName">Marcello</span>
+<span property="openid">0000-0001-6424-3229</span>
+<div vocab="http://xmlns.com/foaf/0.1/" typeof="Person" id="foaf-author">
+<span property="familyName">Monjour</span>
+<span property="firstName">Servanne</span>
+<span property="openid">0000-0003-1067-2145</span>
+<div vocab="http://xmlns.com/foaf/0.1/" typeof="Person" id="foaf-author">
+<span property="familyName">Treleani</span>
+<span property="firstName">Matteo</span>
+<span property="openid"></span>
+
+
+<div vocab="http://schema.org/" typeof="ScholarlyArticle" resource="#article" id="schema-scholarly-article">
+  <span property="name">La pyramide algorithmique</span><br />
+      <span property="author">Pierre L&#233;vy</span><br />
+          <div property="isPartOf" typeof="PublicationIssue" resource="#issue">
+    <span typeof="Periodical" resource="#periodical">
+      <span property="name">Sens public</span>,
+    </span>
+    <span property="datePublished">2017/12/15</span>,
+    <span property="isPartOf" typeof="PublicationVolume" resource="#periodical">true</span>
+  </div>
+  <span resource="#periodical">
+    <span property="publisher">D&#233;partement des litt&#233;ratures de langue fran&#231;aise</span><br />
+    <span property="issn">2104-3272</span> ;<br />
+  </span>
+</div>
+
+
+<div class="figure">
+<img src=".//media/Pyramide-numerique.jpg" alt="Figure 1: La pyramide algorithmique" align="center" style="width:100.0%" />
+<p class="caption">Figure 1: La pyramide algorithmique</p>
+</div>
+<h2 id="un-m&#233;dium">1. Un m&#233;dium</h2>
+<p>Nous manipulons les symboles par leurs parties signifiantes. Le signifiant fonctionne comme la poign&#233;e sensible du signifi&#233; intelligible. Les m&#233;dias interviennent pr&#233;cis&#233;ment en ce point&#160;: ce sont les machines-outils que nous utilisons pour inscrire, conserver, afficher et mobiliser les signifiants. Ils prennent en charge le support et le mouvement des messages.</p>
+<p>Le premier m&#233;dium est le corps humain vivant&#160;: attitudes, gestes, danses, chants, paroles, tatouages, masques, coiffures, v&#234;tements... Les premiers moteurs symboliques sont nos organes&#160;: langue, main, jambe... Tous les autres m&#233;dias transf&#232;rent les op&#233;rations symboliques initialement accomplies par l&#8217;organisme humain vers des supports et des agents externes. Du c&#244;t&#233; du support, une arm&#233;e de messagers s&#8217;offre &#224; la vue&#160;: dessins, f&#233;tiches, totems, bijoux, sceaux, rouleaux, tablettes, cahiers, livres, &#233;crans... ou &#224; l&#8217;oreille&#160;: souffles, voix, vents, tablas, tambours, corne, trompettes, guitares, haut-parleurs, t&#233;l&#233;phone, radio... Du c&#244;t&#233; du mouvement, les m&#233;dias prolongent l&#8217;action du corps pour informer la mati&#232;re&#160;: marteaux, couteaux, pinceaux, plumes, crayons, claviers, baguettes, archets... Finalement les messages sont mus par des agencements techniques complexes&#160;: la poste ou le t&#233;l&#233;phone les transmettent, l&#8217;imprimerie les duplique, la radio les diffuse et les ordinateurs les transforment. &#192; la question ontologique &#171;&#160;qu&#8217;est-ce que le num&#233;rique&#160;?&#160;&#187;, je r&#233;ponds donc r&#233;solument&#160;: c&#8217;est un m&#233;dium. Je vais parler de m&#233;dium <em>algorithmique</em>, plut&#244;t que num&#233;rique, parce que son principal caract&#232;re est de calculer automatiquement sur les symboles &#8211;&#160;ou d&#8217;industrialiser leur transformation&#160;&#8211; en plus de les enregistrer, de les dupliquer et de les diffuser comme le faisaient les m&#233;dias ant&#233;rieurs.</p>
+<p>Les inventions de l&#8217;&#233;criture, de l&#8217;imprimerie et des m&#233;dias &#233;lectroniques ont augment&#233; de mani&#232;re irr&#233;versible nos capacit&#233;s de m&#233;moire et de communication. Ce processus s&#8217;acc&#233;l&#232;re avec le num&#233;rique. Le sensorium li&#233; au m&#233;dium algorithmique est encore en &#233;mergence, mais nous savons d&#233;j&#224; qu&#8217;il comprendra des &#233;l&#233;ments de r&#233;alit&#233; virtuelle, de r&#233;alit&#233; augment&#233;e, de g&#233;olocalisation, de jeux collaboratifs trans-m&#233;dias, de nouvelles fa&#231;ons de mettre en sc&#232;ne les relations entre les &#233;nonc&#233;s, les donn&#233;es, les personnes et les communaut&#233;s. Avec l&#8217;&#233;mergence du m&#233;dium algorithmique, nous sommes engag&#233;s dans une nouvelle &#233;tape de l&#8217;&#233;volution culturelle.</p>
+<p>Apr&#232;s avoir &#233;voqu&#233; les fondations intellectuelles de l&#8217;informatique &#224; l&#8217;&#233;poque moderne, je voudrais dans cet article retracer les grandes &#233;tapes de la croissance du m&#233;dium algorithmique telle que nous pouvons l&#8217;appr&#233;hender en 2017 et &#233;voquer pour finir un de ses avenirs possibles.</p>
+<ol style="list-style-type: decimal">
+<li><p>Pendant les ann&#233;es 1955-1975, les premiers <em>ordinateurs</em> ne concernaient que moins d&#8217;un pour cent de la population mondiale.</p></li>
+<li><p>Entre 1975 et 1995, les ordinateurs personnels et <em>l&#8217;Internet</em> mobilisent les jeunes urbains cr&#233;atifs des pays riches&#160;: un peu plus d&#8217;un pourcent de la population.</p></li>
+<li><p>L&#8217;&#233;poque du <em>Web</em> (1995-2015) aboutit &#224; la naissance d&#8217;une nouvelle sph&#232;re publique mondiale multim&#233;dia et au branchement de 50% de la population mondiale.</p></li>
+<li><p>L&#8217;&#232;re du <em>Cloud</em> (&#224; partir de 2015) connecte la quasi-totalit&#233; de l&#8217;humanit&#233; &#224; un cerveau global qui simule des r&#233;seaux neuronaux (apprentissage machine, intelligence artificielle) et enregistre les actes sociaux (cha&#238;ne de blocs, algorithmes de consensus distribu&#233;).</p></li>
+<li><p>Enfin l&#8217;&#233;tape hypoth&#233;tique de la <em>Sph&#232;re s&#233;mantique</em> favorise l&#8217;intelligence collective r&#233;flexive.</p></li>
+</ol>
+<h2 id="les-fondations">2. Les fondations</h2>
+<p>Les fondations intellectuelles de l&#8217;informatique s&#8217;&#233;tendent jusqu&#8217;aux arts de la m&#233;moire, elles comprennent la formalisation de la logique par Aristote, la notation des nombres par position chez les Indiens et les d&#233;buts de l&#8217;alg&#232;bre dans l&#8217;antiquit&#233; et au Moyen-&#194;ge. Mais ce r&#233;cit introductif commence au d&#233;but des temps modernes et se termine dans les ann&#233;es 1950, qui voient appara&#238;tre les premiers ordinateurs. Durant cette p&#233;riode, l&#8217;av&#232;nement du m&#233;dium algorithmique est pr&#233;par&#233; par deux grandes tendances &#233;volutives&#160;: le triomphe intellectuel et pratique du m&#233;canisme entre les XVI<sup>e</sup> et XX<sup>e</sup> si&#232;cles et le travail des philosophes math&#233;maticiens modernes qui se sont efforc&#233;s de formaliser les op&#233;rations intellectuelles. Finalement, rien ne serait arriv&#233; sans l&#8217;effort d&#8217;ing&#233;nierie qui a men&#233; &#224; la construction des premiers ordinateurs entre 1930 et 1950.</p>
+<h3 id="le-triomphe-du-m&#233;canisme">2.1 Le triomphe du m&#233;canisme</h3>
+<p>Astronomie, physique, chimie, g&#233;ologie, biologie, la science moderne repr&#233;sente ses objets comme des m&#233;canismes fonctionnels. Du fait de ses liens th&#233;oriques et pratiques avec les machines, la science est impliqu&#233;e dans le d&#233;veloppement technique et donc dans les sph&#232;res &#233;conomique et militaire. Apr&#232;s la Seconde Guerre mondiale, le terme de techno-science est invent&#233; pour souligner la liaison de plus en plus &#233;troite entre les deux domaines. La conception du m&#233;canisme &#233;volue entre le XVI<sup>e</sup> et le XX<sup>e</sup> si&#232;cle en suivant l&#8217;&#233;volution des machines. Trois types se succ&#232;dent&#160;: l&#8217;horloge, le moteur, l&#8217;ordinateur.</p>
+<p>Jusqu&#8217;au XVIII<sup>e</sup> si&#232;cle, les machines-mod&#232;les sont les horloges, dont les artisans europ&#233;ens ont une grande ma&#238;trise depuis le XIII<sup>e</sup> si&#232;cle. En ces temps recul&#233;s, la force humaine, animale, a&#233;rienne, hydrolique entra&#238;ne des machines faites de bois et de m&#233;tal. C&#8217;est l&#8217;&#226;ge des bateaux &#224; voiles, des moulins &#224; eau et &#224; vent. Leviers, ressorts, poulies et balanciers entretiennent et d&#233;multiplient les mouvements. Des arbres et des roues dent&#233;es transmettent les forces et changent leurs angles d&#8217;application. Ce m&#233;canisme traduit un genre de mouvement dans un autre. Il correspond &#224; la physique de Galil&#233;e, de Descartes et de Newton. A partir de Newton, le m&#233;canisme devient plus subtil. Il ne se d&#233;finit plus par contacts et pouss&#233;es entre objets mat&#233;riels, mais par des principes abstraits&#160;: &#233;galit&#233; de l&#8217;action et de la r&#233;action, conservation de l&#8217;&#233;nergie, principe de moindre action. Il suffit qu&#8217;une relation entre grandeurs soit exprim&#233;e par une fonction math&#233;matique calculable et qu&#8217;une &#171;&#160;loi&#160;&#187; conserve certaines sym&#233;tries fondamentales pour que l&#8217;exigence m&#233;caniste soit satisfaite.</p>
+<p>D&#232;s le d&#233;but du XIX<sup>e</sup> si&#232;cle, les machines de r&#233;f&#233;rence deviennent les moteurs et la physique accueille une nouvelle discipline&#160;: la thermodynamique. Le m&#233;canisme classique perdure et se perfectionne, mais il est entra&#238;n&#233; et pilot&#233; par des moteurs. C&#8217;est l&#8217;&#233;poque des grandes usines actionn&#233;es par une machine &#224; vapeur centrale. Des panaches de fum&#233;e s&#8217;&#233;l&#232;vent au-dessus des chemins de fer et des bateaux. Moyennant une certaine d&#233;perdition d&#8217;&#233;nergie, les machines des XIX<sup>e</sup> et XX<sup>e</sup> si&#232;cles traduisent une forme d&#8217;&#233;nergie dans une autre. La chaleur d&#8217;une chaudi&#232;re &#224; vapeur se m&#233;tamorphose en mouvement. La rotation de turbines se change en &#233;lectricit&#233; et l&#8217;&#233;lectricit&#233; &#224; son tour se change en lumi&#232;re. Au XX<sup>e</sup> si&#232;cle, les moteurs &#224; explosion et &#224; r&#233;action &#233;quipent des voitures automobiles, des avions et des fus&#233;es. Les centrales nucl&#233;aires produisent une &#233;lectricit&#233; distribu&#233;e par d&#8217;immenses r&#233;seaux &#224; une multitude de moteurs, de lampes et d&#8217;appareils &#233;lectroniques.</p>
+<p>D&#232;s le d&#233;but des ann&#233;es 1950, la machine reine devient l&#8217;ordinateur. Elle ne transforme plus l&#8217;&#233;nergie mais l&#8217;information. Le m&#233;canisme informationnel traduit un message d&#8217;entr&#233;e en message de sortie. Le frottement, la d&#233;perdition de force, l&#8217;entropie des machines thermodynamiques se transforment en bruit (au sens de la th&#233;orie de l&#8217;information). Les <em>bugs</em> des nouvelles machines sont dus &#224; des incoh&#233;rences logiques. Les moteurs existent encore &#8211;&#160;ils se multiplient et s&#8217;am&#233;liorent&#160;&#8211; mais ils sont d&#233;sormais contr&#244;l&#233;s et command&#233;s par des processeurs d&#8217;information cod&#233;e. Le nouveau m&#233;canisme h&#233;rite de l&#8217;oeuvre des philosophes qui se sont appliqu&#233;s &#224; math&#233;matiser les op&#233;rations cognitives et du travail des ing&#233;nieurs qui ont implant&#233; les op&#233;rations cognitives math&#233;matis&#233;es dans des machines physiques.</p>
+<h3 id="les-philosophes-math&#233;maticiens-apr&#232;s-descartes">2.2 Les philosophes math&#233;maticiens apr&#232;s Descartes</h3>
+<p>Dans la connaissance scientifique de la nature qui s&#8217;est invent&#233;e &#224; la fin de la Renaissance &#8211;&#160;&#233;poque de renouveau platonicien&#160;&#8211; ce sont les math&#233;matiques qui repr&#233;sentent l&#8217;esprit, le texte cach&#233; sous-jacent aux ph&#233;nom&#232;nes sensibles. Mais de mani&#232;re paradoxale l&#8217;exigence de math&#233;matisation avait exclu l&#8217;esprit des objets des sciences exactes. Et c&#8217;est pourquoi la pr&#233;paration souterraine d&#8217;un retour de l&#8217;esprit dans la nature fut le fait de philosophes math&#233;maticiens.</p>
+<p>Blaise Pascal (1623-1662) qui a introduit le pari en th&#233;ologie, a aussi initi&#233; le calcul des probabilit&#233;s. Ce faisant, il math&#233;matise une partie du raisonnement inductif. Ce fut &#233;galement l&#8217;inventeur de l&#8217;une des premi&#232;res machines &#224; faire les additions: une autre op&#233;ration mentale est m&#233;canis&#233;e&#160;? Leibniz (1646-1716) a mis au point une machine effectuant les additions et les multiplications, formalise la combinatoire &#8211;&#160;con&#231;ue comme une m&#233;thode d&#8217;invention&#160;&#8211; et cherche &#224; ramener les raisonnements &#224; un calcul. Georges Boole (1815-1864) est le premier &#224; ramener effectivement le raisonnement logique &#224; une alg&#232;bre qui est aujourd&#8217;hui encore &#224; la base des circuits &#233;lectroniques et des algorithmes. Bien qu&#8217;il soit g&#233;n&#233;ralement consid&#233;r&#233; comme un math&#233;maticien, il se voyait lui-m&#234;me comme un philosophe &#233;tudiant les lois de la pens&#233;e. Georg Cantor (1845-1918) inventa la th&#233;orie des ensembles, dont une version informelle sous-tend une bonne part de nos classifications et de nos inf&#233;rences quotidiennes. Il fit aussi entrer le raisonnement sur l&#8217;infini dans les math&#233;matiques.</p>
+<p>A partir de la fin du XIX<sup>e</sup> si&#232;cle, nombre de travaux convergent vers la formalisation logique des math&#233;matiques et la math&#233;matisation de la logique, domaine dans lequel s&#8217;illustrent deux philosophes math&#233;maticiens, Bertrand Russel (1872-1970) et Alfred North Whitehead (1861-1947). Ils signent ensemble les trois tomes des <em>Principia Mathematica</em> (1910-1913), grandiose tentative pour &#233;liminer les paradoxes, syst&#233;matiser math&#233;matiquement le raisonnement logique et axiomatiser l&#8217;ensemble des math&#233;matiques. Russell et Whitehead sont par ailleurs chacun de leur c&#244;t&#233; les auteurs d&#8217;oeuvres philosophiques de plein droit, dans lesquels ils ne se sont pas priv&#233;s d&#8217;aborder tous les grands probl&#232;mes.</p>
+<p>Ludwig Wittgenstein (1889-1951) est un autre philosophe important du d&#233;but du XX<sup>e</sup> si&#232;cle qui s&#8217;est tenu proche des math&#233;matiques et de la logique formelle apr&#232;s des &#233;tudes d&#8217;ing&#233;nieur. Il est li&#233; &#224; Russell et &#224; l&#8217;atomisme logique de Cambridge en Angleterre comme au mouvement du positivisme logique de Vienne, en Autriche. Il tente d&#8217;abord de ramener la connaissance &#224; la logique&#160;: &#171;&#160;Les pens&#233;es sont des images logiques de faits&#160;&#187; (dans le <em>Tractatus logico-philosophicus</em> de 1921). Il invente au passage les tables de v&#233;rit&#233;, encore utilis&#233;es. Il met en &#233;vidence le caract&#232;re tautologique des raisonnements logiques&#160;: il n&#8217;y a rien de vraiment nouveau dans la conclusion d&#8217;un raisonnement formel. Mais quelques exp&#233;riences de vie et conversations apr&#232;s la publication du <em>Tractatus</em>, il d&#233;couvre la complexit&#233;, l&#8217;ind&#233;termination et la multiplicit&#233; des usages de la parole. Dans sa th&#233;orie des &#171;&#160;jeux de langages&#160;&#187;, Wittgenstein r&#233;vise de mani&#232;re d&#233;chirante ses premi&#232;res th&#232;ses et parle des usages de la parole comme de formes de vie. Cette th&#233;orie des jeux de langage fut publi&#233;e apr&#232;s sa mort dans les <em>Investigations philosophiques</em> (1953). Malgr&#233; la diversit&#233; de ses int&#233;r&#234;ts et la contradiction de ses positions, deux questions entrelac&#233;es courent dans son oeuvre et l&#8217;unifient&#160;: celle du rapport entre pens&#233;e et langage (&#171;&#160;Les limites de mon langage sont les limites de mon propre monde&#160;&#187;, affirme-t-il d&#232;s le <em>Tractatus</em>) et celle qui porte sur les fondements et le statut des math&#233;matiques.</p>
+<p>Principalement connu comme philosophe, Edmund Husserl (1859-1938) &#233;tait un math&#233;maticien au commencement de sa carri&#232;re. Apr&#232;s une rigoureuse r&#233;flexion sur les objets math&#233;matiques, il en vint &#224; fonder l&#8217;&#233;cole ph&#233;nom&#233;nologique en philosophie, qui &#233;tudie et d&#233;crit les structures de la conscience. Il pensait d&#8217;ailleurs que cette science de la conscience &#233;tait impossible &#224; math&#233;matiser et qu&#8217;elle repr&#233;sentait m&#234;me le non-math&#233;matisable par excellence, <em>l&#8217;autre</em> de la science math&#233;matique de la nature. Husserl s&#8217;inspira de la d&#233;marche cart&#233;sienne, qui faisait reposer la connaissance sur la conscience r&#233;flexive&#160;: l&#8217;un de ses fameux ouvrages porte pr&#233;cis&#233;ment le titre de <em>M&#233;ditations cart&#233;siennes</em> (1931). Husserl fut li&#233; &#224; David Hilbert &#8211;&#160;un des plus grands math&#233;maticiens du d&#233;but du XXe si&#232;cle&#160;&#8211; alors qu&#8217;ils &#233;taient ensemble professeurs &#224; l&#8217;Universit&#233; de Gottingen pendant les ann&#233;es 1910<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<p>L&#8217;oeuvre de David Hilbert (1862-1943) est particuli&#232;rement importante pour notre propos. Il travaille &#224; syst&#233;matiser l&#8217;alg&#232;bre et met au premier plan l&#8217;&#233;tude formelle <em>des relations et des op&#233;rations</em> &#8211;&#160;ce que l&#8217;on appellera plus tard les structures, par opposition avec la nature particuli&#232;re des objets sur lesquels portent les op&#233;rations et relations<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. C&#8217;est ainsi que des univers qui semblent fort &#233;loign&#233;s l&#8217;un de l&#8217;autre (comme, par exemple, ceux des figures g&#233;om&#233;triques et des nombres) s&#8217;av&#232;rent poss&#233;der des structures math&#233;matiques communes. De grands noms am&#233;ricains de la th&#233;orie des automates et du calcul &#233;tudi&#232;rent aupr&#232;s de Hilbert &#224; l&#8217;Universit&#233; de G&#246;ttingen, tels John von Neuman (1903-1957) et Alonzo Church (1903-1995) qui contribuent &#224; la th&#233;orie de la calculabilit&#233;.</p>
+<p>Les probl&#232;mes pos&#233;s par Hilbert inspirent les travaux de G&#246;del (1906-1978) et de Turing (1912-1954), qui comptent parmi les fondateurs du nouveau m&#233;canisme informatique. G&#246;del d&#233;montre qu&#8217;une th&#233;orie math&#233;matique suffisamment complexe pour d&#233;crire l&#8217;arithm&#233;tique est incapable de d&#233;cider de la v&#233;rit&#233; de tous ses th&#233;or&#232;mes. Turing donne un mod&#232;le g&#233;n&#233;ral de la machine &#224; calculer et d&#233;montre gr&#226;ce &#224; sa machine universelle abstraite qu&#8217;il existe des fonctions incalculables. Dans son fameux article de 1937, il introduit pour la premi&#232;re fois le concept de machine universelle, c&#8217;est-&#224;-dire le sch&#233;ma formel d&#8217;un ordinateur <span class="citation">(Turing <a href="#ref-turing_computable_1937">1937</a>)</span>. La machine comprend deux parties&#160;: une m&#233;moire et une t&#234;te de lecture et d&#8217;&#233;criture. La m&#233;moire elle-m&#234;me se divise en deux parties, celle qui enregistre les op&#233;rations &#224; effectuer, ou programmes, et celle qui enregistre les objets sur lesquels portent les op&#233;rations, ou donn&#233;es. La t&#234;te de lecture et d&#8217;&#233;criture ex&#233;cute les op&#233;rations en fonction des donn&#233;es. Puisque les programmes sont dans la m&#233;moire, ils peuvent &#234;tre &#233;crits et effac&#233;s, exactement comme les donn&#233;es. Programmes et donn&#233;es sont l&#8217;un comme l&#8217;autre des <em>codes</em>, des signifiants manipul&#233;s par la m&#234;me t&#234;te de lecture-&#233;criture<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>.</p>
+<p>Dans la seconde moiti&#233; du XX<sup>e</sup> si&#232;cle l&#8217;id&#233;e se r&#233;pand de mod&#233;liser les fonctions cognitives par des groupes de transformations<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. Comment construisons-nous des objets mentaux &#224; partir des images discontinues et partielles de la boucle sensori-motrice&#160;? Jean Piaget (1896-1980), nous montre que l&#8217;objet invariant abstrait des images sensibles se ram&#232;ne &#224; des groupes de transformations dans des espaces-temps coordonn&#233;s&#160;: des &#171;&#160;cat&#233;gories&#160;&#187;. Au cours de l&#8217;apprentissage, l&#8217;intelligence r&#233;flexive poursuit cette premi&#232;re abstraction vers des niveaux op&#233;ratoires plus complexes. Piaget fait entrer le raisonnement alg&#233;brique en psychologie cognitive. Par sa th&#233;orie des langages formels, Noam Chomsky (1928-) pr&#233;pare au d&#233;veloppement des langages de programmation et au traitement automatique des langues. Levi-Strauss (1908-2009) et le courant structuraliste ram&#232;nent les narrations et les classifications qui organisent les cultures aux variables de groupes de transformation. Tout se met en place pour que les sciences humaines des si&#232;cles &#224; venir soient math&#233;matis&#233;es.</p>
+<h2 id="lordinateur">3. L&#8217;ordinateur</h2>
+<p>Quelques rares machines m&#233;caniques faisant les quatre op&#233;rations arithm&#233;tiques sont construites aux XVII<sup>e</sup> et XVII<sup>e</sup> si&#232;cle. Au XIX<sup>e</sup> si&#232;cle les m&#233;tiers &#224; tisser Jacquard sont entra&#238;n&#233;s par des machines &#224; vapeur et des cartes perfor&#233;s commandent au dessin des tissus. En Angleterre, l'astronome et math&#233;maticien Babbage (1791-1871), aid&#233; par la premi&#232;re programmeuse Ada Lovelace (1815-1852), travaille plusieurs ann&#233;es sur son <em>analytical engine</em> &#8211;&#160;une machine &#224; calculer m&#233;canique adaptable &#224; plusieurs fonctions&#160;&#8211; sans parvenir &#224; l'achever. Au tournant des XIX<sup>e</sup> et XX<sup>e</sup> si&#232;cle, il existe d&#233;j&#224; des machines &#224; calculer m&#233;caniques dans le commerce, souvent coupl&#233;es &#224; des caisses enregistreuses. La machine &#233;lectro-m&#233;canique de Hollerith (1860-1929), qui mat&#233;rialise ses donn&#233;es sous forme de cartes perfor&#233;es, est utilis&#233;e par le bureau du recensement am&#233;ricain &#224; la fin du XIX<sup>e</sup> si&#232;cle et elle est ensuite reprise par IBM.</p>
+<p>Mais les v&#233;ritables ordinateurs &#8211;&#160;cod&#233;s en binaire, programmables et enti&#232;rement &#233;lectroniques (&#224; base de transistors ou de micro-processeurs)&#160;&#8211; ne commencent &#224; &#234;tre construit et effectivement utilis&#233;s qu'au milieu du XX<sup>e</sup> si&#232;cle. Il s'agit d'un seuil d&#233;cisif parce que l'ordinateur est plus rapide &#8211;&#160;de plusieurs ordres de grandeurs&#160;&#8211; que les machines qui comportent des organes de calcul m&#233;canique. Poursuivant <em>in concreto</em> les travaux de Boole et de Turing, Shannon et Von Neumann franchissent les derniers pas. Claude Shannon met en &#233;vidence d&#232;s 1937 le parall&#233;lisme entre certains circuits &#233;lectriques et les op&#233;rations de l'alg&#232;bre de Boole. On passe ainsi de la logique math&#233;matique &#224; des m&#233;canismes mat&#233;riels. Les travaux de Shannon servent de base &#224; la conception des circuits &#233;lectroniques des ordinateurs. John von Neumann construit les plans du premier ordinateur, esquisse une th&#233;orie g&#233;n&#233;rale des automates et propose une th&#233;orie math&#233;matique des jeux. Publi&#233; au mois de juin de 1945 son &#171;&#160;<em>First draft of a report on the EDVAC</em>&#160;&#187; pr&#233;sente l'architecture fondamentale des ordinateurs, encore en usage aujourd'hui&#160;: une m&#233;moire contient les donn&#233;es et les programmes, une unit&#233; de contr&#244;le interpr&#232;te les instructions des programmes, une unit&#233; de calcul arithm&#233;tique et logique effectue les op&#233;rations sur les donn&#233;es<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>.</p>
+<p>Ce n&#8217;est qu&#8217;apr&#232;s les travaux fondateurs des ing&#233;nieurs-math&#233;maticiens et gr&#226;ce au support physique des transistors que l&#8217;ordinateur est finalement construit et devient la machine-type de la nouvelle &#233;poque. Souvenons-nous que, de Gutenberg jusqu&#8217;au milieu du XX<sup>e</sup> si&#232;cle, le principal effet technique des m&#233;dias &#233;tait d&#8217;enregistrer, de reproduire et de <em>transmettre</em> les symboles. Ainsi de l&#8217;imprimerie (journaux, magazines, livres), de l&#8217;industrie du disque, du cin&#233;ma, du t&#233;l&#233;phone, de la radio et de la t&#233;l&#233;vision. Certes, il existait bien des techniques de calcul, ou de <em>transformation</em> automatique des symboles. Mais les calculatrices automatiques disponibles avant les ordinateurs &#233;taient d&#8217;un usage limit&#233; &#224; l&#8217;arithm&#233;tique. Rien ne laissait pr&#233;sager qu&#8217;elles s&#8217;interconnecteraient pour former le m&#233;dium dominant. Le t&#233;l&#233;graphe, le t&#233;l&#233;phone et la radio avaient d&#233;j&#224; donn&#233; de remarquables exemples de machines de communication &#233;lectriques, mais sauf dans les commutateurs automatiques utilis&#233;s par les compagnies de t&#233;l&#233;phone, l&#8217;&#233;lectricit&#233; n&#8217;&#233;tait utilis&#233;e que pour sa vitesse de transmission, non pour son agilit&#233; op&#233;ratoire. Il faudra attendre la g&#233;n&#233;ration du Web et du t&#233;l&#233;phone intelligent, qui fleurit entre 1995 et 2015, pour que le public commence &#224; reconna&#238;tre le pullulement du calcul automatique comme un m&#233;dium. La puissance des algorithmes ne s&#8217;actualise que sur les bases techniques de l&#8217;&#233;lectricit&#233;, des t&#233;l&#233;communications, de la ma&#238;trise des ondes hertziennes et de l&#8217;industrie spatiale, qui assurent la <em>diffusion</em> universelle. Mais leur vertu propre est <em>l&#8217;op&#233;ration</em> automatique, la transformation r&#233;gl&#233;e des symboles.</p>
+<p>Que fait un algorithme au juste&#160;? Il d&#233;crit la marche &#224; suivre pour traiter les donn&#233;es afin de r&#233;soudre une certaine classe de probl&#232;mes en un temps fini. Les ouvrages de vulgarisation d&#233;crivent souvent l&#8217;algorithme comme une &#171;&#160;recette&#160;&#187;, une suite d&#8217;instructions qui aboutit &#224; un r&#233;sultat. Mais cela ne rend pas tout &#224; fait justice &#224; la complexit&#233; de l&#8217;objet et surtout ce type de vulgarisation masque les relations d&#8217;interd&#233;pendance entre l&#8217;algorithme et l&#8217;environnement concret dans lequel il s&#8217;ex&#233;cute&#160;: la machine. C&#8217;est pourquoi je dois d&#233;crire ici l&#8217;architecture d&#8217;un ordinateur et pr&#233;ciser le r&#244;le de ses diff&#233;rentes parties dans l&#8217;ex&#233;cution des algorithmes. N&#233;gligeons les dispositifs d&#8217;entr&#233;e et de sortie (les interfaces) pour nous concentrer sur le noyau logique de la machine.</p>
+<p>La <em>m&#233;moire</em> est un syst&#232;me de cases num&#233;rot&#233;es &#8211;&#160;pr&#233;cis&#233;ment adress&#233;es&#160;&#8211; contenant des informations cod&#233;es en binaire, des 0 et des 1.</p>
+<p>Le <em>processeur</em> accomplit physiquement des op&#233;rations arithm&#233;tiques et logiques sur des s&#233;quences de 0 et de 1.</p>
+<p>L&#8217;<em>unit&#233; de contr&#244;le</em> acc&#232;de aux programmes contenus dans la m&#233;moire, les d&#233;code et les ex&#233;cute. Pour ex&#233;cuter un programme, elle va chercher les donn&#233;es d&#8217;entr&#233;e, les traite au moyen du processeur et inscrit le r&#233;sultat dans la m&#233;moire.</p>
+<p>Pour que des traitements automatiques puissent &#234;tre appliqu&#233;s &#224; des donn&#233;es, il faut d&#8217;abord que les donn&#233;es en question aient &#233;t&#233; pr&#233;alablement cod&#233;es de mani&#232;re ad&#233;quate et uniforme. Il ne s&#8217;agit pas seulement ici du codage binaire (z&#233;ro et un), mais aussi de types de codages plus sp&#233;cialis&#233;s. On peut donner comme exemple le codage des nombres (en base deux, huit, dix, seize, etc.) celui des caract&#232;res d&#8217;&#233;criture, celui des images (les pixels), celui des sons (l&#8217;&#233;chantillonnage), et ainsi de suite.</p>
+<p>Remarquons qu&#8217;un programme prend en entr&#233;e le contenu de certaines adresses de la m&#233;moire et va inscrire le r&#233;sultat en sortie dans d&#8217;autres adresses. Il ne porte pas sur telles ou telles donn&#233;es particuli&#232;res mais sur les <em>donn&#233;es quelconques</em> qui sont contenues par des <em>adresses d&#233;termin&#233;es</em>. Un ensemble de tests (si... alors...) d&#233;termine le choix des adresses o&#249; puiser les donn&#233;es &#224; traiter, le choix des op&#233;rateurs et le choix des adresses o&#249; inscrire les r&#233;sultats. La circulation des donn&#233;es s&#8217;ach&#232;ve lorsqu&#8217;un test a d&#233;termin&#233; que le traitement &#233;tait termin&#233;. D&#232;s lors, le r&#233;sultat du traitement -&#160;&#224; savoir un ensemble de donn&#233;es cod&#233;es&#160;- se trouve &#224; une adresse pr&#233;cise de la m&#233;moire. J&#8217;ajoute que les adresses correspondent g&#233;n&#233;ralement &#224; certains <em>types</em> de donn&#233;es. Par exemple, la base de donn&#233;es du personnel d&#8217;une entreprise est faite de fiches qui sont toutes compos&#233;es de la m&#234;me mani&#232;re&#160;: nom, photo, date de naissance, salaire mensuel, etc. Le &#171;&#160;nom&#160;&#187; comprendra des s&#233;quences de caract&#232;res alphab&#233;tiques, la &#171;&#160;photo&#160;&#187; une image, la &#171;&#160;date de naissance&#160;&#187; trois nombres correspondant au jour, au mois et &#224; l&#8217;ann&#233;e, etc. Supposons qu&#8217;un programme calcule pour chaque jour de l&#8217;ann&#233;e la liste des employ&#233;s dont c&#8217;est l&#8217;anniversaire. Il prendra en entr&#233;e le fichier du personnel, identifiera les dates de naissance et produira en sortie un calendrier qui comporte, pour chaque date, les employ&#233;s concern&#233;s. On voit que la structure des donn&#233;es d&#8217;entr&#233;e (le fichier du personnel) et celle des donn&#233;es de sortie (le calendrier des anniversaires) sont diff&#233;rentes. Bien souvent, un programme prend une certaine structure de donn&#233;es en entr&#233;e et g&#233;n&#232;re en sortie une autre structure de donn&#233;es. D&#232;s qu&#8217;il est un peu complexe, il encha&#238;ne, boucle ou traite en parall&#232;le plusieurs sous-programmes, si bien qu&#8217;il met en jeu de nombreuses structures de donn&#233;es. Or ces structures de donn&#233;es virtuelles se projettent n&#233;cessairement dans les &#171;&#160;cases-m&#233;moire&#160;&#187; &#233;lectroniques de la machine actuelle. Aucun programme ne peut fonctionner sans savoir exactement o&#249; aller chercher les donn&#233;es et o&#249; inscrire les r&#233;sultats. Les programmes fonctionnent donc &#171;&#160;main dans la main&#160;&#187; avec un syst&#232;me d&#8217;adressage de la m&#233;moire qui leur facilite plus ou moins la t&#226;che. On notera que ce sont les <em>syst&#232;mes d&#8217;exploitation</em> des ordinateurs (par exemple&#160;: UNIX, Windows, l&#8217;OS d&#8217;Apple, etc.) qui g&#232;rent les adresses dans la m&#233;moire physique des ordinateurs.</p>
+<p>L&#8217;efficacit&#233; des programmes d&#233;pend des op&#233;rations accomplies par les processeurs &#233;lectroniques. Certains processeurs sont g&#233;n&#233;ralistes&#160;: ils peuvent accomplir toutes les t&#226;ches, mais de mani&#232;re lente et r&#233;p&#233;titive, tandis que d&#8217;autres sont sp&#233;cialis&#233;s dans certaines fonctions, par exemple les puces graphiques pour le traitement des images. On aura toujours avantage &#224; ce qu&#8217;il existe une ad&#233;quation entre le codage des donn&#233;es, le fonctionnement des processeurs et la strat&#233;gie de r&#233;solution de probl&#232;me des programmes.</p>
+<p>Distinguons finalement entre l&#8217;algorithme et le programme. L&#8217;algorithme est un objet abstrait, virtuel. En revanche, le programme que l&#8217;on trouve dans la m&#233;moire d&#8217;un ordinateur est une implantation particuli&#232;re d&#8217;un algorithme, cod&#233; dans un certain langage de programmation. Il s&#8217;agit d&#8217;un objet concret, d&#8217;une &#233;criture actuelle. Les premiers langages de programmation &#233;taient proches de l&#8217;architecture des ordinateurs et s&#8217;adressaient directement &#224; ses organes physiques. Les langages de programmation plus r&#233;cents se sp&#233;cialisent dans la description des op&#233;rations de &#171;&#160;haut niveau&#160;&#187;, telles qu&#8217;elles sont con&#231;ues dans l&#8217;esprit des programmeurs. Ils ne se transforment en instructions aux organes physiques de la machine qu&#8217;apr&#232;s une s&#233;rie de traductions.</p>
+<p>En somme, un algorithme doit &#234;tre &#233;crit dans un ou plusieurs langages de programmation pour devenir un programme implant&#233; dans la m&#233;moire d&#8217;un ordinateur. Le programme g&#233;n&#232;re des cycles de relations dynamiques entre des structures de donn&#233;es qui se projettent sur les adresses-m&#233;moires de la machine. Pour transformer les donn&#233;es, le programme commande un processeur, c&#8217;est-&#224;-dire un op&#233;rateur mat&#233;riel (de type &#233;lectronique, optique, quantique, mol&#233;culaire...) qui manipule des jetons micro-physiques. Dans la pratique, l&#8217;algorithme d&#233;pend donc des langages de programmation dans lesquels il est &#233;crit et des machines qui ex&#233;cutent les programmes. Du c&#244;t&#233; des machines, il faut consid&#233;rer particuli&#232;rement le syst&#232;me d&#8217;exploitation, la taille et la structure de la m&#233;moire, enfin les op&#233;rations accomplies par le processeur &#233;lectronique.</p>
+<p>Entre 1955 et 1975, il n&#8217;existe encore que quelques ordinateurs. Les savants r&#233;alisent l&#8217;importance historique et scientifique de ces machines mais elles n&#8217;ont pas encore d&#8217;impact sur la communication sociale du fait de leurs prix &#233;lev&#233;s et de la complexit&#233; de leur utilisation. Ce sont de gros appareils pesants referm&#233;s sur eux-m&#234;mes, dont les interfaces d&#8217;entr&#233;e et de sortie ne peuvent &#234;tre actionn&#233;es que par des sp&#233;cialistes. Seules les grandes entreprises, certains laboratoires scientifiques et administrations gouvernementales de pays riches en poss&#232;dent. L&#8217;industrie informatique est alors domin&#233;e par les fabricants de mat&#233;riels, IBM au premier chef. Le logiciel est consid&#233;r&#233; comme un service sur mesure offert aux clients et les machines des diff&#233;rents constructeurs ne sont pas compatibles. Moins d&#8217;un pourcent de l&#8217;humanit&#233; se trouve directement en contact avec les ordinateurs. Si l&#8217;on excepte quelques visionnaires<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a>, jusqu&#8217;au milieu des ann&#233;es 1970, personne ne les consid&#232;re comme des m&#233;dias de communication.</p>
+<h2 id="linternet">4. L&#8217;Internet</h2>
+<p>A partir des ann&#233;es 1970, l&#8217;industrie &#233;lectronique &#8211;&#160;Intel en t&#234;te&#160;&#8211; commence &#224; fabriquer en masse des <em>micro-processeurs</em> qui regroupent plusieurs composants miniaturis&#233;s dans un seul bo&#238;tier, ce qui acc&#233;l&#232;re consid&#233;rablement les calculs, diminue les prix, all&#232;ge les machines et ouvre la voie &#224; l&#8217;informatique personnelle. Cette derni&#232;re devient &#224; son tour la base de la nouvelle industrie du logiciel. Comme les ordinateurs personnels de diff&#233;rentes marques utilisent souvent les m&#234;mes micro-processeurs, ils peuvent adopter des syst&#232;mes d&#8217;exploitation communs et faire tourner les m&#234;mes logiciels. On d&#233;couvre que les applications n&#8217;ont pas besoin d&#8217;&#234;tre programm&#233;es sur mesure, mais que quelques applications-types peuvent &#234;tre utilis&#233;es par tout le monde (traitement de texte, tableur, dessin industriel, etc.). L&#8217;&#233;toile d&#8217;IBM d&#233;cline et le couple Intel-Microsoft commence &#224; dominer l&#8217;informatique. Les premiers ordinateurs personnels, au maniement plut&#244;t &#233;sot&#233;rique, &#233;taient r&#233;serv&#233;s aux initi&#233;s et aux passionn&#233;s. Le Mackintosh (1984) con&#231;u par l&#8217;&#233;quipe de Steve Jobs chez Apple affiche des interfaces conviviales qui permettent &#224; tout un chacun de s&#8217;approprier les nouvelles machines. La souris, les ic&#244;nes, le multi-fen&#234;trage, les hypertextes &#8211;&#160;qui avaient &#233;t&#233; imagin&#233;es par Douglas Engelbart d&#232;s les ann&#233;es 1960&#160;&#8211; vont bient&#244;t habiller tous les ordinateurs. Le d&#233;veloppement de l&#8217;informatique personnelle met entre les mains d&#8217;une &#233;lite de jeunes urbains &#233;duqu&#233;s des pays riches &#8211;&#160;autour d&#8217;un pourcent de la population mondiale&#160;&#8211; de puissants outils de <em>production de messages</em>, qu&#8217;il s&#8217;agisse de textes, de tableaux de chiffres, d&#8217;images ou de musique.</p>
+<p>Seconde r&#233;volution des ann&#233;es 1970&#160;: la t&#233;l&#233;matique. Les t&#233;l&#233;communications se num&#233;risent et les ordinateurs communiquent. Les activit&#233;s de la poste, de l&#8217;&#233;dition, de la presse et de la diffusion radio-t&#233;l&#233;vis&#233;e se mettent &#224; converger vers le num&#233;rique, qui commence &#224; &#234;tre per&#231;u comme un vecteur de communication et non seulement comme un calculateur arithm&#233;tique. La d&#233;mocratisation des imprimantes et le d&#233;veloppement des r&#233;seaux de communication entre ordinateurs, tout comme l&#8217;ouverture des ondes hertziennes et la multiplication des chaines de radio et de t&#233;l&#233;vision, commencent &#224; remettre en question les monopoles sur la diffusion massive des messages, qui appartenaient traditionnellement aux &#233;diteurs, journalistes professionnels et responsables des grands r&#233;seaux de t&#233;l&#233;vision<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a>. Entre 1950 et 1970, il est rare que des flux de donn&#233;es circulent entre les machines. La tendance &#224; la connexion se manifeste d&#232;s le milieu des ann&#233;es 1970 et devient la norme pendant les ann&#233;es 1980. Pour adresser les ordinateurs dans les r&#233;seaux de t&#233;l&#233;communication, le protocole de l&#8217;Internet (invent&#233; en 1969 sur une commande de l&#8217;arm&#233;e am&#233;ricaine) s&#8217;impose alors face &#224; ses nombreux concurrents gr&#226;ce &#224; son architecture d&#233;centralis&#233;e et sa facilit&#233; d&#8217;utilisation. On peut consid&#233;rer n&#8217;importe quel processeur de donn&#233;es &#8211;&#160;aussi complexe soit-il&#160;&#8211; comme une &#171;&#160;bo&#238;te noire&#160;&#187; faisant office de macro-op&#233;rateur. C&#8217;est ainsi que le protocole de l&#8217;Internet, en adressant les ordinateurs dans le r&#233;seau, a du m&#234;me coup ouvert un syst&#232;me universel d&#8217;adressage des op&#233;rateurs, une sorte de super-processeur distribu&#233;. Au stade de l&#8217;Internet et de l&#8217;informatique personnelle, <em>les ordinateurs ont d&#233;sormais une adresse dans le r&#233;seau mondial</em>. En cons&#233;quence, ils peuvent &#171;&#160;collaborer&#160;&#187; et l&#8217;&#233;ventail des types de traitement et d&#8217;applications s&#8217;&#233;largit consid&#233;rablement. Les ordinateurs sont devenus des outils de communication, mais ils ne sont encore utilis&#233;s que par une fraction minime de la population mondiale.</p>
+<h2 id="le-web-social">5. Le Web social</h2>
+<p>L&#8217;Internet n&#8217;est devenu un support de communication majoritaire - au point de remettre en cause irr&#233;versiblement le fonctionnement des m&#233;dias traditionnels et celui de la plupart des institutions &#233;conomiques, politiques et culturelles -&#160;qu&#8217;&#224; partir de l&#8217;arriv&#233;e du Web autour de 1995. La r&#233;volution du Web s&#8217;explique essentiellement par <em>la cr&#233;ation d&#8217;un syst&#232;me universel d&#8217;adressage des donn&#233;es</em>. Il s&#8217;agit bien entendu des URL, ou <em>Uniform Resource Locators</em> (qui commencent par http://). Notons que &#8211;&#160;comme dans le cas du protocole de l&#8217;Internet pour adresser les op&#233;rateurs&#160;&#8211; ce syst&#232;me universel vient s&#8217;ajouter aux adresses locales des donn&#233;es dans les ordinateurs, il ne le supprime pas. On pourrait d&#233;crire ainsi l&#8217;id&#233;e de g&#233;nie de Tim Berners-Lee (1955-)&#160;: en inventant un syst&#232;me universel d&#8217;adressage des donn&#233;es, il a permis le passage d&#8217;une multitude de bases de donn&#233;es actuelles (chacune command&#233;e par un ordinateur) &#224; une seule base de donn&#233;es virtuelle pour tous les ordinateurs. Ce sont maintenant aussi bien les processeurs que les donn&#233;es qui poss&#232;dent des adresses universelles. D&#232;s lors, la puissance effective et la capacit&#233; de collaboration des algorithmes s&#8217;accro&#238;ssent et se diversifient prodigieusement, puisque la machine programmable devient le r&#233;seau lui-m&#234;me. Un nouveau type de logiciel, le fureteur (<em>browser</em>), permet &#224; ses utilisateurs de lire et d&#8217;&#233;crire les pages de la nouvelle biblioth&#232;que virtuelle mondiale, de cr&#233;er et de suivre des hyperliens entre ces pages.</p>
+<p>La p&#233;riode 1995-2015 voit le d&#233;veloppement spectaculaire de la t&#233;l&#233;phonie mobile&#160;: de moins de 5% de p&#233;n&#233;tration mondiale en 1995 &#224; pr&#232;s de 100% en 2015. Pendant ces vingt ann&#233;es, les t&#233;l&#233;phones mobiles se transforment en t&#233;l&#233;phones intelligents, c&#8217;est-&#224;-dire en micro-ordinateurs de poche g&#233;olocalis&#233;s, connect&#233;s au Web &#224; haute vitesse et dot&#233;s des fonctions de communication multim&#233;dia les plus diverses&#160;: visiophonie, texte, musique, photos, vid&#233;o, jeux, cartes interactives, etc. Un continuum se dessine entre une multitude d&#8217;environnements et d&#8217;objets connect&#233;s, de robots, de smartphones de tablettes et de laptops. Ces objets &#233;metteurs et r&#233;cepteurs d&#8217;information communiquent avec des <em>centres de calcul</em> (le fameux <em>cloud</em>), qui sont devenus les nouveaux ordinateurs centraux. Nous n&#8217;avons plus entre les mains que les interfaces mobiles d&#8217;o&#249; nous envoyons nos commandes et recevons nos messages. Le gros des donn&#233;es, les programmes fondamentaux et la puissance de traitement n&#233;cessaires aux applications du Web social sont d&#233;sormais rassembl&#233;s dans d&#8217;&#233;normes b&#226;timents &#224; plusieurs &#233;tages contenant des milliers de processeurs et de m&#233;moires &#233;l&#233;mentaires interconnect&#233;es, branch&#233;s sur les dorsales de l&#8217;internet et qui consomment autant d&#8217;&#233;lectricit&#233; que la production d&#8217;une petite centrale. L&#8217;image d&#8217;un nuage a&#233;rien, l&#233;ger, presque immat&#233;riel est donc particuli&#232;rement trompeuse.</p>
+<p>Dans les nouvelles plateformes de communication, la communaut&#233; des utilisateurs est elle-m&#234;me la source des informations. En 1998, Google commence &#224; indexer (presque) toutes les donn&#233;es du Web et lance le moteur de recherche qui l&#8217;a rendu fameux en utilisant l&#8217;intelligence collective des internautes. Son algorithme <em>page rank</em> fait remonter au premier rang des r&#233;ponses les sites qui re&#231;oivent le plus de liens des sites qui sont eux-m&#234;mes les plus vis&#233;s par des liens. En 2001, Wikipedia inaugure une encyclop&#233;die hypertextuelle, multilingue, gratuite et en ligne que r&#233;digent et &#233;ditent des arm&#233;es de volontaires. Linkedin, le m&#233;dium social des cadres et du march&#233; de l&#8217;emploi est fond&#233; d&#232;s 2002. De nouveaux logiciels rendent possible la cr&#233;ation de pages Web sans utiliser de codes informatiques&#160;: c&#8217;est le d&#233;but des blogs&#160;; WordPress est cr&#233;&#233; en 2003. En 2003 &#233;galement, Delicious permet le partage en ligne des &#171;&#160;signets&#160;&#187; des fureteurs (les <em>bookmarks</em> des <em>browsers</em>), inaugurant ainsi la curation collaborative de donn&#233;es. Facebook, appel&#233; &#224; devenir le m&#233;dium social par excellence, est fond&#233; en 2004. Apr&#232;s la cr&#233;ation de Facebook, les plateformes de communication sociale se cr&#233;ent &#224; un rythme acc&#233;l&#233;r&#233;. Citons Flickr (images) et YouTube (vid&#233;os) en 2005&#160;; Spotify (musique) en 2006&#160;; SoundCloud (partage de fichiers audio) et Twitter (nouvelles t&#233;l&#233;graphiques) en 2007&#160;; WhatsApp (communication s&#233;curis&#233;e par t&#233;l&#233;phone intelligent), Pinterest (images) et Instagram (&#233;change de photos par t&#233;l&#233;phone intelligent) en 2010&#160;; Snapchat (communication par t&#233;l&#233;phone intelligent) en 2011.</p>
+<p>En vingt ans nous sommes pass&#233;s de 1% &#224; 50% de la population mondiale connect&#233;e &#224; l&#8217;internet. A la fin de cette p&#233;riode, les interactions entre personnes empruntent massivement le canal du nouveau m&#233;dium, que ce soit pour la pure et simple sociabilit&#233; ou pour l&#8217;information, le travail, l&#8217;achat et la vente, l&#8217;apprentissage, la recherche, l&#8217;action politique, le jeu et ainsi de suite. Les algorithmes canalisent la communication entre les gens, d&#233;terminent les relations entre les donn&#233;es et r&#232;glent les interactions entre gens et donn&#233;es. Les conflits se multiplient autour de la s&#233;curit&#233;, de la propri&#233;t&#233;, de la transparence et de l&#8217;ouverture des donn&#233;es et des algorithmes&#160;: voil&#224; un signe s&#251;r de la transition socio-culturelle en cours.</p>
+<p>Malgr&#233; leur r&#244;le d&#233;terminant, les algorithmes ne sont pas encore per&#231;us dans la conscience collective comme le nouveau m&#233;dium de la communication et de la pens&#233;e humaine. On reste fascin&#233; par la logique de diffusion des m&#233;dias ant&#233;rieurs. Sur le plan de la structure de la communication sociale, la nouvelle sph&#232;re publique mondiale multim&#233;dia permet &#224; n&#8217;importe qui de produire des messages, d&#8217;&#233;mettre en direction d&#8217;une communaut&#233; sans fronti&#232;re et d&#8217;acc&#233;der aux messages produits par les autres &#233;metteurs. Cette libert&#233; de communication est d&#8217;autant plus effective que son exercice est quasi gratuit et n&#233;cessite peu de connaissances techniques pr&#233;alables. La majorit&#233; des gens con&#231;oit et utilise l&#8217;Internet comme un outil de diffusion et de r&#233;ception d&#8217;information, dans la continuit&#233; des m&#233;dias de masse. Un peu comme si le Web distribuait &#224; chaque individu la puissance d&#8217;une maison d&#8217;&#233;dition, d&#8217;une cha&#238;ne de t&#233;l&#233;vision et d&#8217;un r&#233;seau postal multim&#233;dia en temps r&#233;el, tout en lui donnant acc&#232;s &#224; une biblioth&#232;que et m&#233;diath&#232;que mondiale omnipr&#233;sente. De m&#234;me que les premiers livres imprim&#233;s -&#160;les incunables&#160;- copiaient &#233;troitement la forme des manuscrits, nous nous servons encore du nouveau m&#233;dium pour achever, ou pousser jusqu&#8217;&#224; son terme, la puissance de diffusion des m&#233;dias de masse. Tout le monde peut &#233;mettre universellement. Chacun peut recevoir de n&#8217;importe o&#249;.</p>
+<h2 id="le-cerveau-global">6. Le cerveau global</h2>
+<h3 id="m&#233;gadonn&#233;es-et-m&#233;gamachines">6.1 M&#233;gadonn&#233;es et m&#233;gamachines</h3>
+<p>Les taux de connexions continuent &#224; cro&#238;tre et pointent vers quatre-vingt-dix pour cent de l&#8217;humanit&#233; avant la moiti&#233; du XXI<sup>e</sup> si&#232;cle. Le m&#233;dium algorithmique devient la sph&#232;re publique dominante tandis que les m&#233;dias classiques (imprimerie, t&#233;l&#233;phone, disque, radio, t&#233;l&#233;vision) se fondent progressivement dans le d&#233;cor num&#233;rique. Vente en gros ou au d&#233;tail, march&#233;s de seconde main, transport urbain, h&#244;tellerie, immobilier... secteur apr&#232;s secteur &#233;conomique, les structures pr&#233;-num&#233;riques se dissolvent au profit de nouvelles formes de coordination des activit&#233;s bas&#233;es sur des applications mobiles support&#233;es par le <em>cloud</em>. L&#8217;&#233;ducation, la sant&#233; et la politique se transigent de plus en plus dans les m&#233;dias sociaux. Des flots de donn&#233;es montent des objets intelligents et des environnements connect&#233;s. Les &#233;chantillons et collections limit&#233;s des premiers temps de l&#8217;informatique font place au recueil de toutes les informations disponibles. Au lieu des petits stocks de donn&#233;es au format homog&#232;ne qui &#233;taient soigneusement cod&#233;s et entrepos&#233;s dans les ordinateurs d&#8217;antan, il faut maintenant traiter les torrents h&#233;t&#233;rog&#232;nes d&#8217;information produits en temps r&#233;el par les employ&#233;s, les clients, les partenaires, les march&#233;s, les villes, les territoires... Pour traiter ces m&#233;gadonn&#233;es (<em>big data</em>), les outils et les m&#233;thodes de calcul des p&#233;riodes ant&#233;rieures ne sont plus pertinents. De nouvelles applications se sp&#233;cialisent dans le traitement statistique &#224; grande &#233;chelle et la visualisation des patterns et tendances. Afin de canaliser les m&#233;gadonn&#233;es et d&#8217;ex&#233;cuter les algorithmes qui les exploitent, les grandes compagnies du <em>cloud</em> construisent des m&#233;gamachines virtuelles qui relient en grappes leurs centres de calcul. Autre signe des temps, en 2017 Apple, Google, Amazon, Facebook et Microsoft avaient d&#233;pass&#233; en capitalisation boursi&#232;re les autres multinationales, y compris les p&#233;troli&#232;res.</p>
+<h3 id="lintelligence-artificielle">6.2 L&#8217;intelligence artificielle</h3>
+<p>Au cours de la seconde moiti&#233; du XX<sup>e</sup> si&#232;cle, des chercheurs avaient con&#231;u des algorithmes d&#8217;intelligence artificielle capables de <em>simuler des apprentissages</em> &#224; partir de mod&#232;les imitant le comportement des r&#233;seaux de neurones. Mais des temps de calcul prohibitifs avaient d&#233;courag&#233; les applications pratiques. Or de nouvelles g&#233;n&#233;rations de puces &#233;lectroniques, parmi lesquelles se distinguent les GPU (<em>Graphics Processing Units</em> ou unit&#233;s de traitement graphique) ont remis &#224; l&#8217;ordre du jour l&#8217;apprentissage des machines par simulation neuromim&#233;tique (<em>deep learning</em>). Connect&#233;s par milliers dans les m&#233;gamachines, les nouveaux processeurs ex&#233;cutent d&#233;sormais des programmes d&#8217;intelligence artificielle sur des d&#233;luges de m&#233;gadonn&#233;es. En 2017, les grandes compagnies du Cloud offrent des cours en ligne pour enseigner le <em>deep learning</em> parce que les universit&#233;s ne suffisent pas &#224; fournir &#224; la demande de comp&#233;tences. Elles mettent aussi en libre acc&#232;s nombre de composants de leurs programmes d&#8217;intelligence artificielle afin de favoriser la cr&#233;ation d&#8217;&#233;cosyst&#232;mes de services et d&#8217;applications autour de leurs centres de calculs. La plupart des gadgets et des applications utilisent d&#233;sormais l&#8217;apprentissage automatique, d&#233;tectent des patterns statistiques, traitent les langues naturelles<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a>, reconnaissent des formes visuelles ou sonores. Les syst&#232;mes de recommandation d&#8217;Amazon, Spotify ou Netflix<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> apprennent nos pr&#233;f&#233;rences litt&#233;raires, musicales ou cin&#233;matographiques de nos comportements. Le syst&#232;me de reconnaissance visuelle de Pinterest affiche les images qui ressemblent le plus &#224; celle que nous venons de s&#233;lectionner. L&#8217;algorithme de Facebook d&#233;termine notre fil de lecture en fonction de nos &#171;&#160;<em>like</em>&#160;&#187;. Nos banques rep&#232;rent les anomalies qui r&#233;v&#232;lent un vol de carte de cr&#233;dit. L&#8217;intelligence artificielle contribue de plus en plus &#224; l&#8217;infrastructure du monde physique&#160;: elle traite des donn&#233;es environnementales, &#233;quipe les robots et les v&#233;hicules autonomes, optimise le trafic et les d&#233;penses d&#8217;&#233;nergie des villes connect&#233;es.</p>
+<p>Pour &#233;viter les fantasmes apocalyptiques, il faut s&#8217;entendre sur la notion d&#8217;apprentissage des machines. Les ordinateurs n&#8217;apprennent pas de mani&#232;re autonome. Les programmes de la nouvelle intelligence artificielle sont produits par un couple. D&#8217;un c&#244;t&#233;, <em>un algorithme d&#8217;apprentissage</em> simule un syst&#232;me complexe de type neuronal, sociobiologique ou physique. D&#8217;un autre c&#244;t&#233;, <em>un ensemble de donn&#233;es</em> entraine cet algorithme. Le programme d&#8217;intelligence artificielle n&#8217;arrive &#224; traiter automatiquement l&#8217;information qu&#8217;apr&#232;s avoir &#233;t&#233; entra&#238;n&#233; sur des dizaines de milliers d&#8217;exemples de probl&#232;mes accompagn&#233;s de la &#171;&#160;bonne r&#233;ponse&#160;&#187; ou de donn&#233;es correctement cat&#233;goris&#233;es. Aussi bien l&#8217;algorithme d&#8217;apprentissage que les donn&#233;es d&#8217;entra&#238;nement ont &#233;t&#233; d&#233;termin&#233;s par des &#234;tres humains. Le programme qui r&#233;sulte de l&#8217;entra&#238;nement n&#8217;invente donc rien&#160;: c&#8217;est un produit m&#233;canique. Il est pourtant tr&#232;s utile, car on n&#8217;aurait pas pu l&#8217;&#233;crire directement, sans passer par la phase d&#8217;entra&#238;nement sur des donn&#233;es. Les donn&#233;es d&#8217;entra&#238;nement sont en fait la partie variable du programme d&#8217;intelligence artificielle. Si ces donn&#233;es d&#8217;entra&#238;nement sont produites ou choisies par les utilisateurs, tout se passe comme si ces derniers contribuaient &#224; programmer leur environnement de communication, de travail ou de jeu... comme s&#8217;ils dressaient des robots &#224; leur service.</p>
+<p>Nos gestes, communications et transactions sculptent les neurones logiciels qui d&#233;terminent en retour les informations qui nous sont pr&#233;sent&#233;es. Nous en faisons tous les jours l&#8217;exp&#233;rience sur Facebook, puisque c&#8217;est bien nous qui &#8211;&#160;par nos &#171;&#160;j&#8217;aime&#160;&#187;, partages et autres actions&#160;&#8211; <em>commandons</em> l&#8217;algorithme qui sert notre fil. Il suffit de changer d&#233;lib&#233;r&#233;ment de comportement pendant quelques jours pour voir le fil se modifier. L&#8217;algorithme de Facebook n&#8217;a un effet de &#171;&#160;bulle cognitive&#160;&#187; que si nous agissons de mani&#232;re irr&#233;fl&#233;chie. La bulle &#233;clate d&#232;s que nous interagissons avec des sources d&#8217;information plus diverses. Il faut g&#233;n&#233;raliser cette humble prise de conscience &#224; tous les comportements qui g&#233;n&#232;rent des donn&#233;es et qui alimentent l&#8217;apprentissage des neurones artificiels dans les nuages. Des cerveaux m&#233;caniques externes &#224; notre syst&#232;me nerveux apprennent de nos habitudes. Ces circuits neuronaux artificiels vont-ils un jour s&#8217;int&#233;grer en un cerveau global&#160;? Et si la chose arrive, selon quel projet de civilisation, selon quelle &#233;ducation l&#8217;intelligence collective humaine consciente et r&#233;fl&#233;chie va-t-elle s&#8217;&#233;lever &#224; la ma&#238;trise du cortex &#233;lectronique&#160;?</p>
+<p>Reconnaissons d&#232;s maintenant que nous avons franchi une nouvelle &#233;tape dans le long processus historique d&#8217;externalisation de la m&#233;moire&#160;: les donn&#233;es ne sont plus seulement enregistr&#233;es pour &#234;tre analys&#233;es et trait&#233;es par des programmes, elles mod&#232;lent d&#233;sormais les programmes eux-m&#234;mes. Notre m&#233;moire biologique ne se r&#233;duit pas &#224; un simple enregistrement, &#224; des donn&#233;es qu&#8217;on &#233;crit et qu&#8217;on efface. Elle implique depuis toujours un apprentissage, l&#8217;acquisition d&#8217;habitudes, une &#233;volution des mani&#232;res de faire. Voici que la m&#233;moire m&#233;canique ressemble de plus en plus &#8211;&#160;et prolonge de mieux en mieux&#160;&#8211; la m&#233;moire vivante.</p>
+<h3 id="les-registres-infalsifiables-des-cha&#238;nes-de-blocs">6.3 Les registres infalsifiables des cha&#238;nes de blocs</h3>
+<p>Une autre innovation technique, celle de la <em>Blockchain</em> (&#171;&#160;cha&#238;ne de blocs&#160;&#187; en fran&#231;ais) contribue &#224; faire &#233;voluer la m&#233;moire num&#233;rique. La cha&#238;ne de blocs r&#233;pond &#224; un probl&#232;me qui s&#8217;est pos&#233; avec de plus en plus d&#8217;acuit&#233; avec le d&#233;veloppement du Web d&#233;centralis&#233; et des applications pair-&#224;-pair (P2P)&#160;: comment synchroniser une base de donn&#233;es distribu&#233;e dans laquelle une multitude d&#8217;utilisateurs peuvent lire et &#233;crire librement&#160;? Pour r&#233;soudre ce probl&#232;me de mani&#232;re s&#251;re sans faire intervenir une autorit&#233; centrale transcendante, il faut &#233;tablir automatiquement un consensus entre les utilisateurs sur l&#8217;ordre et les dates exactes des transactions. Les protocoles et les algorithmes supportant le consensus distribu&#233; repr&#233;sentent d&#233;sormais un vaste champ de recherche en informatique. La cha&#238;ne de blocs, majoritairement adopt&#233;e par l&#8217;industrie au moment o&#249; j&#8217;&#233;cris ces lignes, n&#8217;est que l&#8217;une des approches possibles.</p>
+<p>Sans entrer dans les d&#233;tails techniques, une cha&#238;ne de blocs est un registre num&#233;rique infalsifiable qui repose sur un syst&#232;me de cryptographie distribu&#233;e. Cette nouvelle g&#233;n&#233;ration de livres de comptes sert de fondement &#224; des monnaies &#233;lectroniques <em>ind&#233;pendantes des devises garanties par les &#233;tats nations</em>. Le <em>Bitcoin</em> est la plus connue de ces nouvelles monnaies. Mais les cha&#238;nes de blocs permettent aussi d&#8217;enregistrer de mani&#232;re irr&#233;versible toutes sortes de transactions mon&#233;taires (achat, ventes, pr&#234;ts, remboursements...) ou non mon&#233;taires, tels que consentements, votes, etc. Elles tracent les circulations de valeur, authentifient les actes sociaux, ex&#233;cutent automatiquement les contrats aux dates d&#8217;&#233;ch&#233;ances. De nombreuses applications sont envisag&#233;es dans la finance et l&#8217;industrie mais aussi dans l&#8217;&#233;ducation, la sant&#233; et m&#234;me dans l&#8217;art. En garantissant l&#8217;enregistrement des actes de langages, la cha&#238;ne de blocs conf&#232;re &#224; la m&#233;moire num&#233;rique une dimension pragmatique.</p>
+<p>Les protocoles et algorithmes de consensus distribu&#233; lib&#232;rent les parties prenantes des interm&#233;diaires humains qui &#233;taient traditionnellement charg&#233;s d&#8217;authentifier les transactions. Or aussi bien les administrations publiques que celles des grandes entreprises priv&#233;es tirent leur l&#233;gitimit&#233; de l&#8217;immense service que rendent les &#171;&#160;bureaux&#160;&#187; depuis des si&#232;cles&#160;: garantir l&#8217;exactitude des informations essentielles sur les biens et les personnes, enregistrer les actes. Si les titres, contrats et transactions peuvent &#234;tre authentifi&#233;s par le nouveau notaire artificiel, les bureaucraties publiques ou priv&#233;es charg&#233;es d&#8217;enregistrer et de garantir les actes seront remises en question dans les d&#233;cennies qui viennent. Et puisque, depuis ses origines, l&#8217;&#233;tat a tenu les comptes de ses sujets, une mutation politique est &#224; pr&#233;voir. Verra-t-on une alliance de grandes compagnies du Cloud ou quelqu&#8217;autre forme sociale coop&#233;rative fournir &#224; tous les habitants de la plan&#232;te un service public gratuit d&#8217;&#233;tat civil<a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a>, de cadastre, d&#8217;authentification des propri&#233;t&#233;s, d&#8217;enregistrement de contrats, de comptabilit&#233; transparente, de d&#233;p&#244;t l&#233;gal et de certification de comp&#233;tences&#160;?</p>
+<h2 id="la-sph&#232;re-s&#233;mantique">7. La sph&#232;re s&#233;mantique</h2>
+<p>Dans la figure 1, les niveaux de calcul automatique de plus en plus puissants sont repr&#233;sent&#233;s par des rectangles. Chaque niveau repose sur les niveaux &#171;&#160;<em>inf&#233;rieurs</em>&#160;&#187; qui le pr&#233;c&#232;dent par ordre d&#8217;&#233;mergence historique. Un niveau est donc conditionn&#233; par les niveaux inf&#233;rieurs. Mais, inversement, chaque niveau additionnel conf&#232;re aux niveaux inf&#233;rieurs une d&#233;termination socio-technique suppl&#233;mentaire, puisqu&#8217;il les fait servir &#224; une nouvelle fin. Le m&#233;dium algorithmique dispose d&#233;j&#224; d&#8217;un syst&#232;me d&#8217;adressage universel des ordinateurs (l&#8217;Internet) et des donn&#233;es (le Web). Sur cette base, les centres de calcul des grandes compagnies de nuagique font prolif&#233;rer les r&#233;seaux de neurones artificiels qui apprennent de nos comportements (le cerveau global). La prochaine &#233;tape, que j&#8217;appelle la <em>sph&#232;re s&#233;mantique</em>, sera probablement fond&#233;e sur de nouveaux progr&#232;s de l&#8217;intelligence artificielle (IA). Mais avant d&#8217;&#233;voquer les progr&#232;s futurs il nous faut d&#8217;abord reconna&#238;tre les limites de l&#8217;IA contemporaine.</p>
+<p>Les raisonnements humains r&#233;els sont &#233;mis par des corps vivants situ&#233;s dans l&#8217;espace et emport&#233;s sur le fil d&#8217;un temps irr&#233;versible, ils sont orient&#233;s vers des fins et tirent leur pertinence d&#8217;un contexte d&#8217;interaction sociale. N&#8217;ayant &#224; sa disposition que des outils logiques et statistiques, l&#8217;intelligence artificielle peine &#224; rendre compte des horizons de conscience qui &#233;clairent l&#8217;intelligence. Elle int&#232;gre mal dans ses mod&#232;les de la cognition la polys&#233;mie et les niveaux de complexit&#233; embo&#238;t&#233;s des syst&#232;mes symboliques, sans m&#234;me parler des tensions pragmatiques et des relations sociales qui animent la pens&#233;e et la communication humaine. A cet &#233;gard, nous vivons aujourd&#8217;hui dans une situation paradoxale puisque l&#8217;intelligence artificielle conna&#238;t un succ&#232;s pratique impressionnant (voir le d&#233;veloppement des formations et des demandes de sp&#233;cialistes sur le march&#233;) au moment m&#234;me o&#249; ses limites th&#233;oriques deviennent &#233;videntes.</p>
+<p>Les algorithmes statistiques, l&#8217;apprentissage automatique, les r&#233;seaux neuronaux voire les simulations d&#8217;intelligence collective animale sont de plus en plus utilis&#233;s. Mais il faut bien constater que, malgr&#233; la multitude des outils algorithmiques disponibles, la r&#233;alit&#233; n&#8217;est pas toujours &#224; la hauteur des annonces et l&#8217;IA ne peut toujours pas exhiber de mod&#232;le complet de la cognition. L&#8217;intelligence artificielle contemporaine se contente dans les faits de fournir une bo&#238;te &#224; outils de plus en plus efficace et vari&#233;e mais qui n&#8217;offre pas de solution g&#233;n&#233;rale au probl&#232;me d&#8217;une mod&#233;lisation math&#233;matique de la cognition humaine. Sans trop l&#8217;avouer, la discipline a prudemment renonc&#233; &#224; simuler l&#8217;intelligence dans son int&#233;gralit&#233;. Pourtant, ne serait-il pas bien venu que l&#8217;informatique parvienne &#224; int&#233;grer dans ses algorithmes la finesse herm&#233;neutique et contextuelle<a href="#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a> auxquels les chercheurs en sciences humaines sont si attach&#233;s&#160;? Et si la d&#233;couverte de quelque syst&#232;me de coordonn&#233;es s&#233;mantique ouvrait la voie &#224; un mod&#232;le unifi&#233; de l&#8217;intelligence, &#224; une cosmologie scientifique des id&#233;es&#160;?</p>
+<p>Tous les animaux ont un syst&#232;me nerveux, mais seuls les humains ont acc&#232;s au langage et &#224; la conscience r&#233;flexive. C&#8217;est pourquoi le calcul neuronal ne simule que la cognition animale. Seul le calcul symbolique &#8211;&#160;sur la base du calcul neuronal&#160;&#8211; peut rendre compte de la cognition humaine et c&#8217;est donc celui-l&#224; qu&#8217;il faudra math&#233;matiser t&#244;t ou tard si l&#8217;on veut disposer d&#8217;un mod&#232;le de l&#8217;intelligence. Or le calcul symbolique ne se limite ni &#224; l&#8217;arithm&#233;tique, ni aux statistiques, ni &#224; la syntaxe&#160;: il comprend aussi la s&#233;mantique. Les algorithmes neuronaux traduisent et manipulent bel et bien des &#233;l&#233;ments de langage, mais ils le font comme des perroquets au gros cerveau m&#233;canique, dress&#233;s &#224; r&#233;p&#233;ter les r&#233;gularit&#233;s per&#231;ues sans en comprendre les subtilit&#233;s internes.</p>
+<p>C&#8217;est pour surmonter les limites de l&#8217;IA contemporaine que j&#8217;ai invent&#233; une langue &#224; la s&#233;mantique calculable&#160;: IEML (le M&#233;taLangage de l&#8217;Economie de l&#8217;Information). IEML n&#8217;a pas &#233;t&#233; con&#231;u pour &#234;tre parl&#233; dans un environnement non technique mais plut&#244;t pour &#234;tre &#233;crit, lu, traduit et explor&#233; au moyen d&#8217;ordinateurs et de tablettes, avec un parseur et un dictionnaire multilingue au bout des doigts, peut-&#234;tre avec un <em>chatbot</em> &#224; port&#233;e de voix. Cette langue a six caract&#232;res de base: deux voyelles, trois consonnes et un silence. Les mots et les textes sont construits &#224; partir de deux op&#233;rations alg&#233;briques sur ces &#233;l&#233;ments primitifs. Le dictionnaire contient un maximum de 10 000 mots (actuellement 3 500) incluant des noms, des verbes et des auxiliaires,<a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a> tous lisibles &#224; l&#8217;oeil nu par un humain. Les mots d&#8217;IEML ne sont aujourd&#8217;hui traduits qu&#8217;en fran&#231;ais et en anglais mais le dictionnaire est pr&#233;vu pour supporter autant de langues que l&#8217;on voudra. Au niveau <em>paradigmatique</em>, les relations entre les mots du dictionnaire sont explicites. Le sens de chaque mot est exactement d&#233;fini par ses relations avec les autres mots et chaque mot se trouve au centre d&#8217;une unique &#233;toile de relations avec les autres mots du dictionnaire. Le niveau <em>syntagmatique</em> empile des mots complexes, des phrases et des super-phrases. Les mots complexes ou <em>topo&#239;</em> sont compos&#233;s d&#8217;une racine et d&#8217;une flexion dont chacune peut contenir plusieurs mots simples. Une phrase s&#8217;&#233;crit comme un arbre de relations entre topo&#239;, les relations &#233;tant pr&#233;cis&#233;es par des auxiliaires de type&#160;: &#171;&#160;sujet&#160;&#187;, &#171;&#160;objet&#160;&#187;, &#171;&#160;compl&#233;ment&#160;&#187;, etc. Le plus haut niveau de la hi&#233;rarchie grammaticale, le <em>texte</em>, est appel&#233; USL (<em>Uniform Semantic Locator</em>) parce qu&#8217;il est utilis&#233; comme une adresse distincte dans un syst&#232;me de coordonn&#233;es s&#233;mantique. Au niveau textuel, les anaphores grammaticales<a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a> sont explicites et les isotopies<a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a> sont calcul&#233;es automatiquement.</p>
+<p>La grammaire d&#8217;IEML est non-ambig&#252;e et r&#233;guli&#232;re, ce qui n&#8217;est pas le cas des capricieuses langues naturelles, comme le Fran&#231;ais, l&#8217;Anglais, le Russe ou l&#8217;Arabe. C&#8217;est pourquoi un automate peut produire et reconna&#238;tre des phrases correctes en IEML. Il y a &#233;videmment beaucoup d&#8217;autres langages r&#233;guliers dans le monde de l&#8217;informatique &#8211;&#160;principalement des langages de programmation&#160;&#8211; mais aucun d&#8217;eux n&#8217;est une langue compl&#232;te. En particulier, les langages de programmation n&#8217;ont pas de dictionnaires ind&#233;pendants des langues naturelles qui permettraient &#224; ses &#171;&#160;locuteurs&#160;&#187; de comparer, par exemple, les m&#233;rites gastronomiques respectifs de la tarte aux fraises et de la tarte &#224; la rhubarbe. IEML n&#8217;a pas seulement une <em>syntaxe</em> r&#233;guli&#232;re et un dictionnaire couvrant toute l&#8217;&#233;tendue de l&#8217;exp&#233;rience humaine. Il a aussi une <em>s&#233;mantique</em> non-ambig&#252;e. Un algorithme est capable de &#171; comprendre&#160;&#187; une cha&#238;ne de caract&#232;res syntaxiquement correcte, c&#8217;est-&#224;-dire de produire le r&#233;seau s&#233;mantique (paradigmatique, syntagmatique, textuel) unique correspondant &#224; cette cha&#238;ne de caract&#232;res. Le r&#233;seau s&#233;mantique est lui-m&#234;me traduit automatiquement dans les langues support&#233;es par le dictionnaire. IEML ne comporte ni homophones, ni synonymes, ni amphibologies. Le principe g&#233;n&#233;ral de l&#8217;univocit&#233; d&#8217;IEML est le suivant&#160;: les relations entre les signifiants de la langue peuvent &#234;tre calcul&#233;es automatiquement &#224; cause de la nature alg&#233;brique de sa syntaxe et les relations entre les signifi&#233;s sont parall&#232;les aux relations entre signifiants. En d&#8217;autres termes, l&#8217;univocit&#233; d&#8217;IEML est bas&#233;e sur une isomorphie entre graphes de relations alg&#233;briques entre signifiants et graphes de relations s&#233;mantiques entre signifi&#233;s.</p>
+<p>L&#8217;acte de langage standard en IEML est un <em>post</em> dans lequel le locuteur (qu&#8217;il s&#8217;agisse d&#8217;un humain ou d&#8217;un bot) cat&#233;gorise un document ou un ensemble de donn&#233;es au moyen d&#8217;un USL jouant le r&#244;le de m&#233;tadonn&#233;e s&#233;mantique. Dans cette configuration, il ne peut y avoir d&#8217;ambigu&#239;t&#233; pragmatique au sujet de la r&#233;f&#233;rence qui est, par construction, la donn&#233;e cat&#233;goris&#233;e par l&#8217;USL. J&#8217;ajoute que, quelle que soit la langue utilis&#233;e, une part importante de la signification pragmatique en ligne peut &#234;tre calcul&#233;e sur la base de l&#8217;impact social des messages et des connexions entre usagers. N&#233;anmoins, puisqu&#8217;IEML est une langue compl&#232;te qui peut &#234;tre parl&#233;e librement par ses locuteurs, elle ne peut &#234;tre d&#233;barrass&#233;e de toute ambigu&#239;t&#233; pragmatique. Par exemple, rien ne vous emp&#234;che de mentir en IEML ou de cat&#233;goriser ironiquement comme bon ce que vous jugez mauvais. M&#234;me si le <em>texte</em> IEML est univoque, <em>l&#8217;acte de langage</em> reste ind&#233;termin&#233;.</p>
+<p>En somme, le r&#233;seau des relations et distances s&#233;mantiques entre expressions est compris d&#8217;office dans le code linguistique IEML. Etant donn&#233; un ensemble de textes en IEML, chacun d&#8217;eux calcule l&#8217;&#233;toile de ses relations s&#233;mantiques avec les autres textes. Une fois les donn&#233;es cat&#233;goris&#233;es en IEML, ce sont les relations s&#233;mantiques et les similarit&#233;s <em>entre donn&#233;es</em> qui peuvent &#234;tre calcul&#233;es. Des collections de donn&#233;es cat&#233;goris&#233;es en IEML peuvent &#234;tre visualis&#233;es au moyen d&#8217;arbres, de cartes et de tableaux de bord s&#233;mantiques en 2D et m&#234;me par des mondes virtuels immersifs en 3D. IEML ouvre la voie &#224; la projection de quantit&#233;s, de s&#233;ries temporelles, de lieux g&#233;ographiques et de r&#233;seaux sociaux sur un espace s&#233;mantique g&#233;om&#233;triquement coh&#233;rent.</p>
+<p>Supposons qu&#8217;IEML, qui n&#8217;existe aujourd&#8217;hui qu&#8217;&#224; l&#8217;&#233;tat de prototype, parvienne au stade industriel. Sur un plan scientifique, cette langue &#8211;&#160;dont les symboles, signifiant et signifi&#233;, se manipulent comme un groupe de transformations&#160;&#8211; fait office de syst&#232;me de coordonn&#233;es d&#8217;un cosmos des id&#233;es. Sur un plan technique, elle joue le r&#244;le du syst&#232;me universel d&#8217;adressage des concepts de la figure 1. Les donn&#233;es ont alors des adresses sur une grille qui calcule automatiquement leurs relations s&#233;mantiques. Cet univers d&#8217;information est ind&#233;finiment explorable par des algorithmes ouverts et communs, qui favorisent les dialogues et les comparaisons. En fonction des th&#233;ories et des orientations pratiques qui ont men&#233; &#224; leur cat&#233;gorisation par les utilisateurs, les collections de donn&#233;es s&#8217;auto-organisent en &#233;cosyst&#232;mes d&#8217;id&#233;es. Le m&#234;me ensemble de donn&#233;es s&#8217;explore diff&#233;remment en fonction des sens qu&#8217;il a pour une multitude de communaut&#233;s. Univers de pratiques et cultures s&#8217;&#233;changent des concepts et des r&#232;gles op&#233;ratoires sans pour autant renoncer &#224; leur singularit&#233;. Gr&#226;ce &#224; des interfaces immersives utilisant les images, les sons et les langues naturelles, nous parlons et comprenons intuitivement la langue de l&#8217;intelligence collective. Le couplage entre humains et robots se perfectionne. Des hologrammes visualisent des cascades de perspectives s&#233;mantiques. Entre mondes virtuels et r&#233;alit&#233;s augment&#233;es, la sph&#232;re s&#233;mantique procure une ma&#238;trise sensori-motrice de l&#8217;univers informationnel.</p>
+<p>Les capacit&#233;s d&#8217;analyse, de synth&#232;se et de pr&#233;vision d&#8217;une soci&#233;t&#233; reposent ultimement sur la structure de sa m&#233;moire, et notamment sur son syst&#232;me de codage et d&#8217;organisation des donn&#233;es. Pour que le m&#233;dium algorithmique en cours de construction devienne la matrice d&#8217;une nouvelle &#233;pist&#233;m&#232; &#8211;&#160;plus puissante que celle d&#8217;aujourd&#8217;hui, encore mal d&#233;gag&#233;e de l&#8217;&#232;re typographique&#160;&#8211; il lui manque un syst&#232;me d&#8217;adressage universel des concepts qui soit &#224; la hauteur de sa puissance de calcul. Alors le cerveau &#233;lectronique global s&#8217;augmentera de circuits sp&#233;cialis&#233;s qui lui donneront acc&#232;s au sens <em>de l&#8217;int&#233;rieur</em> et non &#224; travers l&#8217;enveloppe statistique d&#8217;un cerveau de perroquet. Coordonn&#233; par une langue calculable, d&#233;cloisonn&#233;, il permettra &#224; l&#8217;intelligence collective de mieux se r&#233;fl&#233;chir. Les collectivit&#233;s observeront l&#8217;&#233;volution et l&#8217;&#233;tat pr&#233;sent de leurs activit&#233;s cognitives. Elles appliqueront leurs nouvelles capacit&#233;s d&#8217;analyse, de synth&#232;se et de pr&#233;vision &#224; la gestion sociale de leurs connaissances et de leurs apprentissages. Les individus ma&#238;triseront leurs chemins d&#8217;auto-formation en syntonie avec les groupes auxquelles ils participent. Chacun simulera les effets de croissance personnelle et de pollinisation crois&#233;e induits par sa circulation entre les communaut&#233;s. M&#233;moire r&#233;flexive, intuition perspectiviste, communication interop&#233;rable et transparente ajouteront leurs effets pour produire une augmentation cognitive inou&#239;e.</p>
+<p><strong>En ligne</strong></p>
+<p>Bases de donn&#233;es d&#8217;articles r&#233;cents&#160;:</p>
+<p><a href="https://www.scoop.it/t/the-rise-of-the-algorithmic-medium/?"><em>The rise of the algorithmic medium</em></a></p>
+<p><a href="https://www.scoop.it/t/big-data-cloud-and-social-everything"><em>Big data analysis in the cloud</em></a></p>
+<h2 id="bibliographie" class="unnumbered">Bibliographie</h2>
+<div id="refs" class="references">
+<div id="ref-amdhal2964">
+<p>Amdahl, Gene. 1964. &#171;&#160;Architecture of the IBM System/360&#160;&#187;. <em>IBM Journal</em>, April.</p>
+</div>
+<div id="ref-auroux_revolution_1994">
+<p>Auroux, Sylvain. 1994. <em>La r&#233;volution technologique de la grammatisation</em>. Li&#232;ge: Mardaga. <a href="http://catalog.hathitrust.org/api/volumes/oclc/33865105.html" class="uri">http://catalog.hathitrust.org/api/volumes/oclc/33865105.html</a>.</p>
+</div>
+<div id="ref-austin_how_1962">
+<p>Austin, J. L. 1962. <em>How to Do Things with Words</em>. New York: Oxford University Press.</p>
+</div>
+<div id="ref-bacry_symetrie_2000">
+<p>Bacry, H. 2000. <em>La sym&#233;trie dans tous ses &#233;tats</em>. Paris: Vuibert.</p>
+</div>
+<div id="ref-bardini_bootstrapping:_2000">
+<p>Bardini, Thierry. 2000. <em>Bootstrapping: Douglas Engelbart, Coevolution, and the Origins of Personal Computing</em>. Stanford, Calif.: Stanford University Press.</p>
+</div>
+<div id="ref-barthes_essais_1964">
+<p>Barthes, Roland. 1964. <em>Essais critiques</em>. Paris: Seuil.</p>
+</div>
+<div id="ref-benveniste_categories_1958">
+<p>Benveniste, &#201;mile. 1958. &#171;&#160;Cat&#233;gories de pens&#233;e et cat&#233;gories de langue&#160;&#187;. <em>Les &#201;tudes philosophiques</em> 13 (4): 419&#8209;29. <a href="http://www.jstor.org/stable/20842782" class="uri">http://www.jstor.org/stable/20842782</a>.</p>
+</div>
+<div id="ref-benveniste_problemes_1966">
+<p>&#8212;&#8212;&#8212;. 1966. <em>Probl&#232;mes de linguistique g&#233;n&#233;rale</em>. Paris: Gallimard.</p>
+</div>
+<div id="ref-berners-lee_univeral_1996">
+<p>Berners-Lee, Tim. 1996. &#171;&#160;Univeral Resource Identifiers. Axioms of Web architecture&#160;&#187;. <em>WWW Consortium</em>. <a href="https://www.w3.org/DesignIssues/Axioms.html#opaque" class="uri">https://www.w3.org/DesignIssues/Axioms.html#opaque</a>.</p>
+</div>
+<div id="ref-berners-lee_weaving_1999">
+<p>&#8212;&#8212;&#8212;. 1999. <em>Weaving the Web: the Original Design and Ultimate Destiny of the World Wide Web by Its Inventor</em>. New York: Harper.</p>
+</div>
+<div id="ref-bickerton_language_1995">
+<p>Bickerton, Derek. 1995. <em>Language and Human Behavior</em>. Seattle: University of Washington Press.</p>
+</div>
+<div id="ref-boden_mind_2006">
+<p>Boden, Margaret A. 2006. <em>Mind as Machine: a History of Cognitive Science</em>. Oxford: Clarendon Press.</p>
+</div>
+<div id="ref-bonabeau_swarm_1999">
+<p>Bonabeau, Eric, Marco Dorigo, et Guy Theraulaz. 1999. <em>Swarm Intelligence: From Natural to Artificial Systems</em>. Oxford University Press, New York, USA. <a href="http://hdl.handle.net/2013/ULB-DIPOT:oai:dipot.ulb.ac.be:2013/74515" class="uri">http://hdl.handle.net/2013/ULB-DIPOT:oai:dipot.ulb.ac.be:2013/74515</a>.</p>
+</div>
+<div id="ref-borges_aleph_1945">
+<p>Borges, Jorge Luis. 1945. &#171;&#160;El Aleph&#160;&#187;. <em>Sur</em>, n&#7506; 131 (septembre).</p>
+</div>
+<div id="ref-borges_bibliotheque_1951">
+<p>&#8212;&#8212;&#8212;. 1951a. &#171;&#160;La biblioth&#232;que de Babel&#160;&#187;. In <em>Fictions</em>. Paris: Gallimard.</p>
+</div>
+<div id="ref-borges_jardin_1951">
+<p>&#8212;&#8212;&#8212;. 1951b. &#171;&#160;Le jardin aux sentiers qui bifurquent&#160;&#187;. In <em>Fictions</em>. Paris: Gallimard.</p>
+</div>
+<div id="ref-castells_communication_2009">
+<p>Castells, Manuel. 2009. <em>Communication Power</em>. New York: Oxford University Press.</p>
+</div>
+<div id="ref-changeux_neuronal_1985">
+<p>Changeux, Jean-Pierre. 1985. <em>Neuronal Man: The Biology of Mind</em>. New York: Pantheon Books.</p>
+</div>
+<div id="ref-chomsky_syntatic_1957">
+<p>Chomsky, Noam. 1957. <em>Syntatic Structures</em>. The Hague: Mouton &amp; Co.</p>
+</div>
+<div id="ref-chomsky_new_2000">
+<p>&#8212;&#8212;&#8212;. 2000. <em>New horizons in the study of language and mind</em>. Cambridge; New York: Cambridge University Press.</p>
+</div>
+<div id="ref-braffort_algebraic_1963">
+<p>Chomsky, Noam, et Marcel P. Sch&#252;tzenberger. 1963. &#171;&#160;The Algebraic Theory of Context Free Languages&#160;&#187;. In <em>Computer programming and formal systems</em>, 118&#8209;61. Amsterdam: North Holland Pub. co. <a href="http://books.google.com/books?id=gCI4AAAAMAAJ" class="uri">http://books.google.com/books?id=gCI4AAAAMAAJ</a>.</p>
+</div>
+<div id="ref-danchin_selective_1976">
+<p>Danchin, Antoine, et Jean-Pierre Changeux. 1976. &#171;&#160;Selective Stabilisation of Developing Synapses as a Mechanism for the Specification of Neuronal Networks&#160;&#187;. <em>Nature</em> 264 (5588): 705. doi:<a href="https://doi.org/10.1038/264705a0">10.1038/264705a0</a>.</p>
+</div>
+<div id="ref-davis_engines_2000">
+<p>Davis, Martin. 2000. <em>Engines of Logic: Mathematicians and the Origin of the Computer</em>. New York: W. W. Norton &amp; Company.</p>
+</div>
+<div id="ref-de_chardin_phenomene_1955">
+<p>De Chardin, Pierre Teilhard. 1955. <em>Le ph&#233;nom&#232;ne humain</em>. Paris: Editions Du Seuil.</p>
+</div>
+<div id="ref-deacon_symbolic_1997">
+<p>Deacon, Terrence William. 1997. <em>The Symbolic Species: The Co-Evolution of Language and the Brain.</em> New York: W.W. Norton.</p>
+</div>
+<div id="ref-deleuze_logique_1969">
+<p>Deleuze, Gilles. 1969. <em>Logique du sens</em>. Paris: Editions de Minuit.</p>
+</div>
+<div id="ref-deleuze_anti-oedipe_1972">
+<p>Deleuze, Gilles, et F&#233;lix Guattari. 1972. <em>L&#8217;anti-Oedipe</em>. Vol. 1. Capitalisme et schizophr&#233;nie. Paris: &#201;ditions de Minuit.</p>
+</div>
+<div id="ref-deleuze_mille_1980">
+<p>&#8212;&#8212;&#8212;. 1980. <em>Mille plateaux</em>. Vol. 2. Capitalisme et schizophr&#233;nie. Paris: &#201;ditions de Minuit.</p>
+</div>
+<div id="ref-derrida_grammatologie._1967">
+<p>Derrida, Jacques. 1967. <em>De la grammatologie.</em> Paris: &#201;dtions de Minuit.</p>
+</div>
+<div id="ref-descola_par-a_2005">
+<p>Descola, Philippe. 2005. <em>Par-del&#224; nature et culture</em>. Paris: Gallimard.</p>
+</div>
+<div id="ref-dreyfus_what_1992">
+<p>Dreyfus, Hubert L. 1992. <em>What Computers Still Can&#8217;t Do: A Critique of Artificial Reason</em>. Cambridge MA: MIT Press.</p>
+</div>
+<div id="ref-dupuy_aux_2005">
+<p>Dupuy, Jean-Pierre. 2005. <em>Aux origines des sciences cognitives</em>. Paris: La D&#233;couverte.</p>
+</div>
+<div id="ref-eco_signe:_1992">
+<p>Eco, Umberto. 1992. <em>Le Signe: histoire et analyse d&#8217;un concept</em>. Paris: Libraire G&#233;n&#233;rale Fran&#231;aise.</p>
+</div>
+<div id="ref-edelman_neural_1987">
+<p>Edelman, Gerald M. 1987. <em>Neural Darwinism: The Theory of Neural Group Selection</em>. New York: Basic Books.</p>
+</div>
+<div id="ref-eisenstein_printing_1983">
+<p>Eisenstein, Elizabeth L. 1983. <em>The Printing Revolution in Early Modern Europe</em>. Cambridge MA: Cambridge University Press.</p>
+</div>
+<div id="ref-engelbart_augmenting_1962">
+<p>Engelbart, Douglas. 1962. &#171;&#160;Augmenting Human Intellect; a Conceptual Framework.&#160;&#187; Menlo Park, Calif.: Stanford Research Institute.</p>
+</div>
+<div id="ref-foucault_archeologie_1969">
+<p>Foucault, Michel. 1969. <em>L&#8217;Arch&#233;ologie du savoir</em>. Paris: Gallimard.</p>
+</div>
+<div id="ref-moulier_boutang_critique_2007">
+<p>Fourquet, Fran&#231;ois. 2007. &#171;&#160;Critique de la raison cognitive&#160;&#187;. In <em>Le capitalisme cognitif: la nouvelle grande transformation</em>, 265&#8209;76. Paris: &#201;ditions Amsterdam.</p>
+</div>
+<div id="ref-frege_ecrits_1971">
+<p>Frege, Gottlob. 1971. <em>&#201;crits logiques et philosophiques.</em> Traduit par Claude Imbert. Paris: Editions du Seuil. <a href="http://banq.pretnumerique.ca/accueil/isbn/9782021230253" class="uri">http://banq.pretnumerique.ca/accueil/isbn/9782021230253</a>.</p>
+</div>
+<div id="ref-ganascia_mythe_2017">
+<p>Ganascia, Jean-Gabriel. 2017. <em>Le mythe de la singularit&#233;: faut-il craindre l&#8217;intelligence artificielle ?</em></p>
+</div>
+<div id="ref-gardner_minds_1987">
+<p>Gardner, Howard. 1987. <em>The Mind&#8217;s New Science: A History of the Cognitive Revolution</em>. New York: Basic Books.</p>
+</div>
+<div id="ref-goody_domestication_1977">
+<p>Goody, Jack. 1977. <em>The Domestication of the Savage Mind</em>. Cambridge: Cambridge University Press.</p>
+</div>
+<div id="ref-goody_logic_1987">
+<p>&#8212;&#8212;&#8212;. 1987. <em>The Logic of Writing and the Organization of Society</em>. Cambridge [Cambridgeshire]; New York: Cambridge University Press.</p>
+</div>
+<div id="ref-granovetter_strength_1973">
+<p>Granovetter, Mark S. 1973. &#171;&#160;The Strength of Weak Ties&#160;&#187;. <em>American Journal of Sociology</em> 78 (6): 1360&#8209;80. doi:<a href="https://doi.org/10.1086/225469">10.1086/225469</a>.</p>
+</div>
+<div id="ref-grondin_hermeneutique_2017">
+<p>Grondin, Jean. 2017. <em>L&#8217;herm&#233;neutique</em>. Paris: Presses universitaires de France.</p>
+</div>
+<div id="ref-guenard_penser_1982">
+<p>Gu&#233;nard, Fran&#231;ois, Ecole normale sup&#233;rieure (Paris), S&#233;minaire de philosophie et math&#233;matiques, Ren&#233; Thom, Jean Alexandre Dieudonn&#233;, Maurice Loi, et Gilbert Leli&#232;vre. 1982. <em>Penser les math&#233;matiques</em>. Points, 29. Paris: Editions du Seuil.</p>
+</div>
+<div id="ref-hesse_jeu_2002">
+<p>Hesse, Hermann. 2002. <em>Le jeu des perles de verre</em>. Traduit par Jacques Martin. Paris: Librairie G&#233;n&#233;rale Fran&#231;aise.</p>
+</div>
+<div id="ref-hjelmslev_essais_1971">
+<p>Hjelmslev, Louis. 1971. <em>Essais linguistiques</em>. Paris: &#201;ditions de Minuit.</p>
+</div>
+<div id="ref-hodges_alan_1992">
+<p>Hodges, Andrew, et Alan Mathison Turing. 1992. <em>Alan Turing : The Enigma</em>. London: Vintage.</p>
+</div>
+<div id="ref-innis_empire_1950">
+<p>Innis, Harold A. 1950. <em>Empire and Communications</em>. Oxford: Clarendon Press.</p>
+</div>
+<div id="ref-jakobson_essais_1981">
+<p>Jakobson, Roman. 1981. <em>Essais de linguistique g&#233;n&#233;rale</em>. Traduit par Nicolas Ruwet. Vol. 1-2. Paris: Minuit.</p>
+</div>
+<div id="ref-kapetanios_notion_2010">
+<p>Kapetanios, Epaminondas. 2010. &#171;&#160;On the Notion of Collective Intelligence: Opportunity or Challenge?&#160;&#187; <em>International Journal of Organizational and Collective Intelligence (IJOCI)</em> 1 (1): 1&#8209;14. doi:<a href="https://doi.org/10.4018/joci.2010100801">10.4018/joci.2010100801</a>.</p>
+</div>
+<div id="ref-kapetanios_special_2010">
+<p>Kapetanios, Epaminondas, et Georgia Koutrika. 2010. &#171;&#160;Special Issue on Collective Intelligence&#160;&#187;. <em>Information Sciences, special issue on collective intelligence</em>, Elsevier, 180 (janvier): 1&#8209;3. doi:<a href="https://doi.org/10.1016/j.ins.2009.10.009">10.1016/j.ins.2009.10.009</a>.</p>
+</div>
+<div id="ref-kerbrat-orecchioni_les_2001">
+<p>Kerbrat-Orecchioni, Catherine. 2001. <em>Les actes de langage dans le discours</em>. Paris: Nathan.</p>
+</div>
+<div id="ref-koyre_closed_1958">
+<p>Koyr&#233;, Alexandre. 1958. <em>From the Closed World to the Infinite Universe.</em> New York: Harper. <a href="http://books.google.com/books?id=Pa8NAQAAIAAJ" class="uri">http://books.google.com/books?id=Pa8NAQAAIAAJ</a>.</p>
+</div>
+<div id="ref-lakoff_women_1987">
+<p>Lakoff, George. 1987. <em>Women, Fire, and Dangerous Things What Categories Reveal About the Mind</em>. Chicago; London: The University of Chicago Press.</p>
+</div>
+<div id="ref-langacker_foundations_1987">
+<p>Langacker, Ronald Wayne. 1987. <em>Foundations of Cognitive Grammar</em>. Stanford: Stanford Univ. Press.</p>
+</div>
+<div id="ref-leibniz_systeme_1695">
+<p>Leibniz, Gottfried Wilhelm. 1695. &#171;&#160;Syst&#232;me nouveau de la nature et de la communication des substances&#160;&#187;. <em>Journal des savants</em>, juin. <a href="https://fr.wikisource.org/wiki/Syst%C3%A8me_nouveau_de_la_nature?match=en">https://fr.wikisource.org/wiki/Syst%C3%A8me_nouveau_de_la_nature?match=en</a>.</p>
+</div>
+<div id="ref-leibniz_nouveaux_1764">
+<p>&#8212;&#8212;&#8212;. 1764. <em>Nouveaux Essais sur l&#8217;entendement humain</em>. <a href="https://fr.wikisource.org/wiki/Nouveaux_Essais_sur_l%E2%80%99entendement_humain?match=en">https://fr.wikisource.org/wiki/Nouveaux_Essais_sur_l%E2%80%99entendement_humain?match=en</a>.</p>
+</div>
+<div id="ref-leibniz_monadologie:_1886">
+<p>&#8212;&#8212;&#8212;. 1886. <em>La monadologie: Nouv. &#233;d., avec une introd., des sommaires, un commentaire perp&#233;tuel, extrait des autres ouvrages de Leibniz, des exercices et un lexique de la terminologie Leibnizienne</em>. Paris: E. Belin. <a href="https://fr.wikisource.org/wiki/Monadologie_(%C3%89dition_Bertrand,_1886)">https://fr.wikisource.org/wiki/Monadologie_(%C3%89dition_Bertrand,_1886)</a>.</p>
+</div>
+<div id="ref-leibniz_lhorizon_2000">
+<p>&#8212;&#8212;&#8212;. 2000. <em>De l&#8217;horizon de la doctrine humaine</em>. Paris: Lavoisier.</p>
+</div>
+<div id="ref-levy-leblond_nature_1998">
+<p>Levy-Leblond, Jean-Marc. 1998. &#171;&#160;La nature prise &#224; la lettre&#160;&#187;. <em>Alliage</em>, n&#7506; 37-38. <a href="http://www.tribunes.com/tribune/alliage/37-38/jmll.htm" class="uri">http://www.tribunes.com/tribune/alliage/37-38/jmll.htm</a>.</p>
+</div>
+<div id="ref-levy_analyse_1986">
+<p>L&#233;vy, Pierre. 1986a. &#171;&#160;Analyse de contenu des travaux du Biological Computer Laboratory (BCL)&#160;&#187;. <em>Cahiers du CREA</em>, n&#7506; 8: 155&#8209;91.</p>
+</div>
+<div id="ref-levy_loeuvre_1986">
+<p>&#8212;&#8212;&#8212;. 1986b. &#171;&#160;L&#8217;Oeuvre de Warren McCulloch&#160;&#187;. <em>Cahiers du CREA</em>, n&#7506; 7: 211&#8209;55.</p>
+</div>
+<div id="ref-levy_intelligence_1994">
+<p>&#8212;&#8212;&#8212;. 1994. <em>L&#8217;Intelligence collective: pour une anthropologie du cyberspace</em>. Paris: Editions La D&#233;couverte.</p>
+</div>
+<div id="ref-levy_quest-ce_1995">
+<p>&#8212;&#8212;&#8212;. 1995. <em>Qu&#8217;est-ce que le virtuel?</em> Paris: La D&#233;couverte.</p>
+</div>
+<div id="ref-levy_collective_1997">
+<p>&#8212;&#8212;&#8212;. 1997. <em>Collective intelligence: mankind&#8217;s emerging world in cyberspace</em>. Cambridge, Mass.: Perseus Books.</p>
+</div>
+<div id="ref-levy_becoming_1998">
+<p>&#8212;&#8212;&#8212;. 1998. <em>Becoming Virtual: Reality in the Digital Age</em>. New York: Plenum Trade.</p>
+</div>
+<div id="ref-levy_toward_2009">
+<p>&#8212;&#8212;&#8212;. 2009. &#171;&#160;Toward a Self-referential Collective Intelligence Some Philosophical Background of the IEML Research Program&#160;&#187;. In <em>Computational Collective Intelligence. Semantic Web, Social Networks and Multiagent Systems</em>, &#233;dit&#233; par Nguyen Ngoc Than, Kowalczyk Ryszard, et Chen Shyi-Ming, 22&#8209;35. Lecture Notes in Computer Science. Springer, Berlin, Heidelberg. doi:<a href="https://doi.org/10.1007/978-3-642-04441-0_2">10.1007/978-3-642-04441-0_2</a>.</p>
+</div>
+<div id="ref-levy_social_2010">
+<p>&#8212;&#8212;&#8212;. 2010. &#171;&#160;From Social Computing to Reflexive Collective Intelligence: The Ieml Research Program&#160;&#187;. &#201;dit&#233; par Epaminondas Kapetanios et Georgia Koutrika. <em>Information Sciences</em>, Special Issue on Collective Intelligence, 180 (1): 71&#8209;94. doi:<a href="https://doi.org/10.1016/j.ins.2009.08.001">10.1016/j.ins.2009.08.001</a>.</p>
+</div>
+<div id="ref-levy_sphere_2011">
+<p>&#8212;&#8212;&#8212;. 2011. <em>La sph&#232;re s&#233;mantique. Computation, cognition, &#233;conomie de l&#8217;information</em>. Paris-Londres: Herm&#232;s-Lavoisier.</p>
+</div>
+<div id="ref-licklider_man-computer_1960">
+<p>Licklider, Joseph. 1960. &#171;&#160;Man-Computer Symbiosis&#160;&#187;. <em>IRE Transactions on Human Factors in Electronics</em> HFE-1 (mars): 4&#8209;11. <a href="https://groups.csail.mit.edu/medg/people/psz/Licklider.html" class="uri">https://groups.csail.mit.edu/medg/people/psz/Licklider.html</a>.</p>
+</div>
+<div id="ref-llull_ars_1990">
+<p>Llull, Ram&#243;n. 1990. <em>Ars Magna</em>. Traduit par Jos&#233; Mart&#237;nez G&#225;zque et Vergilio Bejarano S&#225;nchez. Madrid: Editorial Patrimonio Nacional.</p>
+</div>
+<div id="ref-logan_extended_2007">
+<p>Logan, Robert K. 2007. <em>The Extended Mind: The Emergence of Language, the Human Mind, and Culture</em>. University of Toronto Press.</p>
+</div>
+<div id="ref-marlowe_doctor_1969">
+<p>Marlowe, Christopher, et Sylvan Barnet. 1969. <em>Doctor Faustus</em>. New York: Penguin.</p>
+</div>
+<div id="ref-martinet_ements_1960">
+<p>Martinet, Andr&#233;. 1960. <em>El&#233;ments de linguistique g&#233;n&#233;rale</em>. Paris: A. Colin.</p>
+</div>
+<div id="ref-maturana_tree_1988">
+<p>Maturana, Humberto R, Francisco J Varela, Robert Paolucci, et John Zachary Young. 1988. <em>The Tree of Knowledge: The Biological Roots of Human Understanding</em>. Boston; London: Shambhala.</p>
+</div>
+<div id="ref-mcclelland_parallel_1986">
+<p>McClelland, James L, David E Rumelhart, San Diego University of California, et PDP Research Group. 1986. <em>Parallel Distributed Processing: Explorations in the Micro-Structure of Cognition</em>. Vol. 2. Cambridge, Mass.; London: MIT Press.</p>
+</div>
+<div id="ref-mcculloch_logical_1943">
+<p>McCulloch, Warren S., et Walter Pitts. 1943. &#171;&#160;A Logical Calculus of the Ideas Immanent in Nervous Activity&#160;&#187;. <em>The bulletin of mathematical biophysics</em> 5 (4): 115&#8209;33. doi:<a href="https://doi.org/10.1007/BF02478259">10.1007/BF02478259</a>.</p>
+</div>
+<div id="ref-mcculloch_embodiments_1965">
+<p>McCulloch, Warren Sturgis. 1965. <em>Embodiments of Mind</em>. Cambridge MA: M.I.T. Press.</p>
+</div>
+<div id="ref-mcluhan_gutenberg_1962">
+<p>McLuhan, Marshall. 1962. <em>The Gutenberg Galaxy: The Making of Typographic Man</em>. Toronto: University of Toronto Press. <a href="http://site.ebrary.com/id/10383481" class="uri">http://site.ebrary.com/id/10383481</a>.</p>
+</div>
+<div id="ref-mcluhan_understanding_2003">
+<p>&#8212;&#8212;&#8212;. 2003. <em>Understanding Media: The Extensions of Man</em>. &#201;dit&#233; par W. Terrence Gordon. Corte Madera, CA: Gingko Press.</p>
+</div>
+<div id="ref-mcluhan_classical_2005">
+<p>&#8212;&#8212;&#8212;. 2005. <em>The Classical Trivium: The Place of Thomas Nashe in the Learning of His Time</em>. &#201;dit&#233; par W. Terrence Gordon. Corte Madera, CA: Gingko Press.</p>
+</div>
+<div id="ref-melcuk_vers_1997">
+<p>Mel&#8217;cuk, Igor. 1997. &#171;&#160;Vers une linguistique Sens-Texte&#160;&#187;. <em>Le&#231;on inaugurale. Coll&#232;ge de France</em>. <a href="http://webcache.googleusercontent.com/search?q=cache:8bh0SlfKwuEJ:olst.ling.umontreal.ca/pdf/MelcukColldeFr.pdf+&amp;cd=1&amp;hl=fr&amp;ct=clnk&amp;gl=ca" class="uri">http://webcache.googleusercontent.com/search?q=cache:8bh0SlfKwuEJ:olst.ling.umontreal.ca/pdf/MelcukColldeFr.pdf+&amp;cd=1&amp;hl=fr&amp;ct=clnk&amp;gl=ca</a>.</p>
+</div>
+<div id="ref-meunier_humanites_2014">
+<p>Meunier, Jean-Guy. 2014. &#171;&#160;Humanit&#233;s num&#233;riques ou computationnelles : Enjeux herm&#233;neutiques&#160;&#187;. <em>Sens Public</em>, d&#233;cembre. <a href="http://www.sens-public.org/article1121.html" class="uri">http://www.sens-public.org/article1121.html</a>.</p>
+</div>
+<div id="ref-minsky_computation_1967">
+<p>Minsky, Marvin Lee. 1967. <em>Computation : Finite and Infinite Machines.</em> Englewood Cliffs, N.J.: Prentice-Hall.</p>
+</div>
+<div id="ref-mirman_group_1995">
+<p>Mirman, Ronald. 1995. <em>Group Theory, an Intuitive Approach</em>. Singapore: London.</p>
+</div>
+<div id="ref-nelson_literary_1981">
+<p>Nelson, Theodor H. 1981. <em>Literary Machines</em>. Swarthmore PA: Ted Nelson.</p>
+</div>
+<div id="ref-neumann_principles_1946">
+<p>Neumann, J. Von. 1946. &#171;&#160;The Principles of Large-Scale Computing Machines&#160;&#187;. <em>Annals of the History of Computing</em> 3 (3): 263&#8209;73. doi:<a href="https://doi.org/10.1109/MAHC.1981.10025">10.1109/MAHC.1981.10025</a>.</p>
+</div>
+<div id="ref-neumann_first_1945">
+<p>Neumann, John von. 1945. &#171;&#160;First Draft of a Report on the EDVAC&#160;&#187;. United States Army Ordnance Department and the University of Pennsylvania Moore School of Electrical Engineering W-670-ORD-4926. <a href="http://archive.org/details/vnedvac" class="uri">http://archive.org/details/vnedvac</a>.</p>
+</div>
+<div id="ref-ong_orality_1982">
+<p>Ong, Walter Jackson. 1982. <em>Orality and Literacy: The Technologizing of the Word</em>. London; New York: Methuen.</p>
+</div>
+<div id="ref-otlet_traite_1934">
+<p>Otlet, Paul. 1934. <em>Trait&#233; de documentation: Le livre sur le livre : Th&#233;orie et pratique.</em> Bruxelles: Mundaneum.</p>
+</div>
+<div id="ref-otlet_monde_1935">
+<p>&#8212;&#8212;&#8212;. 1935. <em>Monde, essai d&#8217;universalisme: connaissance du monde, sentiment du monde, action organis&#233;e et plan du monde</em>. Bruxelles: Mundaneum.</p>
+</div>
+<div id="ref-Pask1969">
+<p>Pask, Gordon. 1969. &#171;&#160;The Architectural relevance of cybernetics&#160;&#187;. <em>Architectural Design</em>.</p>
+</div>
+<div id="ref-peruzzi_meaning_2006">
+<p>Peruzzi, Alberto. 2006. &#171;&#160;The Meaning of Category Theory for 21st Century Philosophy&#160;&#187;. <em>Axiomathes</em> 16 (4): 424&#8209;59. doi:<a href="https://doi.org/10.1007/s10516-005-0466-8">10.1007/s10516-005-0466-8</a>.</p>
+</div>
+<div id="ref-poincare_valeur_1905">
+<p>Poincar&#233;, Henri. 1905. <em>La valeur de la science</em>. Paris: Flammarion.</p>
+</div>
+<div id="ref-poincare_science_1918">
+<p>&#8212;&#8212;&#8212;. 1918. <em>La science et l&#8217;hypoth&#232;se</em>. Paris: Flammarion: 1902.</p>
+</div>
+<div id="ref-poincare_science_1947">
+<p>&#8212;&#8212;&#8212;. 1947. <em>Science et m&#233;thode</em>. Paris: Flammarion.</p>
+</div>
+<div id="ref-project_essential_1998">
+<p>Project, Peirce Edition. 1998. <em>The Essential Peirce: Selected Philosophical Writings (1893-1913).</em> Bloomington, IN: Indiana University Press. <a href="http://public.eblib.com/choice/publicfullrecord.aspx?p=923144" class="uri">http://public.eblib.com/choice/publicfullrecord.aspx?p=923144</a>.</p>
+</div>
+<div id="ref-randell_origins_1982">
+<p>Randell, Brian. 1982. <em>The Origins of Digital Computers - Selected Papers</em>. Berlin-Heidelberg: Springer-Verlag. <a href="//www.springer.com/us/book/9783540113195" class="uri">//www.springer.com/us/book/9783540113195</a>.</p>
+</div>
+<div id="ref-rastier_semantique_1987">
+<p>Rastier, Fran&#231;ois. 1987. <em>S&#233;mantique interpr&#233;tative</em>. Paris: Presses universitaires de France.</p>
+</div>
+<div id="ref-rastier_triade_1990">
+<p>&#8212;&#8212;&#8212;. 1990. &#171;&#160;La triade s&#233;miotique, le trivium et la s&#233;mantique linguistique&#160;&#187;. <em>Nouveaux Actes S&#233;miotiques</em>, n&#7506; 9. <a href="http://epublications.unilim.fr/revues/as/1640" class="uri">http://epublications.unilim.fr/revues/as/1640</a>.</p>
+</div>
+<div id="ref-rastier_hermeneutique_2005">
+<p>&#8212;&#8212;&#8212;. 2005. &#171;&#160;Herm&#233;neutique et linguistique : d&#233;passer la m&#233;connaissance&#160;&#187;. <em>Texto</em> X (4). <a href="http://www.revue-texto.net/Dialogues/Debat_Hermeneutique/Rastier_Herm-et-ling.html" class="uri">http://www.revue-texto.net/Dialogues/Debat_Hermeneutique/Rastier_Herm-et-ling.html</a>.</p>
+</div>
+<div id="ref-russell_artificial_2010">
+<p>Russell, Stuart J, et Peter Norvig. 2010. <em>Artificial Intelligence: A Modern Approach</em>. Upper Saddle River: Prentice-Hall.</p>
+</div>
+<div id="ref-sapir_language_2004">
+<p>Sapir, Edward. 2004. <em>Language, an Introduction to the Study of Speech</em>. Mineola NY: Dover publications.</p>
+</div>
+<div id="ref-saussure_cours_1916">
+<p>Saussure, Ferdinand de. 1916. <em>Cours de linguistique g&#233;n&#233;rale</em>. Lausanne: Payot.</p>
+</div>
+<div id="ref-searle_speech_1969">
+<p>Searle, John R. 1969. <em>Speech Acts. an Essay in the Philosophy of Language.</em> Cambridge University Press: Cambridge.</p>
+</div>
+<div id="ref-searle_intentionality:_1983">
+<p>Searle, John R. 1983. <em>Intentionality: An Essay in the Philosophy of Mind</em>. Cambridge: Cambridge University Press.</p>
+</div>
+<div id="ref-serres_systeme_1968">
+<p>Serres, Michel. 1968. <em>Le Syst&#232;me de Leibniz et ses mod&#232;les math&#233;matiques.</em> Paris: Presses universitaires de France.</p>
+</div>
+<div id="ref-serres_ements_1989">
+<p>&#8212;&#8212;&#8212;. 1989. <em>El&#233;ments d&#8217;histoire des sciences</em>. &#201;dit&#233; par Michel Serres. Paris: Bordas.</p>
+</div>
+<div id="ref-shannon_mathematical_1949">
+<p>Shannon, Claude E, et Warren Weaver. 1949. <em>The Mathematical Theory of Communication</em>. Urbana: University of Illinois.</p>
+</div>
+<div id="ref-simondon_du_1958">
+<p>Simondon, Gilbert. 1958. <em>Du mode d&#8217;existence des objets techniques</em>. Paris: Aubier-Montaigne.</p>
+</div>
+<div id="ref-stengers_invention_1993">
+<p>Stengers, Isabelle. 1993. <em>L&#8217;invention des sciences modernes</em>. Paris: La D&#233;couverte.</p>
+</div>
+<div id="ref-stephens_semantic_nodate">
+<p>Stephens, Tonya Hongsermeier, Ivan Herman. 2017. &#171;&#160;The Semantic Web in Action&#160;&#187;. <em>Scientific American</em>, 90&#8209;97. Consult&#233; le novembre 25. <a href="https://www.scientificamerican.com/article/semantic-web-in-actio/" class="uri">https://www.scientificamerican.com/article/semantic-web-in-actio/</a>.</p>
+</div>
+<div id="ref-turing_computable_1937">
+<p>Turing, A. M. 1937. &#171;&#160;On Computable Numbers, with an Application to the Entscheidungsproblem&#160;&#187;. <em>Proceedings of the London Mathematical Society</em> s2-42 (1): 230&#8209;65. doi:<a href="https://doi.org/10.1112/plms/s2-42.1.230">10.1112/plms/s2-42.1.230</a>.</p>
+</div>
+<div id="ref-turing_computing_1950">
+<p>Turing, Alan Mathison. 1950. &#171;&#160;Computing Machinery and Intelligence&#160;&#187;. <em>Mind</em>, n&#7506; 49: 433&#8209;60. <a href="http://cogprints.org/499/1/turing.HTML" class="uri">http://cogprints.org/499/1/turing.HTML</a>.</p>
+</div>
+<div id="ref-varela_embodied_1991">
+<p>Varela, Francisco J, Evan Thompson, et Eleanor Rosch. 1991. <em>The Embodied Mind: Cognitive Science and Human Experience</em>. Cambridge [Mass.: MIT Press.</p>
+</div>
+<div id="ref-von_neumann_theory_1981">
+<p>Von Neumann, John, et Arthur W Burks. 1981. <em>Theory of Self-Reproducing Automata</em>. Urbana: University of Illinois Press.</p>
+</div>
+<div id="ref-von_neumann_computer_1958">
+<p>Von Neumann, John, et Yale University Press. 1958. <em>The Computer and the Brain</em>. New Haven: Yale University Press.</p>
+</div>
+<div id="ref-vygotskij_thought_1986">
+<p>Vygotskij, Lev Semenovi&#269;. 1986. <em>Thought and Language</em>. &#201;dit&#233; par Alex Kozulin. Cambridge, MA: The MIT Press.</p>
+</div>
+<div id="ref-weizenbaum_computer_1976">
+<p>Weizenbaum, Joseph. 1976. <em>Computer Power and Human Reason: From Judgment to Calculation</em>. San Francisco: W.H. Freeman.</p>
+</div>
+<div id="ref-whorf_language_1956">
+<p>Whorf, Benjamin Lee. 1956. <em>Language, Thought, and Reality: Selected Writings of B.l. Whorf</em>. &#201;dit&#233; par John Bissell Carroll. Cambridge MA: MIT Press.</p>
+</div>
+<div id="ref-wiener_human_1950">
+<p>Wiener, Norbert. 1950. <em>The Human Use of Human Beings: Cybernetics and Society</em>. NY: Doubleday.</p>
+</div>
+<div id="ref-winograd_understanding_1986">
+<p>Winograd, Terry, et Fernando Flores. 1986. <em>Understanding Computers and Cognition: A New Foundation for Design</em>. Norwood NJ: Ablex.</p>
+</div>
+<div id="ref-wittgenstein_tractatus_1961">
+<p>Wittgenstein, Ludwig. 1961. <em>Tractatus Logico Philosophicus</em>. London; New York: Routledge ; Humanities.</p>
+</div>
+<div id="ref-wittgenstein_philosophical_1997">
+<p>&#8212;&#8212;&#8212;. 1997. <em>Philosophical Investigations</em>. Oxford: Blackwell.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>L&#8217;historien des sciences Alexandre Koyr&#233; fut l&#8217;&#233;l&#232;ve de Hilbert &#224; Gottingen... comme il fut celui de Husserl et de Bergson &#224; Paris.<a href="#fnref1">&#8617;</a></p></li>
+<li id="fn2"><p>Je dois &#233;galement citer ici les travaux du math&#233;maticien, physicien et philosophe fran&#231;ais Henri Poincar&#233; dont les trois ouvrages <em>La Science et l&#8217;Hypoth&#232;se</em> (Flammarion, 1902) <em>La Valeur de la Science</em> Flammarion, 1905) et <em>Science et M&#233;thode</em> (Flammarion, 1908), m&#8217;ont fortement inspir&#233;. Il d&#233;clare dans une de ses lettres &#171;&#160;Les math&#233;matiques ne sont qu&#8217;une histoire de groupe.&#160;&#187; Voir l&#8217;excellente conf&#233;rence d&#8217;Etienne Ghys, disponible <a href="http://www.poincare.fr/actualite/fil-d-actualites/43-les-maths-ne-sont-qu-une-histoire-de-groupe">en ligne</a>.<a href="#fnref2">&#8617;</a></p></li>
+<li id="fn3"><p>Certes, il y a plusieurs couches de codage entre la parole, l&#8217;&#233;criture, le syst&#232;me de num&#233;ration ordinaire et le code binaire. Il reste que les ordinateurs &#8211;&#160;et la machine de Turing qui en est le prototype abstrait&#160;&#8211; manipulent bel et bien des symboles. En plus d&#8217;avoir une r&#233;alit&#233; physique, les z&#233;ros et les uns sont aussi des signifiants... qui ne repr&#233;sentent &#233;videmment des signifi&#233;s que pour les humains.<a href="#fnref3">&#8617;</a></p></li>
+<li id="fn4"><p>Consid&#233;rons un ensemble de transformations sur des variables. Si ces op&#233;rations peuvent <em>se composer</em> et <em>s&#8217;inverser</em>, alors cet ensemble de transformations poss&#232;de une structure de groupe. Par exemple, les op&#233;rations de translation, de rotation et de sym&#233;trie en miroir sur des solides dans l&#8217;espace euclidien peuvent se composer et s&#8217;inverser. Un autre exemple classique est celui des op&#233;rations de multiplication et d&#8217;addition sur les nombres rationnels.<a href="#fnref4">&#8617;</a></p></li>
+<li id="fn5"><p>J'ai d&#233;crit la naissance de la cybern&#233;tique au milieu du XX<sup>e</sup> si&#232;cle aux Etats-Unis et le d&#233;veloppement concomitant des sciences et techniques de l'information dans le chapitre 2 de <em>La Sph&#232;re s&#233;mantique</em> <span class="citation">(L&#233;vy <a href="#ref-levy_sphere_2011">2011</a>)</span>. On se reportera &#233;galement &#224; mon article sur &#171;&#160;L'invention de l'ordinateur&#160;&#187; dans les <em>El&#233;ments d'Histoire des sciences</em>, dirig&#233; par Michel Serres <span class="citation">(<a href="#ref-serres_ements_1989">1989</a>)</span>.<a href="#fnref5">&#8617;</a></p></li>
+<li id="fn6"><p>Comme Joseph Licklider (1915-1990), Douglas Engelbart (1925-2013) ou Ted Nelson (1937- ...).<a href="#fnref6">&#8617;</a></p></li>
+<li id="fn7"><p>Un monopole d&#8217;ailleurs bien souvent r&#233;gul&#233; ou contr&#244;l&#233; par les gouvernements.<a href="#fnref7">&#8617;</a></p></li>
+<li id="fn8"><p>Le traitement automatique du langage naturel n&#8217;a jamais &#233;t&#233; aussi efficace et populaire. Qui ne conna&#238;t pas <em>Google Translate</em>&#160;?<a href="#fnref8">&#8617;</a></p></li>
+<li id="fn9"><p>Notons que les syst&#232;mes de recommandation existaient d&#232;s les ann&#233;es 2000.<a href="#fnref9">&#8617;</a></p></li>
+<li id="fn10"><p>A titre d&#8217;illustration, Facebook s&#8217;est positionn&#233;e tr&#232;s t&#244;t (sans succ&#232;s pour le moment) aupr&#232;s des &#233;tats comme potentielle instance de certification d&#8217;identit&#233;.<a href="#fnref10">&#8617;</a></p></li>
+<li id="fn11"><p>Voir <span class="citation">Meunier (<a href="#ref-meunier_humanites_2014">2014</a>)</span>.<a href="#fnref11">&#8617;</a></p></li>
+<li id="fn12"><p>En IEML, les auxiliaires comprennent les adjectifs, adverbes, pr&#233;positions, cas, conjugaisons, pronoms, etc.<a href="#fnref12">&#8617;</a></p></li>
+<li id="fn13"><p>L&#8217;anaphore relie des pronoms ou des conjonctions aux mots ou aux phrases dont ils tiennent lieu. Par exemple, quand nous lisons un pronom, nous savons &#224; quel nom &#8211;&#160;mentionn&#233; dans la phrase qui pr&#233;c&#232;de ou qui suit&#160;&#8211; il r&#233;f&#232;re.<a href="#fnref13">&#8617;</a></p></li>
+<li id="fn14"><p>Les isotopies sont les th&#232;mes ou unit&#233;s de sens r&#233;currentes qui tissent l&#8217;unit&#233; d&#8217;un texte.<a href="#fnref14">&#8617;</a></p></li>
+</ol>
+</div>
+</body>
+</html>
