@@ -21,6 +21,8 @@ from .views import ArticleList, display_article
 from .views import KeywordsList, display_keyword
 from sp_api import views as spviews
 
+app_name='sp_hub'
+
 article_patterns = [
     url(r'^$', ArticleList.as_view(), name='list_articles'),
     url(r'^(?P<pk>.+)/$', display_article, name='display_article'),
@@ -32,7 +34,7 @@ keyword_patterns = [
 ]
 
 urlpatterns = [
-    url(r'^api/', include('sp_api.urls')),
+    url(r'^api/', include('sp_api.urls', namespace='sp_api')),
     url(r'^admin/', admin.site.urls),
     url(r'^articles/', include(article_patterns)),
     url(r'^keywords/', include(keyword_patterns)),
