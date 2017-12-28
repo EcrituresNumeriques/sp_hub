@@ -143,7 +143,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'simple': {
-            'format': '%(asctime)s %(module)s %(message)s'
+            'format': '%(asctime)s %(message)s'
         },
     },
     'handlers': {

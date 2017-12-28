@@ -11,7 +11,7 @@ class SPCategory(models.Model):
         return self.name + ' (' + str(self.id) + ')'
 
 class SPKeyword(models.Model):
-    name = models.CharField(max_length=200, null=False, blank=False, db_index=True, unique=True)
+    name = models.CharField(max_length=200, null=False, blank=False, db_index=True)
     language = models.CharField(max_length=3, null=False, blank=False, default='fr')
     translations = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL)
     data = JSONField(null=True, blank=True)

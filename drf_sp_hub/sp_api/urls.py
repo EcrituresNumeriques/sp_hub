@@ -3,6 +3,8 @@ from rest_framework.routers import DefaultRouter
 
 from sp_api import views
 
+app_name = 'sp_api'
+
 router = DefaultRouter()
 router.register(r'articles', views.ArticleViewSet)
 router.register(r'conversations', views.ConversationViewSet)

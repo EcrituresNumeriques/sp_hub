@@ -39,7 +39,7 @@ class SPKeywordSerializer(serializers.HyperlinkedModelSerializer):
     )
     class Meta:
         model = SPKeyword
-        fields = ('id', 'name', 'url', 'aligned', 'category_url', 'category', 'data', 'articles')
+        fields = ('id', 'name', 'url', 'aligned', 'category_url', 'category', 'data', 'translations', 'articles')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='article-detail')

@@ -46,7 +46,7 @@ def match_and_associate_editor_keywords(obj, editor_kw):
             # Empty keyword
             continue
 
-        logger.info('Found keyword: ' + my_name)
+        logger.info('Found editor keyword: ' + my_name)
 
         my_data = {}
         # By default, keywords are not aligned
@@ -71,14 +71,14 @@ def match_and_associate_editor_keywords(obj, editor_kw):
         existing_kw = SPKeyword.objects.filter(name=my_name)
         if existing_kw:
             existing_kw.update(**my_args)
-            logger.info('Keyword ' + my_name + ' exists. Linking to ' + obj.title)
+            logger.info('Editor keyword ' + my_name + ' exists. Linking to ' + obj.title)
             # We use * just in case we have a list
             obj.keywords.add(*existing_kw)
         else:
-            logger.info('Adding keyword ' + my_name)
+            logger.info('Creating editor keyword ' + my_name)
             my_kw = SPKeyword.objects.create(name=my_name, **my_args)
             my_kw.save()
-            logger.info('Linking keyword ' + my_name + ' to ' + obj.title)
+            logger.info('Linking editor keyword ' + my_name + ' to ' + obj.title)
             obj.keywords.add(my_kw)
 
 def match_and_associate_author_keywords(obj, author_kw):
@@ -96,13 +96,15 @@ def match_and_associate_author_keywords(obj, author_kw):
         if len(word_list) == 1:
             word_list = ''.join(word_list).split(',')
 
+        # Strip the words
         word_list = [ w.strip() for w in word_list ]
         logger.info('Author keywords found:' + ','.join(word_list))
         for word in word_list:
-            possible_kw = SPKeyword.objects.filter(name__iexact=word)
+            possible_kw = SPKeyword.objects.filter(name__iexact=word, aligned=False)
             if possible_kw:
-                logger.info(word + ' looks like ' + possible_kw.get().name + '. Linking.')
-                obj.keywords.add(possible_kw.get())
+                for kw in possible_kw:
+                    logger.info(word + ' ~ ' + kw.name + '. Linking.')
+                    obj.keywords.add(kw)
             else:
                 logger.info('Creating ' + word)
                 my_kw = SPKeyword.objects.create(name=word)
