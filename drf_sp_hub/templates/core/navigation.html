@@ -1,52 +1,36 @@
-<nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url 'home' %}">
-                sp_hub
-            </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="{% url 'list_articles' %}">Articles</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right" style="padding-right: 40px;">
-                {% if user.is_authenticated %}
-                    <li><a href="#"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a></li>
-                    <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                {% else %}
-                    <li><a href="#">Login</a></li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
-</nav>
-{% if user.is_authenticated %}
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                Actions
-            </a>
-        </div>
-        <div id="navbar2" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                    <li><a href="#"><i class="fa fa-plus-square" aria-hidden="true"></i> Article</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square" aria-hidden="true"></i> Conversation</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square" aria-hidden="true"></i> Mot-clé</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-{% endif %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"><div class="container">
+  <a class="navbar-brand" href="#">SP Hub</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_articles' %}">Articles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_keywords' %}">Keywords</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav my-2 my-lg-0">
+      {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Utilities
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Django admin</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Logout</a>
+          </div>
+        </li>
+      {% else %}
+        <li class="nav-item"><a class="nav-link">Login</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</div></nav>
