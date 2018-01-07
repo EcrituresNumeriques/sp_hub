@@ -1,6 +1,25 @@
 <h2>Liste de mots-clés</h2>
-<ul>
+<table id="keywordsTable" class="table">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Nom</td>
+      <td>Catégorie</td>
+      <td>Langue</td>
+      <td>Auteur | éditeur</td>
+      <td>Aligné</td>
+    </tr>
+  </thead>
+  <tbody>
     {% for item in keywords %}
-    <li><a href="{% url 'display_keyword' item.pk %}">{{ item.name }}</a></li>
+    <tr>
+      <td>{{ item.pk }}</td>
+      <td><a href="{% url 'display_keyword' item.pk %}">{{ item.name }}</a></td>
+      <td>{{ item.category }}</td>
+      <td>{{ item.language }}</td>
+      <td>{{ item.editor_kw }}</td>
+      <td>{{ item.aligned }}</td>
+    </tr>
     {% endfor %}
-</ul>
+  </tbody>
+</table>

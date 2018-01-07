@@ -3,3 +3,17 @@
 {% block content %}
 {% include 'keywords/list.html' %}
 {% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#keywordsTable').DataTable({
+      "pageLength": 50,
+    });
+} );
+</script>
+{% endblock %}
