@@ -6,11 +6,7 @@
       <td>Nom</td>
       <td>Catégorie</td>
       <td>Langue</td>
-<<<<<<< HEAD
       <td>Auteur | éditeur</td>
-=======
-      <td>Auteur / éditeur</td>
->>>>>>> d33f93dfd69b61cc816ab1d8b08db2667b5ef4fe
       <td>Aligné</td>
     </tr>
   </thead>
@@ -21,11 +17,7 @@
       <td><a href="{% url 'display_keyword' item.pk %}">{{ item.name }}</a></td>
       <td>{{ item.category }}</td>
       <td>{{ item.language }}</td>
-<<<<<<< HEAD
       <td>{{ item.editor_kw }}</td>
-=======
-      <td>{{ item.editor_kw }}<td>
->>>>>>> d33f93dfd69b61cc816ab1d8b08db2667b5ef4fe
       <td>{{ item.aligned }}</td>
     </tr>
     {% endfor %}
