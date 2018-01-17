@@ -27,7 +27,7 @@ app_name='sp_hub'
 
 def home_view(request):
     pass
-    
+
 article_patterns = [
     url(r'^$', ArticleList.as_view(), name='list_articles'),
     url(r'^(?P<pk>.+)/$', display_article, name='display_article'),
@@ -47,6 +47,6 @@ urlpatterns = [
         { 'template_name': 'core/login.html' },
         name='login'
     ),
-    url(r'^logout/$', auth_views.logout, name='logout'),
-    url(r'^/', home_view, name='home'),
+    url(r'^logout/$', auth_views.logout, { 'next_page': '/' }, name='logout'),
+    url(r'^/', ArticleList.as_view(), name='home'),
 ]
