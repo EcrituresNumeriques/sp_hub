@@ -20,21 +20,6 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
-    @list_route()
-    def import_bulk(self, request):
-        Article.objects.all().delete()
-        SPKeyword.objects.all().delete()
-        my_files = []
-        for f in os.listdir('resources/html'):
-            if f.startswith('SP') and f.endswith('.html'):
-                my_files.append(f)
-                fp = open(os.path.join('resources/html', f), 'rb')
-                logger.info('Bulk import: ' + f)
-                a = Article.objects.create(title=f)
-                a.html_file.save(f, File(fp))
-
-        return Response(','.join(my_files))
-
 class ConversationViewSet(viewsets.ModelViewSet):
     queryset = Conversation.objects.all()
     serializer_class = ConversationSerializer

@@ -17,7 +17,7 @@
       <td><a href="{% url 'display_keyword' item.pk %}">{{ item.name }}</a></td>
       <td>{{ item.category }}</td>
       <td>{{ item.language }}</td>
-      <td>{{ item.editor_kw }}</td>
+      <td>{{ item.is_editor }}</td>
       <td>{{ item.aligned }}</td>
     </tr>
     {% endfor %}

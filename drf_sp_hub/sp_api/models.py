@@ -8,7 +8,7 @@ class SPCategory(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False, db_index=True, unique=True)
 
     def __str__(self):
-        return self.name + ' (' + str(self.id) + ')'
+        return self.name
 
 class SPKeyword(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False, db_index=True)
@@ -16,7 +16,7 @@ class SPKeyword(models.Model):
     translations = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL)
     data = JSONField(null=True, blank=True)
     aligned = models.BooleanField(null=False, blank=False, default=False)
-    editor_kw = models.BooleanField(null=False, blank=False, default=False)
+    is_editor = models.BooleanField(null=False, blank=False, default=False)
     category = models.ForeignKey(SPCategory, unique=False, related_name='keywords', db_index=True, null=True, blank=True, default=None, on_delete=models.SET_DEFAULT)
 
     def __str__(self):

@@ -12,11 +12,9 @@ logger = logging.getLogger(__name__)
 
 # Update keywords and article based on HTML file
 @receiver(post_save, sender=Article)
-def update_spkeywords_from_article(sender, instance, created, **kwargs):
-    logger.info('RECEIVER POST SAVE')
+def update_article_from_html_file(sender, instance, created, **kwargs):
 
     if not instance.html_file:
-        logger.info('No HTML file on this object')
         return False
 
     # Init HTML parser
@@ -27,13 +25,19 @@ def update_spkeywords_from_article(sender, instance, created, **kwargs):
     editor_keywords = tree.xpath("//meta[@name='controlledKeyword']")
     # <meta name="keywords" xml:lang="fr" lang="fr" content="Facebook, &#233;ditorialisation, algorithmes, connectivit&#233;, public, m&#233;dias, globalisation, opinion, bulle de filtre, segmentation." />
     author_keywords = tree.xpath("//meta[@name='keywords' and @lang='fr']")
+    title = tree.xpath("//head/title")
 
     if editor_keywords or author_keywords:
         # Clear keywords first
         instance.keywords.clear()
+        # Match and associate
+        match_and_associate_editor_keywords(instance, editor_keywords)
+        match_and_associate_author_keywords(instance, author_keywords)
 
-    match_and_associate_editor_keywords(instance, editor_keywords)
-    match_and_associate_author_keywords(instance, author_keywords)
+    if title and len(title) is 1:
+        t = title[0].text
+        logger.info('Updating title to ' + t)
+        Article.objects.filter(pk=instance.pk).update(title=t)
 
 
 def match_and_associate_editor_keywords(obj, editor_kw):
@@ -49,8 +53,9 @@ def match_and_associate_editor_keywords(obj, editor_kw):
         logger.info('Found editor keyword: ' + my_name)
 
         my_data = {}
-        # By default, keywords are not aligned
+        # By default, keywords are not aligned - but these are editors'
         is_aligned = False
+        is_editor = True
         aligned_fields = ['urirameau', 'idrameau', 'wikidata' ]
         for field in aligned_fields:
              content = kw.get(field)
@@ -59,7 +64,7 @@ def match_and_associate_editor_keywords(obj, editor_kw):
                  is_aligned = True
                  my_data[field] = content
 
-        my_args = { 'data': my_data, 'aligned': is_aligned }
+        my_args = { 'data': my_data, 'aligned': is_aligned, 'is_editor': is_editor }
 
         # Search for the parent category in the matcher
         parent_cat = kw_matcher.find_parent(my_name)

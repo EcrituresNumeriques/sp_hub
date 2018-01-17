@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from django.contrib.auth import views as auth_views
+
 from .views import homepage_view
 from .views import ArticleList, display_article
 from .views import KeywordsList, display_keyword
@@ -23,6 +25,9 @@ from sp_api import views as spviews
 
 app_name='sp_hub'
 
+def home_view(request):
+    pass
+    
 article_patterns = [
     url(r'^$', ArticleList.as_view(), name='list_articles'),
     url(r'^(?P<pk>.+)/$', display_article, name='display_article'),
@@ -38,5 +43,10 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^articles/', include(article_patterns)),
     url(r'^keywords/', include(keyword_patterns)),
-    url(r'^/', homepage_view, name='home'),
+    url(r'^login/$', auth_views.login,
+        { 'template_name': 'core/login.html' },
+        name='login'
+    ),
+    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^/', home_view, name='home'),
 ]

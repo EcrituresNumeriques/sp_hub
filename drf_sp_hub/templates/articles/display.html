@@ -4,21 +4,33 @@
 <h2>{{ article.title }}</h2>
 <h4><a href="#">Edit</a></h4>
 <script src="https://hypothes.is/embed.js" async></script>
-<dl id="article_metadata" class="well">
-    <dd>sp_hub ID: {{ article.pk }}</dd>
-    <dd>Author: {{ article.creator }}</dd>
-    <dd>Original file: {{ article.html_file.name }}</dd>
+<dl id="article_metadata" class="row">
+  <dt class="col-sm-3">sp_hub ID</dt><dd class="col-sm-9">{{ article.pk }}</dd>
+  <dt class="col-sm-3">Author</dt><dd class="col-sm-9">{{ article.creator }}</dd>
+  <dt class="col-sm-3">Original file</dt><dd class="col-sm-9">{{ article.html_file.name }}</dd>
+  <dt class="col-sm-3">Mots-clés</dt>
+  <dd class="col-sm-9">
+    <ul class="list-inline">
+      {% for keyword in keywords %}
+      <li class="list-inline-item"><a href="{% url 'display_keyword' keyword.pk %}">{{ keyword.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </dd>
+  <dt class="col-sm-3">Conversations</dt>
+  <dd class="col-sm-9">
+    <ul class="list-inline">
+      {% for convo in article.conversations.all %}
+      <li class="list-inline-item"><a href="#">{{ convo }}</a></li>
+      {% endfor %}
+    </ul>
+  </dd>
 </dl>
-<dl id="article_keywords" class="well">
-    {% for keyword in keywords %}
-      <dd><a href="{% url 'display_keyword' keyword.pk %}">{{ keyword.name }}</a></dd>
-    {% endfor %}
-</dl>
-<dl class="well">
-    {% for convo in article.conversations.all %}
-    <dd><a href="#">{{ convo }}</a></dd>
-    {% endfor %}
-</dl>
+<h3>Original document</h3>
+<div id="article_content">
+    {% autoescape off %}
+    {{ basex_document }}
+    {% endautoescape %}
+</div>
 <h3>
     <a data-toggle="collapse" data-target="#annotations" href="#annotations">Annotations hypothes.is</a>
 </h3>
@@ -38,14 +50,4 @@
     {% endfor %}
 </div>
 {% endif %}
-
-<h3>
-    <a data-toggle="collapse" data-target="#article_content" href="#article_content">BaseX document</a>
-</h3>
-
-<div id="article_content" class="collapse">
-    {% autoescape off %}
-    {{ basex_document }}
-    {% endautoescape %}
-</div>
 {% endblock %}

@@ -3,11 +3,12 @@
 {% block content %}
 <h2>{{ keyword.name }}</h2>
 <h4><a href="#">Edit</a></h4>
-{% for source, reference in keyword.data.items %}
-<ul>
-    <li>{{ source }}: {{ reference }}</li>
-</ul>
-{% endfor %}
+<dl class="row">
+  {% for source, reference in keyword.data.items %}
+    <dt class="col-sm-3">{{ source }}</dt>
+    <dd class="col-sm-9">{{ reference }}</dd>
+  {% endfor %}
+</dl>
 <h3>Tagged articles</h3>
   <ul>
   {% for article in keyword.articles.all %}
