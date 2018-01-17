@@ -48,5 +48,5 @@ urlpatterns = [
         name='login'
     ),
     url(r'^logout/$', auth_views.logout, { 'next_page': '/' }, name='logout'),
-    url(r'^/', ArticleList.as_view(), name='home'),
+    url(r'^/', home_view, name='home'),
 ]
