@@ -24,7 +24,6 @@ class ArticleDetail(DetailView):
             body_html = etree.tostring(body_elem[0])
             context['basex_document'] = body_html.decode()
 
-        context['keywords'] = self.object.keywords.all()
         return context
 
 class ArticleEdit(UpdateView):
@@ -35,4 +34,4 @@ class ArticleEdit(UpdateView):
 class ArticleAdd(CreateView):
     model = Article
     form_class = ArticleForm
-    template_name = 'article/edit.html'
+    template_name = 'articles/edit.html'

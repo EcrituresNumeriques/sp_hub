@@ -65,6 +65,8 @@ class Conversation(models.Model):
     references = JSONField(null=True, blank=True)
     timeline = JSONField(null=False, blank=True)
 
+    def get_absolute_url(self):
+        return reverse('sp_app:display_conversation', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return self.title + ' ' + str([ article.pk for article in self.articles.all() ])
+        return self.title

@@ -19,3 +19,13 @@ class SPCategoryForm(forms.ModelForm):
     class Meta:
         model = SPCategory
         fields = [ 'name' ]
+
+class ConversationForm(forms.ModelForm):
+    class Meta:
+        model = Conversation
+        fields = [ 'title', 'articles', 'keywords',  ]
+        hidden_fields = [ 'timeline', ]
+        widgets = {
+            'articles': forms.SelectMultiple(attrs={'class': 'select-multi-keywords, form-control'}),
+            'keywords': forms.SelectMultiple(attrs={'class': 'select-multi-keywords, form-control'})
+        }

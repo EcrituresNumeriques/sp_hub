@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+{% load sp_tags %}
+
+{% block content %}
+<h2>{{ conversation }}</h2>
+{% if perms.sp_api.change_conversation %}
+  <a class="btn btn-warning btn-sm" href="{% url 'sp_app:change_conversation' conversation.pk %}">
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+  </a>
+{% endif %}
+{% if perms.sp_api.delete_conversation %}
+  <a class="btn btn-danger btn-sm" href="#">
+    <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+  </a>
+{% endif %}
+<h3>Articles</h3>
+{% for article in conversation.articles.all %}
+  <a href="{% url 'sp_app:display_article' article.pk %}" class="badge badge-light">{{ article }}</a>
+{% endfor %}
+<h3>Keywords</h3>
+{% for keyword in conversation.keywords.all %}
+  <a href="{% url 'sp_app:display_keyword' keyword.pk %}" class="badge badge-light">{{ keyword }}</a>
+{% endfor %}
+<h3>Timeline</h3>
+{% for timestamp, value in conversation.timeline.items %}
+  <span class="badge badge-light">{{ timestamp|parse_timestamp|date:'Y-m-d H:i:s' }}: {{ value }}</span>
+{% endfor %}
+{% endblock %}

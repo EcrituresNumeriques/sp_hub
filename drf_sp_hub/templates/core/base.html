@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static "css/style.css" %}">
 
-  {% load staticfiles %}
   {% block css %}
   {% endblock %}
   <!--[if lt IE 9]>
@@ -30,6 +29,7 @@
     {% endblock %}
   </main>
   <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="{% static "js/core.js" %}"></script>
   {% bootstrap_javascript %}
   {% block js %}
   {% endblock %}

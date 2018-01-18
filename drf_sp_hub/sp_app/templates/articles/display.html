@@ -16,23 +16,17 @@
   <dd class="col-sm-9">{{ article.html_file.name }}</dd>
   <dt class="col-sm-3">Mots-clés</dt>
   <dd class="col-sm-9">
-    <ul class="list-inline">
-      {% for keyword in keywords %}
-      <li class="list-inline-item">
-        <a href="{% url 'sp_app:display_keyword' keyword.pk %}" class="badge badge-light">
-          {{ keyword.name }}
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
+    {% for keyword in article.keywords.all %}
+      <a href="{% url 'sp_app:display_keyword' keyword.pk %}" class="badge badge-primary">
+        {{ keyword.name }}
+      </a>
+    {% endfor %}
   </dd>
   <dt class="col-3">Conversations</dt>
   <dd class="col-9">
-    <ul class="list-inline">
-      {% for convo in article.conversations.all %}
-      <li class="list-inline-item"><a href="#">{{ convo }}</a></li>
-      {% endfor %}
-    </ul>
+    {% for convo in article.conversations.all %}
+      <a href="{% url 'sp_app:display_conversation' convo.pk %}" class="badge badge-primary">{{ convo }}</a></li>
+    {% endfor %}
   </dd>
 </dl>
 <h3>Original document</h3>

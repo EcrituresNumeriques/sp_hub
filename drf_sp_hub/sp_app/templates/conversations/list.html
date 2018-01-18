@@ -1,0 +1,18 @@
+<h2>Liste de conversations</h2>
+{% if perms.sp_api.add_conversation %}
+  <a class="btn btn-success btn-sm" href="{% url 'sp_app:add_conversation' %}"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</a>
+{% endif %}
+<div class="card-columns">
+{% for conversation in conversations %}
+  <div class="card"><div class="card-body">
+    <h4 class="card-title">{{ conversation }}</a></h4>
+    <p class="card-text">
+      {% for kw in conversation.keywords.all %}
+        <span class="badge badge-light">{{ kw }}</span>
+      {% endfor %}
+    </p>
+    <a href="{% url 'sp_app:display_conversation' conversation.pk %}" class="card-link">Read more</a>
+    <span class="card-link">ID {{ conversation.pk }}</span>
+  </div></div>
+{% endfor %}
+</div>
