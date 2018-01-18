@@ -5,7 +5,6 @@
       <td>ID</td>
       <td>Nom</td>
       <td>Catégorie</td>
-      <td>Langue</td>
       <td>Auteur | éditeur</td>
       <td>Aligné</td>
     </tr>
@@ -16,7 +15,6 @@
       <td>{{ item.pk }}</td>
       <td><a href="{% url 'display_keyword' item.pk %}">{{ item.name }}</a></td>
       <td>{{ item.category }}</td>
-      <td>{{ item.language }}</td>
       <td>{{ item.is_editor }}</td>
       <td>{{ item.aligned }}</td>
     </tr>

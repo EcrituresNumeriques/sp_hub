@@ -2,22 +2,30 @@
 
 {% block content %}
 <h2>{{ article.title }}</h2>
-<h4><a href="#">Edit</a></h4>
-<script src="https://hypothes.is/embed.js" async></script>
+{% if perms.sp_api.change_article %}
+  <button class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+{% endif %}
 <dl id="article_metadata" class="row">
-  <dt class="col-sm-3">sp_hub ID</dt><dd class="col-sm-9">{{ article.pk }}</dd>
-  <dt class="col-sm-3">Author</dt><dd class="col-sm-9">{{ article.creator }}</dd>
-  <dt class="col-sm-3">Original file</dt><dd class="col-sm-9">{{ article.html_file.name }}</dd>
+  <dt class="col-sm-3">sp_hub ID</dt>
+  <dd class="col-sm-9">{{ article.pk }}</dd>
+  <dt class="col-sm-3">Author</dt>
+  <dd class="col-sm-9">{{ article.creator }}</dd>
+  <dt class="col-sm-3">Original file</dt>
+  <dd class="col-sm-9">{{ article.html_file.name }}</dd>
   <dt class="col-sm-3">Mots-clés</dt>
   <dd class="col-sm-9">
     <ul class="list-inline">
       {% for keyword in keywords %}
-      <li class="list-inline-item"><a href="{% url 'display_keyword' keyword.pk %}">{{ keyword.name }}</a></li>
+      <li class="list-inline-item">
+        <a href="{% url 'display_keyword' keyword.pk %}" class="badge badge-light">
+          {{ keyword.name }}
+        </a>
+      </li>
       {% endfor %}
     </ul>
   </dd>
-  <dt class="col-sm-3">Conversations</dt>
-  <dd class="col-sm-9">
+  <dt class="col-3">Conversations</dt>
+  <dd class="col-9">
     <ul class="list-inline">
       {% for convo in article.conversations.all %}
       <li class="list-inline-item"><a href="#">{{ convo }}</a></li>

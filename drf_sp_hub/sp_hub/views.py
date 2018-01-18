@@ -1,6 +1,7 @@
 import logging
+from lxml import etree
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from sp_api.models import Article, SPKeyword
@@ -8,7 +9,8 @@ from sp_api.models import Article, SPKeyword
 logger = logging.getLogger(__name__)
 
 def homepage_view(request):
-    return render(request, 'frontend/index.html')
+    return redirect('/articles/')
+    #return render(request, 'frontend/index.html')
 
 class ArticleList(ListView):
     model = Article
@@ -24,11 +26,16 @@ def display_article(request, pk):
     article = Article.objects.get(pk=pk)
 
     if article.html_file:
-        data = article.html_file.read()
+        # Init HTML parser
+        parser = etree.HTMLParser()
+        tree = etree.parse(article.html_file, parser)
+        body_elem = tree.xpath("//body")
+        body_html = etree.tostring(body_elem[0])
+        #data = article.html_file.read()
 
     return render(request, 'articles/display.html', {
         'article': article,
-        'basex_document': data.decode(),
+        'basex_document': body_html.decode(),
         'annotations': [],
         'conversations': article.conversations.all(),
         'keywords': article.keywords.all(),
