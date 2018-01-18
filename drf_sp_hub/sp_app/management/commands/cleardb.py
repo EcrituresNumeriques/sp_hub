@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from sp_api.models import Article, SPKeyword, SPCategory
+from sp_app.models import Article, SPKeyword, SPCategory
 
 from django.core.files import File
 import os

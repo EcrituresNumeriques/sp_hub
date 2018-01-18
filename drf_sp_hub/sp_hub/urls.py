@@ -19,34 +19,17 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 from .views import homepage_view
-from sp_api import views as spviews
 
 app_name='sp_hub'
 
-article_patterns = [
-    url(r'^$', spviews.ArticleList.as_view(), name='list_articles'),
-    url(r'^new$', spviews.ArticleAdd.as_view(), name='add_article'),
-    url(r'^(?P<pk>.+)/$', spviews.ArticleDetail.as_view(), name='display_article'),
-    url(r'^(?P<pk>.+)/edit$', spviews.ArticleEdit.as_view(), name='change_article'),
-]
-
-keyword_patterns = [
-    url(r'^$', spviews.SPKeywordList.as_view(), name='list_keywords'),
-    url(r'^new$', spviews.SPKeywordAdd.as_view(), name='add_keyword'),
-    url(r'^(?P<pk>.+)/$', spviews.SPKeywordDetail.as_view(), name='display_keyword'),
-#    url(r'^(?P<pk>.+)/edit$', spviews.add_change_spkeyword, name='change_keyword'),
-    url(r'^(?P<pk>.+)/edit$', spviews.SPKeywordEdit.as_view(), name='change_keyword'),
-]
-
 urlpatterns = [
-    url(r'^api/', include('sp_api.urls', namespace='sp_api')),
     url(r'^admin/', admin.site.urls),
-    url(r'^articles/', include(article_patterns)),
-    url(r'^keywords/', include(keyword_patterns)),
     url(r'^login/$', auth_views.login,
         { 'template_name': 'core/login.html' },
         name='login'
     ),
     url(r'^logout/$', auth_views.logout, { 'next_page': '/' }, name='logout'),
-    url(r'^', homepage_view, name='home'),
+    url(r'^api/', include('sp_api.urls', namespace='sp_api')),
+    url(r'^', include('sp_app.urls', namespace='sp_app')),
+    url(r'^$', homepage_view, name='home'),
 ]

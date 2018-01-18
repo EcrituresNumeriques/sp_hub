@@ -3,7 +3,7 @@
 {% block content %}
 <h2>{{ keyword.name }}</h2>
 {% if perms.sp_api.change_spkeyword %}
-  <a class="btn btn-warning btn-sm" href="{% url 'change_keyword' keyword.pk %}">
+  <a class="btn btn-warning btn-sm" href="{% url 'sp_app:change_keyword' keyword.pk %}">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
   </a>
 {% endif %}

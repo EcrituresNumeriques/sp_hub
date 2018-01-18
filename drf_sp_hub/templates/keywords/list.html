@@ -13,7 +13,7 @@
     {% for item in keywords %}
     <tr>
       <td>{{ item.pk }}</td>
-      <td><a href="{% url 'display_keyword' item.pk %}">{{ item.name }}</a></td>
+      <td><a href="{% url 'sp_app:display_keyword' item.pk %}">{{ item.name }}</a></td>
       <td>{{ item.category }}</td>
       <td>{{ item.is_editor }}</td>
       <td>{{ item.aligned }}</td>

@@ -10,13 +10,14 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'list_articles' %}">Articles</a>
+        <a class="nav-link" href="{% url 'sp_app:list_articles' %}">Articles</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'list_keywords' %}">Keywords</a>
+        <a class="nav-link" href="{% url 'sp_app:list_keywords' %}">Keywords</a>
       </li>
     </ul>
     <ul class="navbar-nav my-2 my-lg-0">
+      <li class="nav-item"><a class="nav-link" href="{% url 'sp_api:api-root' %}">API REST</a></li>
       {% if user.is_authenticated %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
