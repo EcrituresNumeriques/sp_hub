@@ -9,24 +9,41 @@
     const dataContainer = $('input#id_data');
 
     const handleFormSubmit = event => {
+      //event.preventDefault();
       const data = {};
       $('form #autoDataDiv').children('label').each(function() {
         console.log($(this));
-        data[$(this).text()] = $(this).next('input').val();
+        data[$(this).text()] = $(this).nextUntil('label', 'input').val();
       });
       dataContainer.val(JSON.stringify(data, null, " "));
     }
 
     $(document).ready(function () {
       data = JSON.parse(dataContainer.val());
-      autoDataDiv = '<div id="autoDataDiv"></div>';
-      $('input#id_name').after(autoDataDiv);
+      delButton = '<button class="btn btn-sm btn-outline-danger delete mx-2 my-1">Delete</button>';
+      $('input#id_name').after('<div id="autoDataDiv"></div>');
+      autoDataDiv = $('div#autoDataDiv')
       for(var k in data) {
         labelElm = '<label>' + k + '</label>';
         inputElm = '<input type="text" value="' + data[k] + '" class="form-control">';
-        $('div#autoDataDiv').append(labelElm, inputElm);
+        autoDataDiv.append(labelElm, delButton, inputElm);
       }
-
+      autoDataDiv.children('button.delete').click(function(e) {
+        event.preventDefault();
+        $(this).prev('label').remove();
+        $(this).next('input').remove();
+        $(this).remove();
+      });
+      $('button#addLineSaveBtn').click(function(e) {
+        e.preventDefault();
+        myModal = $('#addAlignmentModal');
+        newLabel = myModal.find('input#newLabel').val();
+        newValue = myModal.find('input#newValue').val();
+        labelElm = '<label>' + newLabel + '</label>';
+        inputElm = '<input type="text" value="' + newValue + '" class="form-control">';
+        autoDataDiv.append(labelElm, delButton, inputElm);
+        $('#addAlignmentModal').modal('hide');
+      });
       $('form').submit(handleFormSubmit);
     });
   </script>
@@ -39,7 +56,32 @@
         {% bootstrap_form form exclude="data" %}
         {{ form.data.as_hidden }}
         {% buttons %}
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAlignmentModal">
+            Add alignment
+          </button>
           <button type="submit" class="save btn btn-success">Save</button>
         {% endbuttons %}
     </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addAlignmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" value="newLabel" id="newLabel">
+        <input type="text" value="newValue" id="newValue">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="addLineSaveBtn">Save changes</button>
+      </div>
+    </div>
+    </div>
+    </div>
 {% endblock %}
