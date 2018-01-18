@@ -1,0 +1,16 @@
+<h2>Liste de catégories</h2>
+<div class="card-columns">
+  {% for cat in categories %}
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><a>{{ cat.name }}</a></h4>
+        <p class="card-text">
+          {% for kw in cat.keywords.all %}
+            <a href="{% url 'sp_app:display_keyword' kw.pk %}" class="badge badge-light">{{ kw.name }}</a>
+          {% endfor %}
+        </p>
+        <a href="{% url 'sp_app:display_category' cat.pk %}" class="card-link">ID {{ cat.pk }}</span>
+      </div>
+    </div>
+  {% endfor %}
+</div>

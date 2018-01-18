@@ -1,5 +1,5 @@
 from django import forms
-from .models import Article, Conversation, SPKeyword
+from .models import Article, Conversation, SPKeyword, SPCategory
 
 class ArticleForm(forms.ModelForm):
     class Meta:
@@ -14,3 +14,8 @@ class SPKeywordForm(forms.ModelForm):
         model = SPKeyword
         fields = [ 'name', 'data', 'aligned', 'is_editor']
         hidden_fields = [ 'data' ]
+
+class SPCategoryForm(forms.ModelForm):
+    class Meta:
+        model = SPCategory
+        fields = [ 'name' ]

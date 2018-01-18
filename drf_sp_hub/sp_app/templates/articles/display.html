@@ -1,9 +1,9 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-<h2>{{ article.title }}</h2>
+<h2>{{ article }}</h2>
 {% if perms.sp_api.change_article %}
-  <a class="btn btn-warning btn-sm" href="{% url 'change_article' article.pk %}">
+  <a class="btn btn-warning btn-sm" href="{% url 'sp_app:change_article' article.pk %}">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
   </a>
 {% endif %}
@@ -19,7 +19,7 @@
     <ul class="list-inline">
       {% for keyword in keywords %}
       <li class="list-inline-item">
-        <a href="{% url 'display_keyword' keyword.pk %}" class="badge badge-light">
+        <a href="{% url 'sp_app:display_keyword' keyword.pk %}" class="badge badge-light">
           {{ keyword.name }}
         </a>
       </li>

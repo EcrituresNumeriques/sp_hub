@@ -16,7 +16,7 @@
 <h3>Tagged articles</h3>
   <ul>
   {% for article in keyword.articles.all %}
-    <li><a href="{% url 'display_article' article.pk %}">{{ article }}</a></li>
+    <li><a href="{% url 'sp_app:display_article' article.pk %}">{{ article }}</a></li>
   {% endfor %}
   </ul>
 {% endblock %}

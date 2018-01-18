@@ -1,0 +1,18 @@
+<h2>Liste d'articles</h2>
+{% if perms.sp_api.add_article %}
+  <button class="btn btn-success btn-sm"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
+{% endif %}
+<div class="card-columns">
+{% for article in articles %}
+  <div class="card"><div class="card-body">
+    <h4 class="card-title">{{ article }}</a></h4>
+    <p class="card-text">
+      {% for kw in article.keywords.all %}
+        <span class="badge badge-light">{{ kw }}</span>
+      {% endfor %}
+    </p>
+    <a href="{% url 'sp_app:display_article' article.pk %}" class="card-link">Read more</a>
+    <span class="card-link">ID {{ article.pk }}</span>
+  </div></div>
+{% endfor %}
+</div>

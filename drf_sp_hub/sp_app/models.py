@@ -32,7 +32,7 @@ class SPKeyword(models.Model):
 
     def __str__(self):
         if self.category:
-            return self.name + ' (' + self.category.name + ')'
+            return self.category.name + ': ' + self.name
         else:
             return self.name
 
@@ -51,7 +51,7 @@ class Article(models.Model):
         return reverse('display_article', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return self.title + ' (ID ' + str(self.pk) + ')'
+        return self.title
 
 class Conversation(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)

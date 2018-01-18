@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>{{ category.name }}</h2>
+{% if perms.sp_api.change_spcategory %}
+  <a class="btn btn-warning btn-sm" href="{% url 'sp_app:change_category' category.pk %}">
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+  </a>
+{% endif %}
+<h3>Keywords</h3>
+  {% for keyword in category.keywords.all %}
+    <a href="{% url 'sp_app:display_keyword' keyword.pk %}" class="badge badge-light">{{ keyword.name }}</a>
+  {% endfor %}
+<h3>Articles</h3>
+  {% for article in articles %}
+    <a href="{% url 'sp_app:display_article' article.pk %}" class="badge badge-light">{{ article }}</a>
+  {% endfor %}
+{% endblock %}
