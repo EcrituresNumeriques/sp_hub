@@ -23,7 +23,7 @@
   <a href="{% url 'sp_app:display_keyword' keyword.pk %}" class="badge badge-light">{{ keyword }}</a>
 {% endfor %}
 <h3>Timeline</h3>
-{% for timestamp, value in conversation.timeline.items %}
-  <span class="badge badge-light">{{ timestamp|parse_timestamp|date:'Y-m-d H:i:s' }}: {{ value }}</span>
+{% for timestamp, value in conversation.timeline.items|dictsortreversed:0 %}
+  <h6>{{ timestamp|parse_timestamp|date:'Y-m-d H:i:s' }}: {{ value }}</h6>
 {% endfor %}
 {% endblock %}

@@ -70,10 +70,16 @@ def delete_html_file_on_change(sender, instance, **kwargs):
 @receiver(pre_save, sender=Conversation)
 def update_timeline_before_save(sender, instance, **kwargs):
     data = {}
-    data[time.time()] = 'modified'
-    if not instance.timeline or instance.timeline == 'null':
-        instance.timeline = json.dumps(data)
+    if instance.pk is not None:
+        orig = Conversation.objects.get(pk=instance.pk)
+        if orig.title != instance.title:
+            data[time.time()] = 'modified title'
+        else:
+            data[time.time()] = 'modified'
+
+        timeline = json.dumps(instance.timeline)
     else:
-        if isinstance(instance.timeline, dict):
-            instance.timeline = json.dumps(instance.timeline)
-        instance.timeline = dict(json.loads(instance.timeline).items() | data.items())
+        data[time.time()] = 'created'
+        timeline = json.dumps(data)
+
+    instance.timeline = dict(json.loads(timeline).items() | data.items())
