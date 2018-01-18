@@ -2,10 +2,16 @@ import logging
 from django.db import models
 from django.conf import settings
 
+from django.urls import reverse
+
 from django.contrib.postgres.fields import JSONField
 
 class SPCategory(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False, db_index=True, unique=True)
+
+    class Meta:
+        verbose_name = "SP Category"
+        verbose_name_plural = "SP Categories"
 
     def __str__(self):
         return self.name
@@ -18,6 +24,12 @@ class SPKeyword(models.Model):
     aligned = models.BooleanField(null=False, blank=False, default=False)
     is_editor = models.BooleanField(null=False, blank=False, default=False)
     category = models.ForeignKey(SPCategory, unique=False, related_name='keywords', db_index=True, null=True, blank=True, default=None, on_delete=models.SET_DEFAULT)
+
+    class Meta:
+        verbose_name = "SP Keyword"
+
+    def get_absolute_url(self):
+        return reverse('display_keyword', kwargs={'pk': self.pk})
 
     def __str__(self):
         if self.category:
@@ -35,6 +47,9 @@ class Article(models.Model):
     html_file = models.FileField(upload_to='tmp/', null=True, blank=True)
     basex_docid = models.CharField(max_length=200, null=True, blank=True)
     keywords = models.ManyToManyField(SPKeyword, related_name='articles', blank=True)
+
+    def get_absolute_url(self):
+        return reverse('display_article', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.title + ' (ID ' + str(self.pk) + ')'

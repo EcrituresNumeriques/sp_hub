@@ -1,29 +1,45 @@
 {% extends 'core/base.html' %}
-{% load bootstrap3 %}
-
+{% load bootstrap4 %}
+{% block css %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
 {% block js %}
-    <script type="text/javascript">
-        $(document).ready(function () {
-            data = JSON.parse($('#id_data').text());
-            for(var k in data) {
-              $('form').prepend('<h4>' + k + '</h4><input type="text" value="' + data[k].title + '">');
-            }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script type="text/javascript">
+    const dataContainer = $('input#id_data');
 
-            $('form').submit(function(){
-                my_data = { "fr": { "title": "test fr js" } };
-                $('#id_data').html(JSON.stringify(my_data));
-            });
-        });
-    </script>
+    const handleFormSubmit = event => {
+      const data = {};
+      $('form #autoDataDiv').children('label').each(function() {
+        console.log($(this));
+        data[$(this).text()] = $(this).next('input').val();
+      });
+      dataContainer.val(JSON.stringify(data, null, " "));
+    }
+
+    $(document).ready(function () {
+      data = JSON.parse(dataContainer.val());
+      autoDataDiv = '<div id="autoDataDiv"></div>';
+      $('input#id_name').after(autoDataDiv);
+      for(var k in data) {
+        labelElm = '<label>' + k + '</label>';
+        inputElm = '<input type="text" value="' + data[k] + '" class="form-control">';
+        $('div#autoDataDiv').append(labelElm, inputElm);
+      }
+
+      $('form').submit(handleFormSubmit);
+    });
+  </script>
 {% endblock %}
 
 {% block content %}
     <h1>Edit tag</h1>
     <form method="POST" class="post-form" enctype="multipart/form-data">
         {% csrf_token %}
-        {% bootstrap_form form %}
+        {% bootstrap_form form exclude="data" %}
+        {{ form.data.as_hidden }}
         {% buttons %}
-            <button type="submit" class="save btn btn-default">Save</button>
+          <button type="submit" class="save btn btn-success">Save</button>
         {% endbuttons %}
     </form>
 {% endblock %}

@@ -1,5 +1,17 @@
 {% extends 'core/base.html' %}
-{% load bootstrap3 %}
+{% load bootstrap4 %}
+{% block css %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
+{% block js %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+//      $('.select-multi-keywords').select2();
+      $('select.form-control').select2();
+    });
+  </script>
+{% endblock %}
 
 {% block content %}
     <h1>Edit article</h1>
@@ -7,7 +19,7 @@
         {% csrf_token %}
         {% bootstrap_form form %}
         {% buttons %}
-            <button type="submit" class="save btn btn-default">Save</button>
+          <button type="submit" class="save btn btn-success">Save</button>
         {% endbuttons %}
     </form>
 {% endblock %}

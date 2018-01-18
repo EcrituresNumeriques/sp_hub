@@ -1,11 +1,15 @@
 import logging
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets, generics
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
 
 from django.core.files import File
 import os
+
+from .forms import ArticleForm
+
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
@@ -16,6 +20,29 @@ from .serializers import SPKeywordSerializer, SPCategorySerializer
 
 logger = logging.getLogger(__name__)
 
+class ArticleEdit(UpdateView):
+    model = Article
+    form_class = ArticleForm
+    template_name = 'articles/edit.html'
+
+class ArticleAdd(CreateView):
+    model = Article
+    fields = [ 'title', 'html_file' ]
+    template_name = 'keywords/edit.html'
+
+class SPKeywordEdit(UpdateView):
+    model = SPKeyword
+    fields = [ 'name', 'data' ]
+    template_name = 'keywords/edit.html'
+
+class SPKeywordAdd(CreateView):
+    model = SPKeyword
+    fields = [ 'name', 'data' ]
+    template_name = 'keywords/edit.html'
+
+"""
+THESE ARE THE API VIEWS (DRF)
+"""
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer

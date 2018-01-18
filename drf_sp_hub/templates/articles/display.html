@@ -3,7 +3,9 @@
 {% block content %}
 <h2>{{ article.title }}</h2>
 {% if perms.sp_api.change_article %}
-  <button class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+  <a class="btn btn-warning btn-sm" href="{% url 'change_article' article.pk %}">
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+  </a>
 {% endif %}
 <dl id="article_metadata" class="row">
   <dt class="col-sm-3">sp_hub ID</dt>

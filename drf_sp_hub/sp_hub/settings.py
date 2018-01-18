@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'logging',
     'rest_framework',
     'webpack_loader',
+    'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

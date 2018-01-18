@@ -3,6 +3,8 @@ import os
 from lxml import etree
 import csv
 
+from django.utils.html import strip_tags
+
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
 
@@ -102,7 +104,7 @@ def match_and_associate_author_keywords(obj, author_kw):
             word_list = ''.join(word_list).split(',')
 
         # Strip the words
-        word_list = [ w.strip() for w in word_list ]
+        word_list = [ strip_tags(w.strip()) for w in word_list ]
         logger.info('Author keywords found:' + ','.join(word_list))
         for word in word_list:
             possible_kw = SPKeyword.objects.filter(name__iexact=word, aligned=False)

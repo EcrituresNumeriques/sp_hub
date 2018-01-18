@@ -2,7 +2,11 @@
 
 {% block content %}
 <h2>{{ keyword.name }}</h2>
-<h4><a href="#">Edit</a></h4>
+{% if perms.sp_api.change_spkeyword %}
+  <a class="btn btn-warning btn-sm" href="{% url 'change_keyword' keyword.pk %}">
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+  </a>
+{% endif %}
 <dl class="row">
   {% for source, reference in keyword.data.items %}
     <dt class="col-sm-3">{{ source }}</dt>
