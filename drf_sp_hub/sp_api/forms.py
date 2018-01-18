@@ -12,5 +12,5 @@ class ArticleForm(forms.ModelForm):
 class SPKeywordForm(forms.ModelForm):
     class Meta:
         model = SPKeyword
-        fields = [ 'name', 'data', ]
+        fields = [ 'name', 'data', 'aligned', 'is_editor']
         hidden_fields = [ 'data' ]
