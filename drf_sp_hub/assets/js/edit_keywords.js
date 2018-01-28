@@ -33,6 +33,8 @@ const addLineBtnHandler = (e) => {
 }
 
 $(document).ready(function () {
+  $('select.form-control').select2();
+
   // parse data from hidden form element
   data = JSON.parse(dataContainer.val());
 
