@@ -12,8 +12,11 @@ class ArticleForm(forms.ModelForm):
 class SPKeywordForm(forms.ModelForm):
     class Meta:
         model = SPKeyword
-        fields = [ 'name', 'data', 'aligned', 'is_editor']
+        fields = [ 'name', 'language', 'data', 'aligned', 'is_editor', 'is_translation']
         hidden_fields = [ 'data' ]
+        widgets = {
+            'is_translation': forms.Select(attrs={'class': 'select-multi-keywords, form-control'})
+        }
 
 class SPCategoryForm(forms.ModelForm):
     class Meta:

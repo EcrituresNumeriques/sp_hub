@@ -10,9 +10,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         print('Cleaning all articles from the DB...')
         Article.objects.all().delete()
-        print('Cleaning all keywords and categories from the DB...')
-        SPKeyword.objects.all().delete()
-        SPCategory.objects.all().delete()
         for f in os.listdir('resources/html'):
             if f.startswith('SP') and f.endswith('.html'):
                 print('Found file ' + f + '! Processing...')

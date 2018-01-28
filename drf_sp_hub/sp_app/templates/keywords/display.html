@@ -8,10 +8,27 @@
   </a>
 {% endif %}
 <dl class="row">
+  {% if keyword.category %}
+    <dt class="col-3">Category</dt>
+    <dd class="col-9">{{ keyword.category.name }}</dd>
+  {% endif %}
   {% for source, reference in keyword.data.items %}
     <dt class="col-3">{{ source }}</dt>
     <dd class="col-9">{{ reference }}</dd>
   {% endfor %}
+  <dt class="col-3">Language</dt>
+  <dd class="col-9">{{ keyword.language }}</dd>
+  {% if keyword.is_translation.pk %}
+    <dt class="col-3">Translation of</dt>
+    <dd class="col-9"><a href="{% url 'sp_app:display_keyword' keyword.is_translation.pk %}">
+      {{ keyword.is_translation}}
+    </a></dd>
+  {% else %}
+    {% for t in keyword.translations.all %}
+      <dt class="col-3">Translation ({{ t.language }})</dt>
+      <dd class="col-9"><a href="{% url 'sp_app:display_keyword' t.pk %}">{{ t.name }}</a></dd>
+    {% endfor %}
+  {% endif %}
 </dl>
 <h3>Tagged articles</h3>
   <ul>

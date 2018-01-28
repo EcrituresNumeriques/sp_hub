@@ -6,7 +6,7 @@ class ArticleInline(admin.TabularInline):
     model = Article.keywords.through
 
 class SPKeywordAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'is_editor', 'aligned')
+    list_display = ('name', 'category', 'is_editor', 'aligned', 'language', 'is_translation')
     inlines = (ArticleInline, )
 
 class ArticleAdmin(admin.ModelAdmin):

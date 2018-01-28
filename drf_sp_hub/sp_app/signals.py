@@ -1,17 +1,19 @@
 import logging
 import os
+import re
 from lxml import etree
 import csv
 import json
 import time
 
 from django.utils.html import strip_tags
+from django.forms.models import model_to_dict
 
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
 
 from .models import Article, SPKeyword, SPCategory, Conversation
-from sp_app.lib.kw_matcher import KeywordMatcherFromSpip
+from sp_app.lib.kw_matcher import KeywordMatcher
 
 logger = logging.getLogger(__name__)
 
@@ -22,28 +24,21 @@ def update_article_from_html_file(sender, instance, created, **kwargs):
     if not instance.html_file:
         return False
 
-    # Init HTML parser
-    parser = etree.HTMLParser()
-    tree = etree.parse(instance.html_file, parser)
+    id_senspublic = re.findall(r'SP(\d+).html', os.path.basename(instance.html_file.path))
+    if len(id_senspublic) == 1:
+        instance.id_senspublic = id_senspublic[0]
 
-    # <meta name="controlledKeyword" content="Freud, Sigmund" uriRameau="http://catalogue.bnf.fr/ark:/12148/cb119035855" idRameau="FRBNF11903585" wikidata="https://www.wikidata.org/wiki/Q9215" />
-    editor_keywords = tree.xpath("//meta[@name='controlledKeyword']")
-    # <meta name="keywords" xml:lang="fr" lang="fr" content="Facebook, &#233;ditorialisation, algorithmes, connectivit&#233;, public, m&#233;dias, globalisation, opinion, bulle de filtre, segmentation." />
-    author_keywords = tree.xpath("//meta[@name='keywords' and @lang='fr']")
-    title = tree.xpath("//head/title")
+    kw_matcher = KeywordMatcher(instance)
+    # Clear keywords, then match and associate
+    instance.keywords.clear()
+    kw_matcher.match()
 
-    if editor_keywords or author_keywords:
-        # Clear keywords first
-        instance.keywords.clear()
-        kw_matcher = KeywordMatcherFromSpip('resources/spip_mots.csv')
-        # Match and associate
-        kw_matcher.associate_editor_keywords(instance, editor_keywords)
-        kw_matcher.associate_author_keywords(instance, author_keywords)
+    # title = tree.xpath("//head/title")
 
-    if title and len(title) is 1:
-        t = title[0].text
-        logger.info('Updating title to ' + t)
-        Article.objects.filter(pk=instance.pk).update(title=t)
+    # if title and len(title) is 1:
+    #    t = title[0].text
+    #    logger.info('Updating title to ' + t)
+    #    Article.objects.filter(pk=instance.pk).update(title=t)
 
 # Deletes associated files when object is deleted
 @receiver(post_delete, sender=Article)
@@ -70,16 +65,21 @@ def delete_html_file_on_change(sender, instance, **kwargs):
 @receiver(pre_save, sender=Conversation)
 def update_timeline_before_save(sender, instance, **kwargs):
     data = {}
+    timestamp = time.time()
+
     if instance.pk is not None:
         orig = Conversation.objects.get(pk=instance.pk)
+        message = 'modified'
         if orig.title != instance.title:
-            data[time.time()] = 'modified title'
-        else:
-            data[time.time()] = 'modified'
-
+            message += ' title'
+        if orig.keywords.all() != instance.keywords.all():
+            message += ' keywords'
+        if orig.articles.all() != instance.articles.all():
+            message += ' articles'
         timeline = json.dumps(instance.timeline)
     else:
-        data[time.time()] = 'created'
+        message = 'created'
         timeline = json.dumps(data)
 
+    data[timestamp] = message
     instance.timeline = dict(json.loads(timeline).items() | data.items())

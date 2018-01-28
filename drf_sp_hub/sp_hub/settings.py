@@ -155,7 +155,7 @@ LOGGING = {
         },
     },
     'loggers': {
-        'sp_api': {
+        'sp_app': {
             'handlers': ['file'],
             'level': 'DEBUG',
             'propagate': True,

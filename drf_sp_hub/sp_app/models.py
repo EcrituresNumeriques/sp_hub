@@ -18,7 +18,13 @@ class SPCategory(models.Model):
 class SPKeyword(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False, db_index=True)
     language = models.CharField(max_length=3, null=False, blank=False, default='fr')
-    translations = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL)
+    is_translation = models.ForeignKey(
+        'self',
+        null=True, blank=True,
+        related_name='translations',
+        on_delete=models.SET_NULL,
+        limit_choices_to={'language': 'fr'},
+    )
     data = JSONField(null=True, blank=True)
     aligned = models.BooleanField(null=False, blank=False, default=False)
     is_editor = models.BooleanField(null=False, blank=False, default=False)
@@ -44,7 +50,7 @@ class Article(models.Model):
 
     # Not yet
     html_file = models.FileField(upload_to='tmp/', null=True, blank=True)
-    basex_docid = models.CharField(max_length=200, null=True, blank=True)
+    id_senspublic = models.IntegerField(null=True, blank=True, unique=True, db_index=True)
     keywords = models.ManyToManyField(SPKeyword, related_name='articles', blank=True)
 
     def get_absolute_url(self):
