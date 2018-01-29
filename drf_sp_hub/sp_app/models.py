@@ -49,7 +49,7 @@ class Article(models.Model):
     created_on = models.DateTimeField('published date', auto_now_add=True, blank=True)
 
     # Not yet
-    html_file = models.FileField(upload_to='tmp/', null=True, blank=True)
+    html_file = models.FileField(upload_to='articles/', null=True, blank=True)
     id_senspublic = models.IntegerField(null=True, blank=True, unique=True, db_index=True)
     keywords = models.ManyToManyField(SPKeyword, related_name='articles', blank=True)
 

@@ -26,7 +26,7 @@ def update_article_from_html_file(sender, instance, created, **kwargs):
 
     id_senspublic = re.findall(r'SP(\d+).html', os.path.basename(instance.html_file.path))
     if len(id_senspublic) == 1:
-        instance.id_senspublic = id_senspublic[0]
+        Article.objects.filter(pk=instance.pk).update(id_senspublic=id_senspublic[0])
 
     kw_matcher = KeywordMatcher(instance)
     # Clear keywords, then match and associate

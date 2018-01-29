@@ -120,11 +120,9 @@ class SpipKeywords():
 
                 # Associate parents
                 for k in my_keywords:
-                    logger.info(k.__dict__)
-                    if k.language == 'fr':
-                        logger.info('Update keyword ' + k.name + ' with parent ' + my_cat[0].name)
-                        k.category = my_cat[0]
-                        k.save()
+                    logger.info('Update keyword ' + k.name + ' with parent ' + my_cat[0].name)
+                    k.category = my_cat[0]
+                    k.save()
 
 
 class XMLKeywords():
