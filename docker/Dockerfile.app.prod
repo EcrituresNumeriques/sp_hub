@@ -1,0 +1,8 @@
+FROM python:3-alpine
+
+WORKDIR /usr/src/app/drf_sp_hub
+
+RUN pip install -r requirements-prod.txt
+
+EXPOSE 8000
+CMD [ "python3", "gunicorn", "mydjango.wsgi", "-b", "0.0.0.0:8000" ]
