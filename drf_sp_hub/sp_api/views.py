@@ -25,8 +25,21 @@ class SPCategoryViewSet(viewsets.ModelViewSet):
     serializer_class = SPCategorySerializer
 
 class SPKeywordViewSet(viewsets.ModelViewSet):
-    queryset = SPKeyword.objects.all()
     serializer_class = SPKeywordSerializer
+
+    def get_queryset(self):
+        queryset = SPKeyword.objects.all()
+
+        lang = self.request.query_params.get('lang', None)
+        kw_type = self.request.query_params.get('type', None)
+
+        if lang:
+            queryset = queryset.filter(language=lang)
+
+        if kw_type and kw_type == 'editor':
+            queryset = queryset.filter(aligned=True)
+            
+        return queryset
 
     @list_route()
     def editor(self, request):
