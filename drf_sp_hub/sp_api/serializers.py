@@ -33,7 +33,7 @@ class SPCategorySerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'name', 'url', 'keywords', 'keywords_url')
 
 class SPKeywordSerializer(serializers.HyperlinkedModelSerializer):
-    articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='sp_api:article-detail')
+    # articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='sp_api:article-detail')
     url = serializers.HyperlinkedIdentityField(view_name='sp_api:spkeyword-detail')
     category = serializers.StringRelatedField()
     category_url = serializers.HyperlinkedRelatedField(
@@ -42,7 +42,8 @@ class SPKeywordSerializer(serializers.HyperlinkedModelSerializer):
     )
     class Meta:
         model = SPKeyword
-        fields = ('id', 'name', 'url', 'aligned', 'category_url', 'category', 'data', 'articles')
+    #    fields = ('id', 'name', 'url', 'aligned', 'category_url', 'category', 'data', 'articles')
+        fields = ('id', 'name', 'url', 'aligned', 'category_url', 'category', 'data', 'language')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='display_article')
