@@ -4,6 +4,9 @@ from sp_app.forms import ArticleForm
 from lxml import etree
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django import forms
+from django.shortcuts import render
+from sp_app.lib.zip_importer import ZipImporter
 
 class ArticleList(ListView):
     model = Article
@@ -18,6 +21,7 @@ class ArticleDetail(DetailView):
         context = super().get_context_data(**kwargs)
 
         if self.object.html_file:
+            # Init HTML parser
             parser = etree.HTMLParser()
             tree = etree.parse(self.object.html_file, parser)
 
@@ -28,14 +32,6 @@ class ArticleDetail(DetailView):
 
             body_elem = tree.xpath("//body")
             context['html_document'] = etree.tostring(body_elem[0]).decode()
-
-            # Init HTML parser
-            # parser = etree.HTMLParser()
-            # tree = etree.parse(self.object.html_file, parser)
-            # body_elem = tree.xpath("//body")
-            # body_html = etree.tostring(body_elem[0])
-            # html_content = etree.tostring(tree.getroot())
-            # context['basex_document'] = html_content.decode()
 
         return context
 
@@ -48,3 +44,20 @@ class ArticleAdd(CreateView):
     model = Article
     form_class = ArticleForm
     template_name = 'articles/edit.html'
+
+class ZipImportForm(forms.Form):
+    zip_file = forms.FileField()
+
+def import_zip_file(request):
+    if request.method == 'POST':
+        # Do something
+        form = ZipImportForm(request.POST, request.FILES)
+        if form.is_valid():
+            zipimport = ZipImporter(request.FILES['zip_file'])
+            form_msg = zipimport.process_files()
+            zipimport.clean_files()
+    else:
+        form = ZipImportForm()
+        form_msg = 'upload file'
+
+    return render(request, 'articles/zipimport.html', { 'form': form, 'form_msg': form_msg })

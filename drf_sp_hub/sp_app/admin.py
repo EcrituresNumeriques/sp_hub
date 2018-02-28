@@ -10,7 +10,7 @@ class SPKeywordAdmin(admin.ModelAdmin):
     inlines = (ArticleInline, )
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'html_file', 'pk')
+    list_display = ('title', 'html_file', 'pk', 'id_senspublic')
 
 class SPCategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'pk')

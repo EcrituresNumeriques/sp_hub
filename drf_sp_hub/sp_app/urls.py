@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 
-from .views.article import ArticleList, ArticleAdd, ArticleEdit, ArticleDetail
+from .views.article import ArticleList, ArticleAdd, ArticleEdit, ArticleDetail, import_zip_file
 from .views.keyword import KeywordList, KeywordAdd, KeywordEdit, KeywordDetail
 from .views.category import CategoryList, CategoryAdd, CategoryEdit, CategoryDetail
 from .views.conversation import ConversationList, ConversationAdd, ConversationEdit, ConversationDetail
@@ -9,6 +9,7 @@ app_name = 'sp_app'
 article_patterns = [
     url(r'^$', ArticleList.as_view(), name='list_articles'),
     url(r'^new$', ArticleAdd.as_view(), name='add_article'),
+    url(r'^zipimport$', import_zip_file, name='zipimport'),
     url(r'^(?P<pk>.+)/$', ArticleDetail.as_view(), name='display_article'),
     url(r'^(?P<pk>.+)/edit$', ArticleEdit.as_view(), name='change_article'),
 ]
