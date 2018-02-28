@@ -16,9 +16,19 @@ class ArticleDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['basex_document'] = '<iframe style="width: 100%; height: -webkit-fill-available;" src="/static/articles/SP' + str(self.object.id_senspublic) + '.html"></iframe>'
+
         if self.object.html_file:
-            pass
+            parser = etree.HTMLParser()
+            tree = etree.parse(self.object.html_file, parser)
+
+            extra_head = tree.xpath("//head/meta")
+            context['extra_head'] = ''
+            for elm in extra_head:
+                context['extra_head'] += etree.tostring(elm).decode()
+
+            body_elem = tree.xpath("//body")
+            context['html_document'] = etree.tostring(body_elem[0]).decode()
+
             # Init HTML parser
             # parser = etree.HTMLParser()
             # tree = etree.parse(self.object.html_file, parser)

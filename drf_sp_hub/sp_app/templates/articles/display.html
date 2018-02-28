@@ -1,6 +1,12 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
+{% block extra_head %}
+{% autoescape off %}
+{{ extra_head }}
+{% endautoescape %}
+{% endblock %}
+
 {% block content %}
 <h2>{{ article }}</h2>
 {% if perms.sp_api.change_article %}
@@ -16,7 +22,7 @@
   <dt class="col-sm-3">Author</dt>
   <dd class="col-sm-9">{{ article.created_by }}</dd>
   <dt class="col-sm-3">Original file</dt>
-  <dd class="col-sm-9"><a href="{% get_static_prefix %}{{ article.html_file.name }}">{{ article.html_file.name }}</a></dd>
+  <dd class="col-sm-9"><a href="{{ MEDIA_URL }}{{ article.html_file.name }}">{{ article.html_file.name }}</a></dd>
   <dt class="col-sm-3">Mots-clés</dt>
   <dd class="col-sm-9">
     {% for keyword in article.keywords.all %}
@@ -37,7 +43,7 @@
 <h3>Original document</h3>
 <div id="article_content">
     {% autoescape off %}
-    {{ basex_document }}
+    {{ html_document }}
     {% endautoescape %}
 </div>
 <h3>
