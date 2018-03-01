@@ -30,7 +30,7 @@ class ArticleDetail(DetailView):
             for elm in extra_head:
                 context['extra_head'] += etree.tostring(elm).decode()
 
-            body_elem = tree.xpath("//body")
+            body_elem = tree.xpath("//body/div[@class='article']")
             context['html_document'] = etree.tostring(body_elem[0]).decode()
 
         return context

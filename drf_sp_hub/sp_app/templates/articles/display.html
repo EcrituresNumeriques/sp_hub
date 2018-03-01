@@ -40,15 +40,11 @@
   </dd>
   {% endif %}
 </dl>
-<h3>Original document</h3>
 <div id="article_content">
     {% autoescape off %}
     {{ html_document }}
     {% endautoescape %}
 </div>
-<h3>
-    <a data-toggle="collapse" data-target="#annotations" href="#annotations">Annotations hypothes.is</a>
-</h3>
 
 {% if annotations %}
 <div id="annotations" class="list-group panel-collapse collapse">

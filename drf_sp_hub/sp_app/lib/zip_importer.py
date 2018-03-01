@@ -4,6 +4,8 @@ import shutil
 import os
 import re
 
+from django.core.files import File
+
 from sp_app.models import Article
 
 class ZipImporter():
@@ -31,9 +33,9 @@ class ZipImporter():
                     with os.scandir(subdir.path) as my_d:
                         for f in my_d:
                             # Skip directories and check for media dir
-                            if f.is_file() and f.startswith('SP') and f.endswith('.html'):
-                                if os.path.isdir(os.path.join(subdir.path, 'media')):
-                                    self.files.append(f)
+                            if f.is_file() and f.name.startswith('SP') and f.name.endswith('.html'):
+                                # if os.path.isdir(os.path.join(subdir.path, 'media')):
+                                self.files.append(f)
 
             # Return to original directory
             os.chdir(self.cwd)
@@ -42,22 +44,24 @@ class ZipImporter():
         output = []
         for f in self.files:
             output.append(f.path)
-            id_senspublic = re.findall(r'SP(\d+).html', f.filename)
+            id_senspublic = re.findall(r'SP(\d+).html', f.name)
             if len(id_senspublic) == 1:
                 id_sp = id_senspublic[0]
-                output.append('Found existing article ' + id_sp)
+                output.append('Found article ' + id_sp)
             else:
                 continue
 
             try:
                 # Try to load object
                 obj = Article.objects.get(id_senspublic=id_sp)
+                output.append('will UPDATE ' + str(obj.pk))
             except Article.DoesNotExist:
                 # Does not exist: create it
-                obj = Article.objects.create(title=f.filename)
+                obj = Article.objects.create(title=f.name)
+                output.append('CREATED ' + str(obj.pk))
 
             with open(f, 'rb') as fp:
-                obj.html_file.save(f, File(fp))
+                obj.html_file.save(f.name, File(fp))
 
         return '\n'.join(output)
 
