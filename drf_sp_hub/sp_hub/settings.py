@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'sp_api.apps.SpApiConfig',
     'logging',
     'rest_framework',
+    'corsheaders',
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'sp_hub.urls'
 
