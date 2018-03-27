@@ -8,4 +8,3 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         SPKeyword.objects.all().delete()
-        SPCategory.objects.all().delete()

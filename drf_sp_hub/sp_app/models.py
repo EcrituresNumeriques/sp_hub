@@ -46,7 +46,9 @@ class SPKeyword(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.SET_DEFAULT, related_name='articles', null=False, blank=False)
-    created_on = models.DateTimeField('published date', auto_now_add=True, blank=True)
+    created_on = models.DateTimeField('created date', auto_now_add=True, blank=False)
+    published_on = models.DateTimeField('published date', auto_now_add=True, blank=False)
+    published = models.BooleanField(null=False, blank=False, default=False)
 
     # Not yet
     html_file = models.FileField(upload_to='articles/', null=True, blank=True)
