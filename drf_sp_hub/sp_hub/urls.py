@@ -30,6 +30,7 @@ urlpatterns = [
     ),
     url(r'^logout/$', auth_views.logout, { 'next_page': '/' }, name='logout'),
     url(r'^api/', include('sp_api.urls', namespace='sp_api')),
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^', include('sp_app.urls', namespace='sp_app')),
     url(r'^$', homepage_view, name='home'),
 ]
