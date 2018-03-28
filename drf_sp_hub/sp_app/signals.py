@@ -7,12 +7,12 @@ import json
 import time
 
 from django.utils.html import strip_tags
-from django.forms.models import model_to_dict
 
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
 
 from .models import Article, SPKeyword, SPCategory, Conversation
+
 from sp_app.lib.kw_matcher import KeywordMatcher
 
 logger = logging.getLogger(__name__)

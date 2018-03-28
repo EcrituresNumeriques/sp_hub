@@ -2,7 +2,7 @@ from rest_framework import viewsets, generics
 from rest_framework.response import Response
 from rest_framework.decorators import list_route
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 from sp_app.models import Article, Conversation, SPKeyword, SPCategory
 from .serializers import ArticleSerializer, ConversationSerializer
@@ -38,7 +38,7 @@ class SPKeywordViewSet(viewsets.ModelViewSet):
 
         if kw_type and kw_type == 'editor':
             queryset = queryset.filter(aligned=True)
-            
+
         return queryset
 
     @list_route()
@@ -54,5 +54,5 @@ class SPKeywordViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+    queryset = get_user_model().objects.all()
     serializer_class = UserSerializer

@@ -18,4 +18,3 @@ class SPCategoryAdmin(admin.ModelAdmin):
 admin.site.register(Conversation)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(SPKeyword, SPKeywordAdmin)
-admin.site.register(SPCategory, SPCategoryAdmin)

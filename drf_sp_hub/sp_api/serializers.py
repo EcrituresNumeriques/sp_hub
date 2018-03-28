@@ -1,3 +1,5 @@
+from django.conf import settings
+
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from sp_app.models import Article, Conversation, SPKeyword, SPCategory
@@ -46,8 +48,9 @@ class SPKeywordSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'name', 'url', 'aligned', 'category_url', 'category', 'data', 'language')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='display_article')
-    conversations = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='conversation-detail')
+    owned_articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='sp_api:article-detail')
+    authored_articles = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='sp_api:article-detail')
+    conversations = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='sp_api:conversation-detail')
     class Meta:
-        model = User
-        fields = ('id', 'username', 'articles', 'conversations')
+        model = settings.AUTH_USER_MODEL
+        fields = ('id', 'username', 'owned_articles', 'authored_articles', 'conversations')

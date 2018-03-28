@@ -3,6 +3,7 @@ from django.conf import settings
 
 from django.urls import reverse
 
+from django_enumfield import enum
 from django.contrib.postgres.fields import JSONField
 
 class SPCategory(models.Model):
@@ -42,24 +43,34 @@ class SPKeyword(models.Model):
         else:
             return self.name
 
+class ArticleType(enum.Enum):
+    UNKNOWN = 0
+    ESSAI = 1
+    CHRONIQUE = 1
+    CREATION = 2
+    ENTRETIEN = 3
+    LECTURE = 4
+    SOMMAIRE_DOSSIER = 5
 
 class Article(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.SET_DEFAULT, related_name='articles', null=False, blank=False)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.SET_DEFAULT, related_name='owned_articles', null=False, blank=False)
     created_on = models.DateTimeField('created date', auto_now_add=True, blank=False)
     published_on = models.DateTimeField('published date', auto_now_add=True, blank=False)
-    published = models.BooleanField(null=False, blank=False, default=False)
+    published = models.BooleanField(null=False, blank=False, default=False, db_index=True)
 
-    # Not yet
     html_file = models.FileField(upload_to='articles/', null=True, blank=True)
     id_senspublic = models.IntegerField(null=True, blank=True, unique=True, db_index=True)
+
+    authors =  models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='authored_articles')
     keywords = models.ManyToManyField(SPKeyword, related_name='articles', blank=True)
+    type_article = enum.EnumField(ArticleType, default=ArticleType.UNKNOWN)
 
     class Meta:
         permissions = (
-            ('can_view_unpublished_article', 'Can read unpublished articles'),
+            ('can_view_unpublished_article', 'Can read unpublished article'),
         )
-        
+
     def get_absolute_url(self):
         return reverse('display_article', kwargs={'pk': self.pk})
 
