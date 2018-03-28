@@ -55,6 +55,11 @@ class Article(models.Model):
     id_senspublic = models.IntegerField(null=True, blank=True, unique=True, db_index=True)
     keywords = models.ManyToManyField(SPKeyword, related_name='articles', blank=True)
 
+    class Meta:
+        permissions = (
+            ('can_view_unpublished_article', 'Can read unpublished articles'),
+        )
+        
     def get_absolute_url(self):
         return reverse('display_article', kwargs={'pk': self.pk})
 
