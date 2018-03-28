@@ -3,7 +3,9 @@ from django.conf import settings
 
 from django.urls import reverse
 
-from django_enumfield import enum
+from enumfields import EnumIntegerField
+from enumfields import Enum
+
 from django.contrib.postgres.fields import JSONField
 
 class SPCategory(models.Model):
@@ -43,14 +45,18 @@ class SPKeyword(models.Model):
         else:
             return self.name
 
-class ArticleType(enum.Enum):
+class ArticleType(Enum):
     UNKNOWN = 0
     ESSAI = 1
-    CHRONIQUE = 1
-    CREATION = 2
-    ENTRETIEN = 3
-    LECTURE = 4
-    SOMMAIRE_DOSSIER = 5
+    CHRONIQUE = 2
+    CREATION = 3
+    ENTRETIEN = 4
+    LECTURE = 5
+    SOMMAIRE_DOSSIER = 6
+
+    class Labels:
+        UNKNOWN = 'Inconnu'
+        SOMMAIRE_DOSSIER = 'Sommaire dossier'
 
 class Article(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
@@ -64,7 +70,7 @@ class Article(models.Model):
 
     authors =  models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='authored_articles')
     keywords = models.ManyToManyField(SPKeyword, related_name='articles', blank=True)
-    type_article = enum.EnumField(ArticleType, default=ArticleType.UNKNOWN)
+    type_article = EnumIntegerField(ArticleType, default=ArticleType.UNKNOWN)
 
     class Meta:
         permissions = (
