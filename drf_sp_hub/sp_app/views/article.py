@@ -31,8 +31,10 @@ class ArticleDetail(DetailView):
                 context['extra_head'] += etree.tostring(elm).decode()
 
             body_elem = tree.xpath("//body/div[@class='article']")
-            context['html_document'] = etree.tostring(body_elem[0]).decode()
-
+            if(body_elem):
+                context['html_document'] = etree.tostring(body_elem[0]).decode()
+            else:
+                context['html_document'] = 'No content'
         return context
 
 class ArticleEdit(UpdateView):

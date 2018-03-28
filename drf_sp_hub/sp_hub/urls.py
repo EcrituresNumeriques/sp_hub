@@ -17,18 +17,18 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from django.contrib.auth import views as auth_views
-
+from allauth.account import views as allauth_views
 from .views import homepage_view
 
 app_name='sp_hub'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^login/$', auth_views.login,
-        { 'template_name': 'core/login.html' },
-        name='login'
-    ),
-    url(r'^logout/$', auth_views.logout, { 'next_page': '/' }, name='logout'),
+    url(r'^login/$', allauth_views.LoginView.as_view(), name='login'),
+    #    { 'template_name': 'core/login.html' },
+    #    name='login'
+    #),
+    url(r'^logout/$', allauth_views.LogoutView.as_view(), { 'next_page': '/' }, name='logout'),
     url(r'^api/', include('sp_api.urls', namespace='sp_api')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^', include('sp_app.urls', namespace='sp_app')),
