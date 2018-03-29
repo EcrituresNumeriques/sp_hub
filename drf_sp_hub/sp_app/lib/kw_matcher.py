@@ -23,45 +23,38 @@ class KeywordMatcher():
             self.associate_author_keywords()
 
     def associate_editor_keywords(self):
-        # <meta name="controlledKeyword" content="Freud, Sigmund" uriRameau="http://catalogue.bnf.fr/ark:/12148/cb119035855" idRameau="FRBNF11903585" wikidata="https://www.wikidata.org/wiki/Q9215" />
-        editor_keywords = self.tree.xpath("//meta[@name='controlledKeyword']")
+        """ Associates editor keywords with articles upon save """
 
-        if editor_keywords:
-            for kw in editor_keywords:
-                my_name = kw.get('content')
-                if not my_name:
-                    # Empty keyword
-                    continue
+        # https://github.com/timoguic/sp_hub/issues/31
+        editor_keywords = self.tree.xpath("//div[@class='keywords']/div")
 
-                logger.info('Found editor keyword: ' + my_name)
+        for elem in editor_keywords:
+            # <span property="subject" class="label">Imaginaire</span>
+            kw_label = elem.xpath("span[@property='subject' and @class='label']")
+            if not kw_label:
+                continue
 
-                my_data = {}
-                # By default, keywords are not aligned - but they are editors'
-                is_aligned = False
-                aligned_fields = ['urirameau', 'idrameau', 'wikidata' ]
-                for field in aligned_fields:
-                     content = kw.get(field)
-                     if content:
-                         # We found an aligned field
-                         my_data[field] = content
+            kw_label = kw_label[0].text
 
-                my_kw = create_update_editor_kw(my_name, kw_data=my_data, lang='fr')
-                #my_kw = SPKeyword(
-                #    name=my_name,
-                #    is_editor=True,
-                #    lang='fr',
-                #    is_aligned=is_aligned,
-                #    data=my_data,
-                #)
-                # TODO: separate editor / author and make name the primary key?
-                # Fix PK key issues
-                #my_kw.save()
-                logger.info('Associating keyword ' + my_name + ' to ' + self.instance.title)
-                self.instance.keywords.add(my_kw)
+            logger.info('Found editor keyword: ' + kw_label)
+
+            kw_data = {}
+            aligned_fields = ['urirameau', 'idrameau', 'wikidata' ]
+            for field in aligned_fields:
+                xpath_query = "span[@property='subject' and @class='{}']"
+                alignment = elem.xpath(xpath_query.format(field))
+                if alignment:
+                    # We found an aligned field
+                    kw_data[field] = alignment[0].text
+
+            my_kw = create_update_editor_kw(kw_label, kw_data=kw_data, lang='fr')
+
+            logger.info('Associating keyword ' + kw_label + ' to ' + self.instance.title)
+            self.instance.keywords.add(my_kw)
 
     def associate_author_keywords(self):
         # <meta name="keywords" xml:lang="fr" lang="fr" content="Facebook, &#233;ditorialisation, algorithmes, connectivit&#233;, public, m&#233;dias, globalisation, opinion, bulle de filtre, segmentation." />
-        author_keywords = self.tree.xpath("//meta[@name='keywords' and @lang='fr']")
+        author_keywords = self.tree.xpath("//meta[@name='keywords']")
         # TODO import keywords from other languages too
 
         for kw in author_keywords:
@@ -71,7 +64,7 @@ class KeywordMatcher():
 
             label = kw.get('content')
 
-            # We get rid of the possible ending '.
+            # We get rid of the possible ending '.'
             if label[len(label)-1] == '.':
                 label = label[:-1]
 
@@ -85,14 +78,14 @@ class KeywordMatcher():
             word_list = [ strip_tags(w.strip()) for w in word_list ]
 
             for word in word_list:
-                possible_kw = SPKeyword.objects.filter(name__iexact=word, aligned=False)
+                possible_kw = SPKeyword.objects.filter(name__iexact=word, language=lang, aligned=False)
                 if possible_kw:
                     for kw in possible_kw:
                         logger.info('Linking ' + kw.name + ' to ' + str(self.instance.pk))
                         self.instance.keywords.add(kw)
                 else:
                     logger.info('Creating ' + word)
-                    my_kw = SPKeyword.objects.create(name=word, aligned=False)
+                    my_kw = SPKeyword.objects.create(name=word, language=lang, aligned=False)
                     my_kw.save()
                     self.instance.keywords.add(my_kw)
 

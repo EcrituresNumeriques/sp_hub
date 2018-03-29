@@ -83,6 +83,10 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+class Dossier(models.Model):
+    title = models.CharField(max_length=200, null=False, blank=False)
+
+
 class Conversation(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     description = models.TextField(null=True, blank=True)
