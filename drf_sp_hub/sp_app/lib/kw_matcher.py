@@ -19,8 +19,33 @@ class KeywordMatcher():
 
     def match(self):
         if self.instance.html_file:
+            update_authors_field_from_html()
             self.associate_editor_keywords()
             self.associate_author_keywords()
+
+
+    def update_authors_field_from_html(self):
+        authors = self.tree.xpath("//div[@vocab='http://xmlns.com/foaf/0.1/' and @typeof='Person' and @class='foaf-author']")
+        author_dict = dict()
+        for a in authors:
+            orcid = a.xpath("span[@property='openid']")
+            # Pas d'ORC ID? Suivant!
+            if not orcid:
+                continue
+
+            orcid = orcid[0].text
+
+            nom = a.xpath("span[@property='familyName']")
+            if nom:
+                nom = nom[0].text
+
+            prenom = a.xpath("span[@property='firstName']")
+            if prenom:
+                prenom = prenom[0].text
+
+            author_dict[orcid] = nom + ' ' + prenom
+
+        Article.objects.filter(pk=self.instance.pk).update(authors=json_dumps(author_dict))
 
     def associate_editor_keywords(self):
         """ Associates editor keywords with articles upon save """

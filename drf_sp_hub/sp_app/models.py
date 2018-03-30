@@ -71,7 +71,8 @@ class Article(models.Model):
     id_senspublic = models.IntegerField(null=True, blank=True, unique=True, db_index=True)
     pdf_file = models.FileField(upload_to='articles/', null=True, blank=True)
 
-    authors =  models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='authored_articles')
+    authors =  JSONField(null=True, blank=True)
+    
     keywords = models.ManyToManyField(SPKeyword, related_name='articles', blank=True)
     type_article = EnumIntegerField(ArticleType, default=ArticleType.UNKNOWN)
 
