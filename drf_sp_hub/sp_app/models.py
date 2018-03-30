@@ -72,13 +72,13 @@ class Article(models.Model):
     pdf_file = models.FileField(upload_to='articles/', null=True, blank=True)
 
     authors =  JSONField(null=True, blank=True)
-    
+
     keywords = models.ManyToManyField(SPKeyword, related_name='articles', blank=True)
     type_article = EnumIntegerField(ArticleType, default=ArticleType.UNKNOWN)
 
     class Meta:
         permissions = (
-            ('can_view_unpublished_article', 'Can read unpublished article'),
+            ('read_unpublished_articles', 'Can read unpublished articles'),
         )
 
     def get_absolute_url(self):

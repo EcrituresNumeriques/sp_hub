@@ -1,8 +1,8 @@
-FROM python:3-alpine
+FROM python:3-stretch
 # This is required to build psycopg2 (PGSQL connector)
-RUN apk add --update gcc git musl-dev python-dev postgresql-dev libxml2-dev libxslt-dev nodejs
+# RUN apk add --update gcc git musl-dev python-dev postgresql-dev libxml2-dev libxslt-dev nodejs
 
-COPY drf_sp_hub/requirements.txt /requirements.txt
+COPY requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
 EXPOSE 8000
