@@ -1,51 +1,57 @@
 import logging
 import csv
 import re
+import json
+
 from lxml import etree
 
 from django.utils.html import strip_tags
 
+from sp_app.models import Article
 from sp_app.models import SPCategory
 from sp_app.models import SPKeyword
 
 logger = logging.getLogger(__name__)
 
-class KeywordMatcher():
+class HTMLImporter():
 
     def __init__(self, obj):
         self.parser = etree.HTMLParser()
         self.tree = etree.parse(obj.html_file, self.parser)
         self.instance = obj
 
-    def match(self):
+    def process_file(self):
         if self.instance.html_file:
-            update_authors_field_from_html()
+            self.update_authors_field()
             self.associate_editor_keywords()
             self.associate_author_keywords()
 
 
-    def update_authors_field_from_html(self):
+    def update_authors_field(self):
         authors = self.tree.xpath("//div[@vocab='http://xmlns.com/foaf/0.1/' and @typeof='Person' and @class='foaf-author']")
         author_dict = dict()
         for a in authors:
-            orcid = a.xpath("span[@property='openid']")
-            # Pas d'ORC ID? Suivant!
-            if not orcid:
-                continue
-
-            orcid = orcid[0].text
-
             nom = a.xpath("span[@property='familyName']")
-            if nom:
-                nom = nom[0].text
+
+            if not nom:
+                continue
+            else:
+                if not nom[0].text:
+                    continue
+
+            nom = nom[0].text
 
             prenom = a.xpath("span[@property='firstName']")
             if prenom:
-                prenom = prenom[0].text
+                nom = nom + ' ' + prenom[0].text
 
-            author_dict[orcid] = nom + ' ' + prenom
+            orcid = a.xpath("span[@property='openid']")
+            if orcid:
+                orcid = orcid[0].text
 
-        Article.objects.filter(pk=self.instance.pk).update(authors=json_dumps(author_dict))
+            author_dict[nom] = orcid
+
+        Article.objects.filter(pk=self.instance.pk).update(authors=json.dumps(author_dict))
 
     def associate_editor_keywords(self):
         """ Associates editor keywords with articles upon save """
