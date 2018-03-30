@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'bootstrap4',
+    'datetimewidget',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -23,6 +23,8 @@
   <dd class="col-sm-9">{{ article.created_by }}</dd>
   <dt class="col-sm-3">Original file</dt>
   <dd class="col-sm-9"><a href="{{ MEDIA_URL }}{{ article.html_file.name }}">{{ article.html_file.name }}</a></dd>
+  <dt class="col-sm-3">PDF file</dt>
+  <dd class="col-sm-9"><a href="{{ MEDIA_URL }}{{ article.pdf_file.name }}">{{ article.pdf_file.name }}</a></dd>
   <dt class="col-sm-3">Published</dt>
   <dd class="col-sm-9">{{ article.published }}</dd>
   <dt class="col-sm-3">Type</dt>
