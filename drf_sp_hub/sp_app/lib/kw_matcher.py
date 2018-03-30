@@ -39,13 +39,14 @@ class KeywordMatcher():
             logger.info('Found editor keyword: ' + kw_label)
 
             kw_data = {}
-            aligned_fields = ['urirameau', 'idrameau', 'wikidata' ]
+            aligned_fields = ['uriRameau', 'idRameau', 'wikidata' ]
             for field in aligned_fields:
                 xpath_query = "span[@property='subject' and @class='{}']"
                 alignment = elem.xpath(xpath_query.format(field))
                 if alignment:
                     # We found an aligned field
-                    kw_data[field] = alignment[0].text
+                    if alignment[0].text:
+                        kw_data[field] = alignment[0].text
 
             my_kw = create_update_editor_kw(kw_label, kw_data=kw_data, lang='fr')
 

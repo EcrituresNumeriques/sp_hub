@@ -83,9 +83,16 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+class DossierOrder(models.Model):
+    order = models.PositiveIntegerField()
+    dossier = models.ForeignKey(Dossier)
+    article = models.ForeignKey(Article)
+
 class Dossier(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
-
+    redacteurs = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
+    sommaire = models.ForeignKey(Article, null=True, blank=True, on_delete=models.SET_NULL)
+    articles = models.ManyToManyField(Article, null=True, blank=True, related_name='dossiers', through=DossierOrder)
 
 class Conversation(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
