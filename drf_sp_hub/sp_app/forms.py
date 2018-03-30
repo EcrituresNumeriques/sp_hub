@@ -4,7 +4,7 @@ from .models import Article, Conversation, SPKeyword, SPCategory
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = [ 'title', 'html_file', 'keywords' ]
+        fields = [ 'title', 'html_file', 'pdf_file', 'keywords', 'type_article', 'published_on', 'published' ]
         widgets = {
             'keywords': forms.SelectMultiple(attrs={'class': 'select-multi-keywords, form-control'})
         }

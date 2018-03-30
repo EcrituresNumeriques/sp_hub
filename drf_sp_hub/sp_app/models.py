@@ -3,6 +3,8 @@ from django.conf import settings
 
 from django.urls import reverse
 
+from django.utils.timezone import now as tznow
+
 from enumfields import EnumIntegerField
 from enumfields import Enum
 
@@ -62,11 +64,12 @@ class Article(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.SET_DEFAULT, related_name='owned_articles', null=False, blank=False)
     created_on = models.DateTimeField('created date', auto_now_add=True, blank=False)
-    published_on = models.DateTimeField('published date', auto_now_add=True, blank=False)
+    published_on = models.DateTimeField('published date', default=tznow, null=False, blank=False)
     published = models.BooleanField(null=False, blank=False, default=False, db_index=True)
 
     html_file = models.FileField(upload_to='articles/', null=True, blank=True)
     id_senspublic = models.IntegerField(null=True, blank=True, unique=True, db_index=True)
+    pdf_file = models.FileField(upload_to='articles/', null=True, blank=True)
 
     authors =  models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='authored_articles')
     keywords = models.ManyToManyField(SPKeyword, related_name='articles', blank=True)
@@ -83,16 +86,16 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
-class DossierOrder(models.Model):
-    order = models.PositiveIntegerField()
-    dossier = models.ForeignKey(Dossier)
-    article = models.ForeignKey(Article)
-
 class Dossier(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     redacteurs = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
     sommaire = models.ForeignKey(Article, null=True, blank=True, on_delete=models.SET_NULL)
-    articles = models.ManyToManyField(Article, null=True, blank=True, related_name='dossiers', through=DossierOrder)
+    articles = models.ManyToManyField(Article, blank=True, related_name='dossiers', through='DossierOrder')
+
+class DossierOrder(models.Model):
+    order = models.PositiveIntegerField()
+    dossier = models.ForeignKey(Dossier, on_delete=models.CASCADE)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
 
 class Conversation(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)

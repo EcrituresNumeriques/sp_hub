@@ -23,6 +23,10 @@
   <dd class="col-sm-9">{{ article.created_by }}</dd>
   <dt class="col-sm-3">Original file</dt>
   <dd class="col-sm-9"><a href="{{ MEDIA_URL }}{{ article.html_file.name }}">{{ article.html_file.name }}</a></dd>
+  <dt class="col-sm-3">Published</dt>
+  <dd class="col-sm-9">{{ article.published }}</dd>
+  <dt class="col-sm-3">Type</dt>
+  <dd class="col-sm-9">{{ article.type_article }}</dd>
   <dt class="col-sm-3">Mots-clés</dt>
   <dd class="col-sm-9">
     {% for keyword in article.keywords.all %}
