@@ -1,37 +1,43 @@
 import logging
 import csv
 import re
+import json
+
 from lxml import etree
 
 from django.utils.html import strip_tags
 
+from sp_app.models import Article
 from sp_app.models import SPCategory
 from sp_app.models import SPKeyword
 
 logger = logging.getLogger(__name__)
 
-class KeywordMatcher():
+class HTMLImporter():
 
     def __init__(self, obj):
         self.parser = etree.HTMLParser()
         self.tree = etree.parse(obj.html_file, self.parser)
         self.instance = obj
 
-    def match(self):
+    def process_file(self):
         if self.instance.html_file:
-            update_authors_field_from_html()
+            self.update_authors_field()
             self.associate_editor_keywords()
             self.associate_author_keywords()
 
 
-    def update_authors_field_from_html(self):
+    def update_authors_field(self):
         authors = self.tree.xpath("//div[@vocab='http://xmlns.com/foaf/0.1/' and @typeof='Person' and @class='foaf-author']")
         author_dict = dict()
         for a in authors:
             orcid = a.xpath("span[@property='openid']")
-            # Pas d'ORC ID? Suivant!
+            # Pas d'ORC ID? Suivant! (exemple: SP1282.html)
             if not orcid:
                 continue
+            else:
+                if not orcid[0].text:
+                    continue
 
             orcid = orcid[0].text
 
@@ -45,7 +51,7 @@ class KeywordMatcher():
 
             author_dict[orcid] = nom + ' ' + prenom
 
-        Article.objects.filter(pk=self.instance.pk).update(authors=json_dumps(author_dict))
+        Article.objects.filter(pk=self.instance.pk).update(authors=json.dumps(author_dict))
 
     def associate_editor_keywords(self):
         """ Associates editor keywords with articles upon save """

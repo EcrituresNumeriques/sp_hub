@@ -13,7 +13,7 @@ from django.dispatch import receiver
 
 from .models import Article, SPKeyword, SPCategory, Conversation
 
-from sp_app.lib.kw_matcher import KeywordMatcher
+from sp_app.lib.html_importer import HTMLImporter
 
 logger = logging.getLogger(__name__)
 
@@ -28,10 +28,10 @@ def update_article_from_html_file(sender, instance, created, **kwargs):
     if len(id_senspublic) == 1:
         Article.objects.filter(pk=instance.pk).update(id_senspublic=id_senspublic[0])
 
-    kw_matcher = KeywordMatcher(instance)
+    importer = HTMLImporter(instance)
     # Clear keywords, then match and associate
     instance.keywords.clear()
-    kw_matcher.match()
+    importer.process_file()
 
     # title = tree.xpath("//head/title")
 
