@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['localhost', '.ecrituresnumeriques.ca', '*']
 INSTALLED_APPS = [
     'spkeyword.apps.SpKeywordConfig',
     'article.apps.ArticleConfig',
+    'dossier.apps.DossierConfig',
     'sp_app.apps.SpAppConfig',
     'sp_api.apps.SpApiConfig',
     'logging',

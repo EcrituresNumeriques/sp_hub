@@ -1,19 +1,12 @@
 import logging
-import os
-import re
-from lxml import etree
-import csv
+
 import json
 import time
-
-from django.utils.html import strip_tags
 
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
 
 from .models import Conversation
-from spkeyword.models import SPKeyword, SPCategory
-from .utils.html_importer import HTMLImporter
 
 @receiver(pre_save, sender=Conversation)
 def update_timeline_before_save(sender, instance, **kwargs):

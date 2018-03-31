@@ -27,7 +27,16 @@ class HTMLImporter():
             self.update_authors_field()
             self.associate_editor_keywords()
             self.associate_author_keywords()
+            self.associate_dossier()
 
+    def associate_dossier(self):
+        # <span property="isPartOf" typeof="PublicationVolume" resource="#periodical" class="titreDossier">Ontologie du num&#233;rique</span>
+        info_dossier = self.tree.xpath("//span[@property='isPartOf' and @class='titreDossier']")
+        if info_dossier:
+            for d in info_dossier:
+                dossier_title = d.text
+                dossier_obj = Dossier.objects.get_or_create(title=dossier_title)
+                self.instance.dossiers.add(dossier_obj)
 
     def update_authors_field(self):
         authors = self.tree.xpath("//div[@vocab='http://xmlns.com/foaf/0.1/' and @typeof='Person' and @class='foaf-author']")
