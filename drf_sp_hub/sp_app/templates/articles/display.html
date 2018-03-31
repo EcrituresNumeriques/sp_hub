@@ -31,6 +31,12 @@
   <dd class="col-sm-9">{{ article.published }}</dd>
   <dt class="col-sm-3">Type</dt>
   <dd class="col-sm-9">{{ article.type_article }}</dd>
+  <dt class="col-sm-3">Dossier</dt>
+  <dd class="col-sm-9">
+    {% for d in article.dossiers.all %}
+      <a href="{% url 'dossier:display' d.pk %}">{{ d.title }}</a>
+    {% endfor %}
+  </dd>
   <dt class="col-sm-3">Mots-clés</dt>
   <dd class="col-sm-9">
     {% for keyword in article.keywords.all %}

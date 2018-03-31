@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <h1>Edit dossier</h1>
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+          <button type="submit" class="save btn btn-success">Save</button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

@@ -31,7 +31,7 @@ class SPKeyword(models.Model):
         verbose_name = "SP Keyword"
 
     def get_absolute_url(self):
-        return reverse('sp_app:display_keyword', kwargs={'pk': self.pk})
+        return reverse('spkeyword:display', kwargs={'pk': self.pk})
 
     def __str__(self):
         if self.category:

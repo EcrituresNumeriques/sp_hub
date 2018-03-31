@@ -7,8 +7,9 @@ from lxml import etree
 
 from django.utils.html import strip_tags
 
-from article.models import Article
+from article.models import Article, ArticleType
 from spkeyword.models import SPKeyword, SPCategory
+from dossier.models import Dossier, DossierOrder
 
 from .func_importer import create_update_editor_kw
 
@@ -25,9 +26,10 @@ class HTMLImporter():
     def process_file(self):
         if self.instance.html_file:
             self.update_authors_field()
+            self.update_type_article()
+            self.associate_dossier()
             self.associate_editor_keywords()
             self.associate_author_keywords()
-            self.associate_dossier()
 
     def associate_dossier(self):
         # <span property="isPartOf" typeof="PublicationVolume" resource="#periodical" class="titreDossier">Ontologie du num&#233;rique</span>
@@ -35,8 +37,38 @@ class HTMLImporter():
         if info_dossier:
             for d in info_dossier:
                 dossier_title = d.text
-                dossier_obj = Dossier.objects.get_or_create(title=dossier_title)
-                self.instance.dossiers.add(dossier_obj)
+
+                if not d.text:
+                    continue
+
+                dossier_obj, created = Dossier.objects.get_or_create(title=dossier_title)
+                rel = DossierOrder.objects.create(dossier=dossier_obj, article=self.instance)
+                if(self.instance.type_article == ArticleType.SOMMAIRE_DOSSIER):
+                    DossierOrder.objects.filter(pk=rel.pk).update(sommaire=True)
+
+    def update_type_article(self):
+        element = self.tree.xpath("//meta[@name='prism.genre']")
+        if element:
+            type_article = element[0].get('content').lower()
+            if not type_article:
+                return
+
+            if type_article == 'essai':
+                my_type = ArticleType.ESSAI
+            elif type_article == 'chronique':
+                my_type = ArticleType.CHRONIQUE
+            elif type_article == 'création':
+                my_type = ArticleType.CREATION
+            elif type_article == 'entretien':
+                my_type = ArticleType.ENTRETIEN
+            elif type_article == 'lecture':
+                my_type = ArticleType.LECTURE
+            elif type_article == 'sommaire dossier':
+                my_type = ArticleType.SOMMAIRE_DOSSIER
+            else:
+                my_type = ArticleType.UNKNOWN
+
+            Article.objects.filter(pk=self.instance.pk).update(type_article=my_type)
 
     def update_authors_field(self):
         authors = self.tree.xpath("//div[@vocab='http://xmlns.com/foaf/0.1/' and @typeof='Person' and @class='foaf-author']")

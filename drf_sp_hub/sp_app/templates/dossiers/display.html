@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2>{{ dossier }}</h2>
+<ul>
+{% for article in dossier.articles.all %}
+  <li><a href="{% url 'article:display' article.pk %}">
+    {% if article.type_article == 'SOMMAIRE' %}
+      Prout!
+    {% endif %}
+    {{ article }} ({{article.type_article}})
+  </a></li>
+{% endfor %}
+</ul>
+{% endblock %}

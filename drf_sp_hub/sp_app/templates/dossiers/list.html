@@ -1,0 +1,17 @@
+<h2>Liste de dossiers</h2>
+
+<div class="card-columns">
+{% for dossier in dossiers %}
+  <div class="card"><div class="card-body">
+    <h4 class="card-title">{{ dossier }}</a></h4>
+    <ul class="card-text">
+      {% for article in dossier.articles.all %}
+        <li><a href="{% url 'article:display' article.pk %}">{{ article }}</a></li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'dossier:display' dossier.pk %}" class="card-link">
+      ID {{ dossier.pk }}
+    </a>
+  </div></div>
+{% endfor %}
+</div>

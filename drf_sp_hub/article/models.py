@@ -17,7 +17,6 @@ class ArticleType(Enum):
 
     class Labels:
         UNKNOWN = 'Inconnu'
-        SOMMAIRE_DOSSIER = 'Sommaire dossier'
 
 class Article(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)

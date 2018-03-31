@@ -9,11 +9,11 @@ from lxml import etree
 class ArticleList(ListView):
     model = Article
     context_object_name = 'articles'
-    template_name = 'list_page.html'
+    template_name = 'articles/list_page.html'
 
 class ArticleDetail(DetailView):
     model = Article
-    template_name = 'display.html'
+    template_name = 'articles/display.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -38,9 +38,9 @@ class ArticleDetail(DetailView):
 class ArticleEdit(UpdateView):
     model = Article
     form_class = ArticleForm
-    template_name = 'edit.html'
+    template_name = 'articles/edit.html'
 
 class ArticleAdd(CreateView):
     model = Article
     form_class = ArticleForm
-    template_name = 'edit.html'
+    template_name = 'articles/edit.html'

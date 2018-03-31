@@ -5,4 +5,4 @@ from .models import Dossier
 class DossierForm(forms.ModelForm):
     class Meta:
         model = Dossier
-        fields = [ 'title', 'redacteurs', 'sommaire', 'articles' ]
+        fields = [ 'title', 'redacteurs', 'articles' ]
