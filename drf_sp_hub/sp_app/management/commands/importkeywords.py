@@ -1,8 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
-from sp_app.models import SPKeyword
 
-from sp_app.lib.kw_matcher import XMLKeywords, SpipKeywords
-
+from sp_app.utils.spip_importer import SpipKeywords
+from sp_app.utils.xml_importer import XMLKeywords
 import os
 
 class Command(BaseCommand):

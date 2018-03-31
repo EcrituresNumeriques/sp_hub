@@ -4,7 +4,10 @@ from rest_framework.decorators import list_route
 
 from django.contrib.auth import get_user_model
 
-from sp_app.models import Article, Conversation, SPKeyword, SPCategory
+from article.models import Article
+from sp_app.models import Conversation
+from spkeyword.models import SPKeyword, SPCategory
+
 from .serializers import ArticleSerializer, ConversationSerializer
 from .serializers import SPKeywordSerializer, SPCategorySerializer
 from .serializers import UserSerializer

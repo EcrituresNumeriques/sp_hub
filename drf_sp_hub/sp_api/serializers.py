@@ -2,7 +2,9 @@ from django.conf import settings
 
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from sp_app.models import Article, Conversation, SPKeyword, SPCategory
+from article.models import Article
+from sp_app.models import Conversation
+from spkeyword.models import SPKeyword, SPCategory
 
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):

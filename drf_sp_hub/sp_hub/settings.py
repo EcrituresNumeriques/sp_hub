@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['localhost', '.ecrituresnumeriques.ca', '*']
 # Application definition
 
 INSTALLED_APPS = [
+    'spkeyword.apps.SpKeywordConfig',
+    'article.apps.ArticleConfig',
     'sp_app.apps.SpAppConfig',
     'sp_api.apps.SpApiConfig',
     'logging',
@@ -108,7 +110,7 @@ DATABASES = {
         'NAME': 'sp_hub',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'sp_db',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }

@@ -32,5 +32,7 @@ urlpatterns = [
     url(r'^api/', include('sp_api.urls', namespace='sp_api')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^', include('sp_app.urls', namespace='sp_app')),
+    url(r'^', include('article.urls', namespace='article')),
+    url(r'^', include('spkeyword.urls', namespace='spkeyword')),
     url(r'^$', homepage_view, name='home'),
 ]

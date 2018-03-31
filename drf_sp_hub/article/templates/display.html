@@ -10,7 +10,7 @@
 {% block content %}
 <h2>{{ article }}</h2>
 {% if perms.sp_api.change_article %}
-  <a class="btn btn-warning btn-sm" href="{% url 'sp_app:change_article' article.pk %}">
+  <a class="btn btn-warning btn-sm" href="{% url 'article:edit' article.pk %}">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
   </a>
 {% endif %}
@@ -34,7 +34,7 @@
   <dt class="col-sm-3">Mots-clés</dt>
   <dd class="col-sm-9">
     {% for keyword in article.keywords.all %}
-      <a href="{% url 'sp_app:display_keyword' keyword.pk %}" class="badge badge-primary">
+      <a href="{% url 'spkeyword:display' keyword.pk %}" class="badge badge-primary">
         {{ keyword.name }}
       </a>
     {% endfor %}

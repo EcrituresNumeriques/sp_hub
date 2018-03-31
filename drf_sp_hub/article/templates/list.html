@@ -11,7 +11,7 @@
         <span class="badge badge-light">{{ kw }}</span>
       {% endfor %}
     </p>
-    <a href="{% url 'sp_app:display_article' article.pk %}" class="card-link">Read more</a>
+    <a href="{% url 'article:display' article.pk %}" class="card-link">Read more</a>
     <span class="card-link">ID {{ article.pk }}</span>
   </div></div>
 {% endfor %}
